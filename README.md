@@ -2,11 +2,11 @@
 
 The Azure Functions Tooling Feed is consumed by Visual Studio and Visual Studio code to make sure they are always using the latest [core tools](https://github.com/Azure/azure-functions-core-tools) and matching [templates](https://github.com/Azure/azure-functions-templates). The Azure Functions Tooling Feed is hosted at https://functionscdn.azureedge.net/public/cli-feed-v3.json.
 
-## Tooling feed structure
-```JSON
+## Structure
+``` js
 {
   "tags": {                                                    // Tags acts as a pointer to various release trains
-    "v1": {                                                    // Release train for v1 Functions runtime, in this case prod
+    "v1": {                                                    // Release train for v1 Functions runtime (prod)
       "release": "1.2.0",                                      // Target release for this tag
       "displayName": "Azure Functions v1 (.NET Framework)",    // The fallback display text in case localized strings are not present
       "displayVersion": "v1",                                  // Strings used to construct localized display text
@@ -27,7 +27,7 @@ The Azure Functions Tooling Feed is consumed by Visual Studio and Visual Studio 
   }
 }
 ```
-## Feed update guildelines
+## Update Guidelines
 1. Feed additive, so new releases are added to the feed. Existing releases are never removed from the feed.
 2. Consider a version format of X.Y.Z (Major.Minor.Patch). 
     - Minor version update
@@ -37,7 +37,7 @@ The Azure Functions Tooling Feed is consumed by Visual Studio and Visual Studio 
         - For v1: "1.1.0” was updated to “1.1.1” when templates were updated from 1.0.3.10186 to 1.0.3.10187.
         - For v2:  "2.1.0” was updated to “2.1.1” when templates were updated from 2.0.0-beta-10177 to 2.0.0-beta-10178
 
-## Related Github Repositories
+## Related GitHub Repositories
 - [Azure Functions Templates](https://github.com/Azure/azure-functions-templates)
 - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
