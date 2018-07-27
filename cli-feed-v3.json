@@ -170,14 +170,14 @@
       "requiredRuntime": ".NET Core",
       "minimumRuntimeVersion": "2.1"
     },
-	 "2.3.3": {
+    "2.3.3": {
       "Microsoft.NET.Sdk.Functions": "1.0.14",
       "cli": "https://functionscdn.azureedge.net/public/2.0.1-beta.34/Azure.Functions.Cli.win-x86.2.0.1-beta.34.zip",
       "nodeVersion": "8.11.1",
       "localEntryPoint": "func.exe",
-      "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/2.0.0-beta-10210",
-      "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-beta-10210",
-      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-beta-10205.zip",
+      "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/2.0.0-beta-10224",
+      "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-beta-10224",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-beta-10224.zip",
       "sha2": "4A2B808E86AE4C4DEF38A2A14270D19EC384648AD1FDF635921A64F609D41098",
       "FUNCTIONS_EXTENSION_VERSION": "beta",
       "requiredRuntime": ".NET Core",
@@ -249,7 +249,7 @@
     "1.3.0": {
       "Microsoft.NET.Sdk.Functions": "1.0.14",
       "cli": "https://functionscdn.azureedge.net/public/1.0.14/Azure.Functions.Cli.zip",
-      "nodeVersion" : "6.5.0",
+      "nodeVersion": "6.5.0",
       "localEntryPoint": "func.exe",
       "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/1.0.3.10213",
       "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/1.0.3.10213",
