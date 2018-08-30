@@ -9,7 +9,7 @@
       "hidden": false
     },
     "v1-prerelease": {
-      "release": "1.1.0",
+      "release": "1.4.0",
       "displayName": "Azure Functions v1 Prerelease (.NET Framework)",
       "displayVersion": "v1",
       "releaseQuality": "Prerelease",
