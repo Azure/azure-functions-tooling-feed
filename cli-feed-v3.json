@@ -204,7 +204,7 @@
       "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/2.0.0-beta-10233",
       "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-beta-10233",
       "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-beta-10233.zip",
-      "sha2": "4E9DA21105FEF2018CDA39C8E6A871ED833BDDF7B4994F4F0431F5372564D653",
+      "sha2": "16D7EB2FD65D7AA9E78C99B1CA5DA7D6C2B23EA029B6AE06D9FE4B313C5E8E4B",
       "FUNCTIONS_EXTENSION_VERSION": "beta",
       "requiredRuntime": ".NET Core",
       "minimumRuntimeVersion": "2.1"
