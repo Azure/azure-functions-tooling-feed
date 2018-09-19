@@ -25,7 +25,7 @@
       "hidden": false
     },
     "v2-prerelease": {
-      "release": "2.6.0",
+      "release": "2.7.0",
       "displayName": "Azure Functions v2 Prerelease (.NET Standard)",
       "displayVersion": "v2",
       "releaseQuality": "Prerelease",
@@ -244,6 +244,19 @@
       "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-rc1-10259",
       "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-rc1-10259.zip",
       "sha2": "9DE232A7692E9CC1B0E21E9A81E62B9D5658F134C871C306085D7B5CE3DBD716",
+      "FUNCTIONS_EXTENSION_VERSION": "~2",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "2.1"
+    },
+    "2.7.0": {
+      "Microsoft.NET.Sdk.Functions": "1.0.22",
+      "cli": "https://functionscdn.azureedge.net/public/2.0.1-beta.40/Azure.Functions.Cli.win-x86.2.0.1-beta.40.zip",
+      "nodeVersion": "8.11.1",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/2.0.0-10262",
+      "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-10262",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-10262.zip",
+      "sha2": "D6B8B7034A8806AC7A6B9223CC780F29DA0D434FB623EB2EA63AC516197FB29D",
       "FUNCTIONS_EXTENSION_VERSION": "~2",
       "requiredRuntime": ".NET Core",
       "minimumRuntimeVersion": "2.1"
