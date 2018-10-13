@@ -17,7 +17,7 @@
       "hidden": true
     },
     "v2": {
-      "release": "2.8.1",
+      "release": "2.9.0",
       "displayName": "Azure Functions v2 (.NET Standard)",
       "displayVersion": "v2",
       "releaseQuality": "GA",
