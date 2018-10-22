@@ -21,7 +21,7 @@
       "displayName": "Azure Functions v2 (.NET Core)",
       "displayVersion": "v2",
       "releaseQuality": "GA",
-      "targetFramework": ".NET Standard",
+      "targetFramework": ".NET Core",
       "hidden": false
     },
     "v2-prerelease": {
