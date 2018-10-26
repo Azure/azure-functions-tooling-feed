@@ -536,7 +536,7 @@
       "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/1.0.3.10213",
       "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/1.0.3.10213",
       "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
-      "sha2": "030624826BA89756BFA9EFCEC0F0CBDF2B44B15CE355244990BAABDF156153BC",
+      "sha2": "7EC0D12D56DBC609BAF771017D598689697ED74B23109DFD24A0F7588974C928",
       "FUNCTIONS_EXTENSION_VERSION": "~1"
     }
   }
