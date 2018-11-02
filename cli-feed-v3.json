@@ -25,7 +25,7 @@
       "hidden": false
     },
     "v2-prerelease": {
-      "release": "2.11.0",
+      "release": "2.11.1",
       "displayName": "Azure Functions v2 Prerelease (.NET Core)",
       "displayVersion": "v2",
       "releaseQuality": "Prerelease",
@@ -440,6 +440,45 @@
           "Architecture": "x64",
           "downloadLink": "https://functionscdn.azureedge.net/public/2.2.1/Azure.Functions.Cli.linux-x64.2.2.1.zip",
           "sha2": "B1B54D53E2E8627419EBC0FAEF6BD4A29EF39261587668D411D307A13612C8B5"
+        }
+      ]
+    },
+    "2.11.1": {
+      "Microsoft.NET.Sdk.Functions": "1.0.23",
+      "cli": "https://functionscdn.azureedge.net/public/2.2.32/Azure.Functions.Cli.win-x86.2.2.32.zip",
+      "sha2": "227D26DC072FC6670F6D3123B1EE7F6E4F78699A8914675557A07C18066CEC09",
+      "nodeVersion": "8.11.1",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Azure.Functions.Templates/2.0.0-10310",
+      "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.AzureFunctions.ProjectTemplates/2.0.0-10310",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.0-10310.zip",
+      "FUNCTIONS_EXTENSION_VERSION": "~2",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "2.1",
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.2.32/Azure.Functions.Cli.linux-x64.2.2.32.zip",
+          "sha2": "32CAC128883EDE1A52E4DC93732E470E86F213CADD1A9BA9418D3ABB915A4C0E"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.2.32/Azure.Functions.Cli.osx-x64.2.2.32.zip",
+          "sha2": "2EC8FC55155680CAC53F674AF4D0F3E70BA42464C16EACFCD8EB63B78CC4C283"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.2.32/Azure.Functions.Cli.win-x64.2.2.32.zip",
+          "sha2": "C22A7C0FEC52BA30D1DB1FEAC16872098DCD4202596DBF607DC23F28DDF9E287"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.2.32/Azure.Functions.Cli.win-x86.2.2.32.zip",
+          "sha2": "227D26DC072FC6670F6D3123B1EE7F6E4F78699A8914675557A07C18066CEC09"
         }
       ]
     },
