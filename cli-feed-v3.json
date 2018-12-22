@@ -715,7 +715,7 @@
           "sha2": "0C52B54843B02966ECE5AB23581F7650976A18B28062FF0FA76436AA53DC7485"
         }
       ]
-    }.
+    },
     "1.0.11": {
       "Microsoft.NET.Sdk.Functions": "1.0.13",
       "cli": "https://functionscdn.azureedge.net/public/1.0.10/Azure.Functions.Cli.zip",
