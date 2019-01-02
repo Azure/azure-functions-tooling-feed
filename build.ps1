@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$ProgressPreference = "SilentlyContinue"
 
 function LogOperationStart($message) {
     Write-Host $message -NoNewline
@@ -14,7 +14,7 @@ function LogErrorAndExit($errorMessage, $exception) {
     if ($exception -ne $null) {
         Write-Host $exception -ForegroundColor Red | format-list -force
     }    
-    Exit
+    $LASTEXITCODE = 1
 }
 
 Function validateFeedJson()

@@ -1,13 +1,11 @@
-version: 1.0.3.{build}
+version: 1.0.0.{build}
 pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
-  - dev
   - master
-  - v2.x
 max_jobs: 1
 image: Visual Studio 2017
 build_script:
-- ps: >-
+- ps: |
     .\build.ps1

@@ -7,7 +7,7 @@
       "releaseQuality": "GA",
       "targetFramework": ".NET Framework",
       "hidden": false
-    },
+    }.
     "v1-prerelease": {
       "release": "1.6.0",
       "displayName": "Azure Functions v1 Prerelease (.NET Framework)",
