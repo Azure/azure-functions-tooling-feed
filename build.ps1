@@ -15,6 +15,7 @@ function LogErrorAndExit($errorMessage, $exception) {
         Write-Host $exception -ForegroundColor Red | format-list -force
     }    
     $LASTEXITCODE = 1
+    exit
 }
 
 Function validateFeedJson()
