@@ -10,11 +10,10 @@ function LogSuccess() {
 
 function LogErrorAndExit($errorMessage, $exception) {
     Write-Host -ForegroundColor Red "...Failed" 
-    Write-Host $errorMessage -ForegroundColor Red
     if ($exception -ne $null) {
         Write-Host $exception -ForegroundColor Red | format-list -force
-    }    
-    Exit
+    } 
+    throw $errorMessage
 }
 
 Function validateFeedJson()
