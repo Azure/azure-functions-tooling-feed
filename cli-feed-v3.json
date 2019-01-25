@@ -757,7 +757,7 @@
     },
     "2.17.0": {
       "Microsoft.NET.Sdk.Functions": "1.0.24",
-      "cli": "https://functionscdn.azureedge.net/public/2.4.249/Azure.Functions.Cli.min.win-x86.2.4.299.zip",
+      "cli": "https://functionscdn.azureedge.net/public/2.4.299/Azure.Functions.Cli.min.win-x86.2.4.299.zip",
       "sha2": "C024A9206C649E147672871E173D7BA18E2C89A851ADAB47CD22898BAEDA107E",
       "nodeVersion": "8.11.1",
       "localEntryPoint": "func.exe",
@@ -771,25 +771,25 @@
         {
           "OS": "Linux",
           "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.249/Azure.Functions.Cli.linux-x64.2.4.299.zip",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.2499/Azure.Functions.Cli.linux-x64.2.4.299.zip",
           "sha2": "6594493654D408B407F6B317671D30386CBBD2FC2BE43DD1000299859DF7E51B"
         },
         {
           "OperatingSystem": "MacOS",
           "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.249/Azure.Functions.Cli.osx-x64.2.4.299.zip",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.299/Azure.Functions.Cli.osx-x64.2.4.299.zip",
           "sha2": "D40A67760C4D9148C98560FBBAB8D5B74D08C869A44C6BC83951ABCA5078ECCB"
         },
         {
           "OS": "Windows",
           "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.249/Azure.Functions.Cli.win-x64.2.4.299.zip",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.299/Azure.Functions.Cli.win-x64.2.4.299.zip",
           "sha2": "3E678D2EC100DA9B3C250AEE8A8F82BE4F28F8C311C3761C021A507571C7A3F2"
         },
         {
           "OS": "Windows",
           "Architecture": "x86",
-          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.249/Azure.Functions.Cli.win-x86.2.4.299.zip",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.299/Azure.Functions.Cli.win-x86.2.4.299.zip",
           "sha2": "951478A6E6E72F37744FF97B12341A418794E0ABF5BACC4E5AA7143CB18057AE"
         }
       ]
