@@ -872,6 +872,45 @@
         }
       ]
     },
+    "2.18.1": {
+      "Microsoft.NET.Sdk.Functions": "1.0.24",
+      "cli": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.min.win-x86.2.4.401.zip",
+      "sha2": "38889B4970CFDE0AD856AB9A9775A0F50106DBCA291E945F6C0B3DD59E2AE6F0",
+      "nodeVersion": "8.11.1",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.0.10333",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.0.10333",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.10336.zip",
+      "FUNCTIONS_EXTENSION_VERSION": "~2",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "2.1",
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.linux-x64.2.4.401.zip",
+          "sha2": "156C7BF8571B9AD401C2D2BF528F934EC9F4399E3F4A1762ADC2F64AE9C269D5"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.osx-x64.2.4.401.zip",
+          "sha2": "D600FD9FA88518BF7366DB1928D0EF703239B0958DFE99B85DB37EB10F935100"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.win-x64.2.4.401.zip",
+          "sha2": "B75AFF34288FED291BD6A3F9EB66D195B6389CFE162BF335B4D86A0DB8D7E1F6"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.win-x86.2.4.401.zip",
+          "sha2": "571CF2BAD9932CB5ED5634009BA280A3BB6F677DDA0D0F95F731C3915106B693"
+        }
+      ]
+    },
     "1.0.11": {
       "Microsoft.NET.Sdk.Functions": "1.0.13",
       "cli": "https://functionscdn.azureedge.net/public/1.0.10/Azure.Functions.Cli.zip",
