@@ -892,7 +892,7 @@
           "sha2": "156C7BF8571B9AD401C2D2BF528F934EC9F4399E3F4A1762ADC2F64AE9C269D5"
         },
         {
-          "OperatingSystem": "MacOS",
+          "OS": "MacOS",
           "Architecture": "x64",
           "downloadLink": "https://functionscdn.azureedge.net/public/2.4.401/Azure.Functions.Cli.osx-x64.2.4.401.zip",
           "sha2": "D600FD9FA88518BF7366DB1928D0EF703239B0958DFE99B85DB37EB10F935100"
