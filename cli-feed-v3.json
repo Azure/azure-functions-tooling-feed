@@ -1483,7 +1483,7 @@
       ]
     },
     "2.22.1": {
-      "Microsoft.NET.Sdk.Functions": "1.0.27",
+      "Microsoft.NET.Sdk.Functions": "1.0.28",
       "cli": "https://functionscdn.azureedge.net/public/2.7.1233/Azure.Functions.Cli.min.win-x86.2.7.1233.zip",
       "sha2": "f0a1e88054c0006bfa13285c101d496079a8f58ed46db22b9b90ddb4602a220e",
       "nodeVersion": "8.11.1",
