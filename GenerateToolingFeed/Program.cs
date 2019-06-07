@@ -11,19 +11,11 @@ namespace GenerateToolingFeed
 
         static void Main(string[] args)
         {
-            string cliVersion = Environment.GetEnvironmentVariable("cliVersion");
+            string cliVersion = Environment.GetEnvironmentVariable("cliVersion") ?? args[0];
             Console.WriteLine($"Preparing CLI feed for version:{cliVersion}");
 
-            string coreToolsArtifactsDirectory = Environment.GetEnvironmentVariable("coreToolsArtifactsDirectory");
+            string coreToolsArtifactsDirectory = Environment.GetEnvironmentVariable("coreToolsArtifactsDirectory") ?? args[1];
             Console.WriteLine($"Preparing CLI feed for version:{coreToolsArtifactsDirectory}");
-
-            string feedReleaseVersion = Environment.GetEnvironmentVariable("feedReleaseVersion");
-            Console.WriteLine($"Update v2-prerelease to version:{feedReleaseVersion}");
-
-            if (string.IsNullOrEmpty(feedReleaseVersion))
-            {
-                throw new Exception("feedReleaseVersion not set. Please set the feedReleaseVersion");
-            }
 
             var currentFeed = Helper.HttpClient.GetStringAsync(_feedUrl).Result;
             var currentFeedJson = JObject.Parse(currentFeed);
@@ -33,6 +25,8 @@ namespace GenerateToolingFeed
 
             var releaseJson = currentFeedJson["releases"][releaseVersion];
             var feedEntry = releaseJson.ToObject<FeedEntry>();
+
+            var feedReleaseVersion = Helper.GetReleaseVersion(currentFeedJson["releases"]);
 
             // Update the standalone entries
             var updatedCliEntry = UpdateStandaloneCli(feedEntry, coreToolsArtifactsDirectory, cliVersion);

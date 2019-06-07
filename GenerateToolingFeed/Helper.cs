@@ -35,6 +35,28 @@ namespace GenerateToolingFeed
             return url;
         }
 
+        public static string GetReleaseVersion(JToken jToken)
+        {
+            List<String> versions = new List<string>();
+            foreach (JProperty item in jToken)
+            {
+                string name = item.Name;
+                if (name.StartsWith("2."))
+                {
+                    versions.Add(item.Name);
+                }
+            }
+
+            var nuGetVersions = versions.Select(p =>
+            {
+                Version.TryParse(p, out Version version);
+                return version;
+            }).Where(v => v != null);
+            var maxVersion = nuGetVersions.OrderByDescending(p => p).FirstOrDefault();
+            Version releaseVersion = new Version(maxVersion.Major, maxVersion.Minor + 1, 0);
+            return releaseVersion.ToString();
+        }
+
         public static string GetShaFileContent(CliEntry cliEntry, string cliVersion, string filePath, bool isMinified = false)
         {
             string rid = GetRuntimeIdentifier(isMinified, cliEntry.OperatingSystem ?? cliEntry.OS, cliEntry.Architecture);
