@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 
 namespace GenerateToolingFeed
 {
@@ -11,11 +13,10 @@ namespace GenerateToolingFeed
 
         static void Main(string[] args)
         {
-            string cliVersion = Environment.GetEnvironmentVariable("cliVersion") ?? args[0];
+            string cliVersion = GetCliVersion(args[0]);
             Console.WriteLine($"Preparing CLI feed for version:{cliVersion}");
 
-            string coreToolsArtifactsDirectory = Environment.GetEnvironmentVariable("coreToolsArtifactsDirectory") ?? args[1];
-            Console.WriteLine($"Preparing CLI feed for version:{coreToolsArtifactsDirectory}");
+            string coreToolsArtifactsDirectory = args[0];
 
             var currentFeed = Helper.HttpClient.GetStringAsync(_feedUrl).Result;
             var currentFeedJson = JObject.Parse(currentFeed);
@@ -46,6 +47,28 @@ namespace GenerateToolingFeed
 
             Console.WriteLine("Writing File\n" + feedString);
             File.WriteAllText(path, feedString);
+        }
+
+        private static string GetCliVersion(string path)
+        {
+            string cliVersion = string.Empty;
+            foreach (string file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+            {
+                if (file.EndsWith(".zip"))
+                {
+                    var zip = ZipFile.OpenRead(file);
+                    foreach (var entry in zip.Entries)
+                    {
+                        if (entry.Name == "func.dll")
+                        {
+                            ZipFileExtensions.ExtractToFile(entry, "func.dll", true);
+                            cliVersion = FileVersionInfo.GetVersionInfo(".\\func.dll").FileVersion;
+                            break;
+                        }
+                    }
+                }
+            }
+            return cliVersion;
         }
 
         private static CliEntry[] UpdateStandaloneCli(FeedEntry feedEntry, string coreToolsArtifactsDirectory, string cliVersion)

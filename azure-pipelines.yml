@@ -7,15 +7,28 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: 'e6a70c92-4128-439f-8012-382fe78d6396'
+    pipeline: '11'
+    specificBuildWithTriggering: true
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/master'
+    downloadType: 'specific'
+    itemPattern: '**/?(A*.sha2|Azure.Functions.Cli.win-x64*.zip)'
+    downloadPath: '$(Build.Repository.LocalPath)\artifacts'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '.\GenerateToolingFeed\GenerateToolingFeed.csproj'
-    arguments: '-o  $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: false
-    modifyOutputPath: false
-    
+    command: 'run'
+    arguments: '$(Build.Repository.LocalPath)\artifacts\drop'
+    workingDirectory: '$(Build.Repository.LocalPath)\GenerateToolingFeed'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
+    Contents: '*cli-feed-v3.json'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
