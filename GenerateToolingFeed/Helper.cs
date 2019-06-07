@@ -85,7 +85,7 @@ namespace GenerateToolingFeed
         public static string GetTemplateUrl(string packageId)
         {
             string version = GetLatestPackageVersion(packageId);
-            return $"https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/{version}";
+            return $"https://www.nuget.org/api/v2/package/{packageId}/{version}";
         }
 
         public static string GetRuntimeIdentifier(bool isMinified, string os, string architecture)
