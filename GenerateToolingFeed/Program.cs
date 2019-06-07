@@ -39,11 +39,12 @@ namespace GenerateToolingFeed
             releaseJson["itemTemplates"] = Helper.GetTemplateUrl("Microsoft.Azure.WebJobs.ItemTemplates");
             releaseJson["projectTemplates"] = Helper.GetTemplateUrl("Microsoft.Azure.WebJobs.ProjectTemplates");
 
-            targetFeedJson.Add(feedReleaseVersion, releaseJson);
+            var targetFeedReleases = targetFeedJson["releases"];
+            ((JObject)targetFeedReleases).Add(feedReleaseVersion, releaseJson);
             targetFeedJson["tags"]["v2-prerelease"]["release"] = feedReleaseVersion;
 
             string path = Path.Combine(coreToolsArtifactsDirectory, "cli-feed-v3.json");
-            string feedString = JsonConvert.SerializeObject(targetFeedJson, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            string feedString = JsonConvert.SerializeObject(targetFeedJson, Formatting.Indented);
 
             Console.WriteLine("Writing File\n" + feedString);
             File.WriteAllText(path, feedString);
