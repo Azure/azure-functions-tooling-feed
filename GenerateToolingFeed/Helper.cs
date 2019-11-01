@@ -28,10 +28,10 @@ namespace GenerateToolingFeed
 
             // bypassing validation for now
 
-            //if (!IsValidDownloadLink(url))
-            //{
-            //    throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
-            //}
+            if (!IsValidDownloadLink(url))
+            {
+                throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
+            }
             return url;
         }
 
@@ -66,7 +66,7 @@ namespace GenerateToolingFeed
             return File.ReadAllText(path);
         }
 
-        public static string GetLatestPackageVersion(string packageId)
+        public static string GetLatestPackageVersion(string packageId, string cliVersion)
         {
             string url = $"https://api.nuget.org/v3-flatcontainer/{packageId.ToLower()}/index.json";
             var response = HttpClient.GetStringAsync(url).Result;
@@ -74,17 +74,21 @@ namespace GenerateToolingFeed
 
             var versions = JsonConvert.DeserializeObject<IEnumerable<string>>(versionsObject["versions"].ToString());
 
+            NuGetVersion version = new NuGetVersion(cliVersion);
             var nuGetVersions = versions.Select(p =>
             {
-                NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion);
-                return nuGetVersion;
+                if (NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion) && nuGetVersion.Major == version.Major)
+                {
+                    return nuGetVersion;
+                }
+                return null;
             }).Where(v => v != null);
             return nuGetVersions.OrderByDescending(p => p.Version).FirstOrDefault()?.ToString();
         }
 
-        public static string GetTemplateUrl(string packageId)
+        public static string GetTemplateUrl(string packageId, string cliVersion)
         {
-            string version = GetLatestPackageVersion(packageId);
+            string version = GetLatestPackageVersion(packageId, cliVersion);
             return $"https://www.nuget.org/api/v2/package/{packageId}/{version}";
         }
 

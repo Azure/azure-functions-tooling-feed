@@ -18,5 +18,8 @@ namespace GenerateToolingFeed
                 { "x64" ,"x64" },
                 { "x86" ,"x86" }
             };
+
+        public const string FeedAllVersions = "cli-feed-v3.json";
+        public const string FeedV1AndV2Only = "cli-feed-v3-2.json";
     }
 }
