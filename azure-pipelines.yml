@@ -26,7 +26,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
-    Contents: '*cli-feed-v3.json'
+    Contents: '*cli-feed-v3'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
 - task: PublishBuildArtifacts@1
