@@ -34,7 +34,7 @@ steps:
     SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
     Contents: '*cli-feed-v3-2.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
+    CleanTargetFolder: false
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
