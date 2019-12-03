@@ -2825,7 +2825,7 @@
       ]
     },
     "3.0.3": {
-      "Microsoft.NET.Sdk.Functions": "1.0.29",
+      "Microsoft.NET.Sdk.Functions": "3.0.0-preview2",
       "cli": "https://functionscdn.azureedge.net/public/3.0.1958/Azure.Functions.Cli.min.win-x86.3.0.1958.zip",
       "sha2": "4e3175d52e3bd3f15056a8d3042521d266c5ff6e92e83174b98b7b9d8a90de68",
       "nodeVersion": "~10",
@@ -2841,9 +2841,9 @@
           }
         }
       },
-      "FUNCTIONS_EXTENSION_VERSION": "~2",
+      "FUNCTIONS_EXTENSION_VERSION": "~3",
       "requiredRuntime": ".NET Core",
-      "minimumRuntimeVersion": "2.1",
+      "minimumRuntimeVersion": "3.0",
       "standaloneCli": [
         {
           "OS": "Linux",
