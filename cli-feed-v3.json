@@ -55,6 +55,14 @@
       "releaseQuality": "Prerelease",
       "targetFramework": ".NET Core",
       "hidden": true
+    },
+    "v3": {
+      "release": "3.1.0",
+      "displayName": "Azure Functions v3 (.NET Core)",
+      "displayVersion": "v3",
+      "releaseQuality": "GA",
+      "targetFramework": ".NET Core",
+      "hidden": false
     }
   },
   "releases": {
