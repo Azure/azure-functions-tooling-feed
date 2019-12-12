@@ -22,28 +22,31 @@ namespace GenerateToolingFeed
             string cliVersion = GetCliVersion(args[0]);
             if (NuGetVersion.TryParse(cliVersion, out NuGetVersion ver))
             {
+                // update this feed for v2 only.
                 if (ver.Major == 2)
                 {
-                    GenerateFeed(cliVersion, args[0], Constants.FeedV1AndV2Only);
+                    GenerateFeed(cliVersion, args[0], Constants.FeedV1AndV2Only, ver.Major);
                 }
 
-                GenerateFeed(cliVersion, args[0], Constants.FeedAllVersions);
+                // update this feed for v2 and v3
+                GenerateFeed(cliVersion, args[0], Constants.FeedAllVersions, ver.Major);
             }
         }
 
-        public static void GenerateFeed(string cliVersion, string coreToolsArtifactsDirectory, string feedName)
+        public static void GenerateFeed(string cliVersion, string coreToolsArtifactsDirectory, string feedName, int majorVersion)
         {
             Console.WriteLine($"Preparing CLI feed for version:{cliVersion}");
             var currentFeed = Helper.HttpClient.GetStringAsync(_feeds[feedName]).Result;
             var currentFeedJson = JObject.Parse(currentFeed);
             var targetFeedJson = JObject.Parse(currentFeed);
 
-            string releaseVersion = Helper.GetReleaseVersionFromTag(currentFeedJson, tag: "v2");
+            string tag = Helper.GetTagFromMajorVersion(majorVersion);
+            string releaseVersion = Helper.GetReleaseVersionFromTag(currentFeedJson, tag);
 
             var releaseJson = currentFeedJson["releases"][releaseVersion];
             var feedEntry = releaseJson.ToObject<FeedEntry>();
 
-            var feedReleaseVersion = Helper.GetReleaseVersion(currentFeedJson["releases"]);
+            var feedReleaseVersion = Helper.GetReleaseVersion(currentFeedJson["releases"], majorVersion);
 
             // Update the standalone entries
             var updatedCliEntry = UpdateStandaloneCli(feedEntry, coreToolsArtifactsDirectory, cliVersion);
@@ -57,7 +60,9 @@ namespace GenerateToolingFeed
 
             var targetFeedReleases = targetFeedJson["releases"];
             ((JObject)targetFeedReleases).Add(feedReleaseVersion, releaseJson);
-            targetFeedJson["tags"]["v2-prerelease"]["release"] = feedReleaseVersion;
+            
+            string prereleaseTag = majorVersion == 2 ? "v2-prerelease" : "v3-prerelease";
+            targetFeedJson["tags"][prereleaseTag]["release"] = feedReleaseVersion;
 
             string path = Path.Combine(coreToolsArtifactsDirectory, feedName);
             string feedString = JsonConvert.SerializeObject(targetFeedJson, Formatting.Indented);
