@@ -14,7 +14,7 @@ steps:
     pipeline: '11'
     specificBuildWithTriggering: true
     buildVersionToDownload: 'latestFromBranch'
-    branchName: 'refs/heads/master'
+    branchName: 'refs/heads/$(coretoolsBranch)'
     downloadType: 'specific'
     itemPattern: '**/?(A*.sha2|Azure.Functions.Cli.win-x64*.zip)'
     downloadPath: '$(Build.Repository.LocalPath)\artifacts'

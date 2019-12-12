@@ -35,13 +35,13 @@ namespace GenerateToolingFeed
             return url;
         }
 
-        public static string GetReleaseVersion(JToken jToken)
+        public static string GetReleaseVersion(JToken jToken, int majorReleaseVersion)
         {
             List<String> versions = new List<string>();
             foreach (JProperty item in jToken)
             {
                 string name = item.Name;
-                if (name.StartsWith("2."))
+                if (name.StartsWith($"{majorReleaseVersion}."))
                 {
                     versions.Add(item.Name);
                 }
@@ -141,6 +141,20 @@ namespace GenerateToolingFeed
         {
             var releaseVersion = json?["tags"]?[tag]?["release"].ToString();
             return releaseVersion;
+        }
+
+        public static string GetTagFromMajorVersion(int majorVersion)
+        {
+            switch (majorVersion)
+            {
+                case 2:
+                    return "v2";
+                case 3:
+                    return "v3";
+                default:
+                    return "v2";
+            }
+            
         }
 
     }
