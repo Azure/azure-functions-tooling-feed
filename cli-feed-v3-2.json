@@ -33,7 +33,7 @@
       "hidden": true
     },
     "v2-preview": {
-      "release": "2.33.0",
+      "release": "2.45.0",
       "displayName": "Azure Functions v2 Preview (.NET Core)",
       "displayVersion": "v2",
       "releaseQuality": "Preview",
