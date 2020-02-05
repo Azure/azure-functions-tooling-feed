@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 
 namespace GenerateToolingFeed
 {
@@ -60,7 +61,7 @@ namespace GenerateToolingFeed
 
             var targetFeedReleases = targetFeedJson["releases"];
             ((JObject)targetFeedReleases).Add(feedReleaseVersion, releaseJson);
-            
+
             string prereleaseTag = majorVersion == 2 ? "v2-prerelease" : "v3-prerelease";
             targetFeedJson["tags"][prereleaseTag]["release"] = feedReleaseVersion;
 
@@ -97,9 +98,21 @@ namespace GenerateToolingFeed
         {
             foreach (var cliEntry in feedEntry.standaloneCli)
             {
-                // Updating sha2
-                cliEntry.sha2 = Helper.GetShaFileContent(cliEntry, cliVersion, coreToolsArtifactsDirectory);
-                cliEntry.downloadLink = Helper.GetDownloadLink(cliEntry, cliVersion);
+                string os = cliEntry.OS ?? cliEntry.OperatingSystem;
+                if (os.Equals("Windows", StringComparison.OrdinalIgnoreCase) &&
+                    cliEntry.Architecture.Equals("x64", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Updating sha2
+                    cliEntry.sha2 = Helper.GetShaFileContent(cliEntry, cliVersion, coreToolsArtifactsDirectory, true);
+                    cliEntry.downloadLink = Helper.GetDownloadLink(cliEntry, cliVersion, true);
+                }
+                else
+                {
+                    // Updating sha2
+                    cliEntry.sha2 = Helper.GetShaFileContent(cliEntry, cliVersion, coreToolsArtifactsDirectory);
+                    cliEntry.downloadLink = Helper.GetDownloadLink(cliEntry, cliVersion);
+                }
+                
             }
             return feedEntry.standaloneCli;
         }
