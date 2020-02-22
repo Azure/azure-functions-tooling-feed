@@ -33,7 +33,7 @@
       "hidden": true
     },
     "v2-preview": {
-      "release": "2.46.0",
+      "release": "2.47.0",
       "displayName": "Azure Functions v2 Preview (.NET Core)",
       "displayVersion": "v2",
       "releaseQuality": "Preview",
@@ -3318,7 +3318,7 @@
       "localEntryPoint": "func.exe",
       "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1517",
       "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.1.1517",
-      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.0.10344.zip",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1517.zip",
       "extensionBundle": {
         "hostConfig": {
           "extensionBundle": {
