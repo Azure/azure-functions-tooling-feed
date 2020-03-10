@@ -1,4 +1,4 @@
-name: $(Build.SourceBranchName)_$(Build.Reason).$(Build.BuildId)$(Rev:.r)
+name: $(Build.SourceBranchName)_CoreToolsBranch_$(coretoolsBranch)_$(Build.Reason).$(Build.BuildId)
 
 trigger:
 - master
