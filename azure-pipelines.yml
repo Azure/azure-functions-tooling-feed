@@ -16,7 +16,7 @@ steps:
     buildVersionToDownload: 'latestFromBranch'
     branchName: 'refs/heads/$(coretoolsBranch)'
     downloadType: 'specific'
-    itemPattern: '**/?(A*.sha2|Azure.Functions.Cli.win-x64*.zip)'
+    itemPattern: '**/?(A*.sha|Azure.Functions.Cli.win-x64*.zip)'
     downloadPath: '$(Build.Repository.LocalPath)\artifacts'
 - task: DotNetCoreCLI@2
   inputs:
