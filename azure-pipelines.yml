@@ -1,5 +1,8 @@
 name: $(Build.SourceBranchName)_CoreToolsBranch_$(coretoolsBranch)_$(Build.Reason).$(Build.BuildId)
 
+pr:
+- master
+
 trigger:
 - master
 
