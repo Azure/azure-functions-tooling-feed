@@ -1,10 +1,10 @@
 name: $(Build.SourceBranchName)_CoreToolsBranch_$(coretoolsBranch)_$(Build.Reason).$(Build.BuildId)
 
 pr:
-- master
+- main
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'vs2017-win2016'

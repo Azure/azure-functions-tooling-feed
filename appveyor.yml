@@ -4,7 +4,7 @@ pull_requests:
 branches:
   only:
   - dev
-  - master
+  - main
   - v2.x
 max_jobs: 1
 image: Visual Studio 2017
