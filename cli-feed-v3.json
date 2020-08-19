@@ -3987,7 +3987,7 @@
       "localEntryPoint": "func.exe",
       "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1582",
       "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/3.1.1582",
-      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/3.0.10405.zip",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1582.zip",
       "extensionBundle": {
         "hostConfig": {
           "extensionBundle": {
@@ -4034,7 +4034,7 @@
       "localEntryPoint": "func.exe",
       "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1579",
       "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.1.1579",
-      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1517.zip",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1579.zip",
       "extensionBundle": {
         "hostConfig": {
           "extensionBundle": {
