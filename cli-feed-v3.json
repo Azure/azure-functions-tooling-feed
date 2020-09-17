@@ -9,7 +9,7 @@
       "hidden": false
     },
     "v1-prerelease": {
-      "release": "1.11.0",
+      "release": "1.12.0",
       "displayName": "Azure Functions v1 Prerelease (.NET Framework)",
       "displayVersion": "v1",
       "releaseQuality": "Prerelease",
@@ -1674,6 +1674,17 @@
       "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10324",
       "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
       "sha2": "27CACC8114EE9D7923B4F0D2CC912ADA538DAE5667DF3ADD85FC2956D5D1BB6E",
+      "FUNCTIONS_EXTENSION_VERSION": "~1"
+    },
+    "1.12.0": {
+      "Microsoft.NET.Sdk.Functions": "1.0.27",
+      "cli": "https://functionscdn.azureedge.net/public/1.0.27/Azure.Functions.Cli.zip",
+      "nodeVersion": "6.5.0",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10324",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10324",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
+      "sha2": "DAAB4A003FCFFB6CBC38E2FFE3E880AE154C28ABD9DA49832760DB3D194E45D4",
       "FUNCTIONS_EXTENSION_VERSION": "~1"
     },
     "2.23.0": {
