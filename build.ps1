@@ -5,7 +5,7 @@ function LogOperationStart($message) {
 }
 
 function LogSuccess() {
-    Write-Host -ForegroundColor Green "...Done"
+    Write-Host -ForegroundColor Green "...sssDone"
 }
 
 function LogErrorAndExit($errorMessage, $exception) {
