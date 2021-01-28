@@ -1,0 +1,317 @@
+{
+  "tags": {
+    "v1": {
+      "release": "1.13.0",
+      "displayName": ".NET Framework",
+      "displayVersion": "v1",
+      "releaseQuality": "GA",
+      "targetFramework": ".NET Framework",
+      "capabilities": "",
+      "hidden": false
+    },
+    "v1-prerelease": {
+      "release": "1.13.0",
+      "displayName": ".NET Framework",
+      "displayVersion": "v1",
+      "releaseQuality": "Prerelease",
+      "targetFramework": ".NET Framework",
+      "capabilities": "",
+      "hidden": true
+    },
+    "v2": {
+      "release": "2.60.0",
+      "displayName": ".NET Core 2.2",
+      "displayVersion": "v2",
+      "releaseQuality": "GA",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": false
+    },
+    "v2-prerelease": {
+      "release": "2.60.0",
+      "displayName": ".NET Core 2.2",
+      "displayVersion": "v2",
+      "releaseQuality": "Prerelease",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": true
+    },
+    "v2-preview": {
+      "release": "2.60.0",
+      "displayName": ".NET Core 2.2",
+      "displayVersion": "v2",
+      "releaseQuality": "Preview",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": true
+    },
+    "v3-preview": {
+      "release": "3.18.0",
+      "displayName": ".NET Core 3.1",
+      "displayVersion": "v3",
+      "releaseQuality": "Preview",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": true
+    },
+    "v3-prerelease": {
+      "release": "3.19.0",
+      "displayName": ".NET Core 3.1",
+      "displayVersion": "v3",
+      "releaseQuality": "Prerelease",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": true
+    },
+    "v3": {
+      "release": "3.18.0",
+      "displayName": ".NET Core 3.1",
+      "displayVersion": "v3",
+      "releaseQuality": "GA",
+      "targetFramework": ".NET Core",
+      "capabilities": "",
+      "hidden": false
+    },
+    "v3-isolated": {
+      "release": "3.19.0-isolated",
+      "displayName": ".NET 5 (isolated)",
+      "displayVersion": "v3",
+      "releaseQuality": "Preview",
+      "targetFramework": ".NET 5",
+      "capabilities": "",
+      "hidden": true
+    }
+  },
+  "releases": {
+    "1.13.0": {
+      "Microsoft.NET.Sdk.Functions": "1.0.29",
+      "cli": "https://functionscdn.azureedge.net/public/1.0.28/Azure.Functions.Cli.zip",
+      "nodeVersion": "6.5.0",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10324",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10324",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
+      "sha2": "BB4978D83CFBABAE67D4D720FEC1F1171BE0406B2147EF3FECA476C19ADD9920",
+      "FUNCTIONS_EXTENSION_VERSION": "~1",
+      "serviceAppSettings": [
+        "FUNCTIONS_EXTENSION_VERSION"
+      ],
+      "serviceSiteConfig": []
+    },
+    "2.60.0": {
+      "Microsoft.NET.Sdk.Functions": "1.0.31",
+      "cli": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.min.win-x86.2.7.3188.zip",
+      "sha2": "f04accdc23432695786f434835b12558e603866a5c3b6d5c398965d3dccc78e9",
+      "nodeVersion": "~10",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1642",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.1.1642",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1642.zip",
+      "extensionBundle": {
+        "hostConfig": {
+          "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+          }
+        }
+      },
+      "FUNCTIONS_EXTENSION_VERSION": "~2",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "2.1",
+      "serviceAppSettings": [
+        "FUNCTIONS_EXTENSION_VERSION",
+        "FUNCTIONS_WORKER_RUNTIME"
+      ],
+      "serviceSiteConfig": [],
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.linux-x64.2.7.3188.zip",
+          "sha2": "f8cff611d0cc2198589a7ff0b1b268549bf86c11afd799098df59f7721d6b771"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.osx-x64.2.7.3188.zip",
+          "sha2": "baa850c449e9be5fcef8e2bf91883885ec9ab9471437c998701435f5164d72e5"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.min.win-x64.2.7.3188.zip",
+          "sha2": "1c5c49bfb683e45fc4b44e52e25f63324f9d8e931d47259c55fc66c9b7019fc9"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.win-x86.2.7.3188.zip",
+          "sha2": "4a0342497a606e763aa148a10852d6da91d2d5cc7fdb7e705a0c17df4e038023"
+        }
+      ]
+    },
+    "3.18.0": {
+      "Microsoft.NET.Sdk.Functions": "3.0.1",
+      "cli": "https://functionscdn.azureedge.net/public/3.0.3233/Azure.Functions.Cli.min.win-x86.3.0.3233.zip",
+      "sha2": "c508810089898a82e8c85d036f9fde97a553ed6120cdbcaca22dd08afa4f6cd4",
+      "nodeVersion": "~12",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1648",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/3.1.1648",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
+      "extensionBundle": {
+        "hostConfig": {
+          "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+          }
+        }
+      },
+      "FUNCTIONS_EXTENSION_VERSION": "~3",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "3.1",
+      "serviceAppSettings": [
+        "FUNCTIONS_EXTENSION_VERSION",
+        "FUNCTIONS_WORKER_RUNTIME"
+      ],
+      "serviceSiteConfig": [],
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3233/Azure.Functions.Cli.linux-x64.3.0.3233.zip",
+          "sha2": "4e34f8495c701b481292be70ca3abfc77a7449dccab58211298890657a743e19"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3233/Azure.Functions.Cli.osx-x64.3.0.3233.zip",
+          "sha2": "6fd348add9e5643cbcfa3b3c550ee8df97075c593b5f5c22f88c351d25db3e56"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3233/Azure.Functions.Cli.min.win-x64.3.0.3233.zip",
+          "sha2": "be79e10b575a7111a33f2450a287b3ed9d6b2bd9d0702ee9297200fc569ac29d"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3233/Azure.Functions.Cli.win-x86.3.0.3233.zip",
+          "sha2": "9db43d54b20c918a9004bfaa3984f96613cfd7d61db4069126308bcacf26a9cf"
+        }
+      ]
+    },
+    "3.19.0": {
+      "Microsoft.NET.Sdk.Functions": "3.0.1",
+      "cli": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.min.win-x86.3.0.3245.zip",
+      "sha2": "c5688cd4cf13268e180bf5751ca0d19349cada8c57aa9041f26b5318695d545a",
+      "nodeVersion": "~12",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1648",
+      "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/3.1.1648",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
+      "extensionBundle": {
+        "hostConfig": {
+          "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+          }
+        }
+      },
+      "FUNCTIONS_EXTENSION_VERSION": "~3",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+      "requiredRuntime": ".NET Core",
+      "minimumRuntimeVersion": "3.1",
+      "serviceAppSettings": [
+        "FUNCTIONS_EXTENSION_VERSION",
+        "FUNCTIONS_WORKER_RUNTIME"
+      ],
+      "serviceSiteConfig": [],
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.linux-x64.3.0.3245.zip",
+          "sha2": "0a9a7788c0c4ecc37024f7d97ff222a937145dcfaba41b7f4544a0a2818b65b6"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.osx-x64.3.0.3245.zip",
+          "sha2": "8574da88b555486be47f33cea10fc1d616044e06e955fce2dd9be81889d12c12"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.min.win-x64.3.0.3245.zip",
+          "sha2": "e7e50143925c20dbbbb46ae1fa7582d93ebd6acee548b884f64763894ff8a8cb"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.win-x86.3.0.3245.zip",
+          "sha2": "21051d3b1952b3d18647e4ff98007191074e3e395c3224433d36bfcd54a008c2"
+        }
+      ]
+    },
+    "3.19.0-isolated": {
+      "Microsoft.NET.Sdk.Functions": "3.0.1",
+      "cli": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.min.win-x86.3.0.3245.zip",
+      "sha2": "c5688cd4cf13268e180bf5751ca0d19349cada8c57aa9041f26b5318695d545a",
+      "nodeVersion": "~12",
+      "localEntryPoint": "func.exe",
+      "itemTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.WebJobs.ItemTemplates.4.1.1675.nupkg",
+      "projectTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.WebJobs.ProjectTemplates.4.1.1675.nupkg",
+      "templateApiZip": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
+      "extensionBundle": {
+        "hostConfig": {
+          "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+          }
+        }
+      },
+      "FUNCTIONS_EXTENSION_VERSION": "~3",
+      "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+      "netFrameworkVersion": "v5.0",
+      "requiredRuntime": ".NET",
+      "minimumRuntimeVersion": "5.0",
+      "serviceAppSettings": [
+        "FUNCTIONS_EXTENSION_VERSION",
+        "FUNCTIONS_WORKER_RUNTIME"
+      ],
+      "serviceSiteConfig": [
+        "netFrameworkVersion"
+      ],
+      "standaloneCli": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.linux-x64.3.0.3245.zip",
+          "sha2": "0a9a7788c0c4ecc37024f7d97ff222a937145dcfaba41b7f4544a0a2818b65b6"
+        },
+        {
+          "OperatingSystem": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.osx-x64.3.0.3245.zip",
+          "sha2": "8574da88b555486be47f33cea10fc1d616044e06e955fce2dd9be81889d12c12"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.min.win-x64.3.0.3245.zip",
+          "sha2": "e7e50143925c20dbbbb46ae1fa7582d93ebd6acee548b884f64763894ff8a8cb"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3245/Azure.Functions.Cli.win-x86.3.0.3245.zip",
+          "sha2": "21051d3b1952b3d18647e4ff98007191074e3e395c3224433d36bfcd54a008c2"
+        }
+      ]
+    }
+  }
+}
