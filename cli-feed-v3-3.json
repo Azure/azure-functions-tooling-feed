@@ -221,6 +221,24 @@
           }
         }
       },
+      "runtimes": {
+        "dotnet": {
+          "net5-isolated": {
+            "itemTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.WebJobs.ItemTemplates.4.1.1675.nupkg",
+            "projectTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.WebJobs.ProjectTemplates.4.1.1675.nupkg",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~3",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+            },
+            "serviceSiteConfig": {
+              "netFrameworkVersion": "v5.0"
+            }
+          },
+          "netcore3": {
+
+          }
+        }
+      }
       "FUNCTIONS_EXTENSION_VERSION": "~3",
       "FUNCTIONS_WORKER_RUNTIME": "dotnet",
       "requiredRuntime": ".NET Core",
