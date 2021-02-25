@@ -44,19 +44,20 @@
   "releases": {
     "1.13.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
-      "workerRuntimeInformation": {
+      "workerRuntimes": {
         "dotnet": {
-          "netframework-inproc": {
+          "netframework": {
             "displayInfo": {
               "displayName": ".NET Framework",
               "hidden": false,
-              "diplayVersion": "v1",
+              "displayVersion": "v1",
               "targetFramework": ".NET Framework"
             },
-            "capabilites": "inProc",
+            "capabilites": "",
             "sdkName": "Microsoft.NET.Sdk.Functions",
             "sdkVersion": "1.0.29",
             "localEntryPoint": "func.exe",
+            "targetFramework": "net461",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10324",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10324",
             "projectTemplateId": {
@@ -85,19 +86,20 @@
     },
     "2.60.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1642.zip",
-      "workerRuntimeInformation": {
+      "workerRuntimes": {
         "dotnet": {
-          "netcore2-inproc": {
+          "netcore2": {
             "displayInfo": {
-              "displayName": ".NET Core 2 (LTS)",
+              "displayName": ".NET Core 2",
               "hidden": false,
-              "diplayVersion": "v2",
+              "displayVersion": "v2",
               "targetFramework": ".NET Core"
             },
-            "capabilites": "inProc",
+            "capabilites": "",
             "sdkName": "Microsoft.NET.Sdk.Functions",
             "sdkVersion": "1.0.31",
             "localEntryPoint": "func.exe",
+            "targetFramework": "netcoreapp2.1",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1642",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.1.1642",
             "projectTemplateId": {
@@ -162,19 +164,21 @@
     },
     "3.20.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
-      "workerRuntimeInformation": {
+      "workerRuntimes": {
         "dotnet": {
           "net5-isolated": {
             "displayInfo": {
-              "displayName": ".NET 5 (Isolated)",
+              "displayName": ".NET 5",
               "hidden": true,
-              "diplayVersion": "v3",
-              "targetFramework": ".NET 5"
+              "displayVersion": "v3",
+              "targetFramework": ".NET 5",
+              "description": "Isolated"
             },
-            "capabilites": "outOfProc,net5",
+            "capabilites": "isolated,net5",
             "sdkName": "Microsoft.Azure.Functions.Worker.Sdk",
             "sdkVersion": "1.0.0-preview5",
             "localEntryPoint": "dotnet.exe",
+            "targetFramework": "net5.0",
             "itemTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.Functions.Worker.ItemTemplates.3.1.1705-preview1.nupkg",
             "projectTemplates": "https://ankikumapublic.blob.core.windows.net/templates/Microsoft.Azure.Functions.Worker.ProjectTemplates.3.1.1705-preview1.nupkg",
             "projectTemplateId": {
@@ -192,17 +196,19 @@
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
             }
           },
-          "netcore3-inproc": {
+          "netcore3": {
             "displayInfo": {
-              "displayName": ".NET Core 3 (LTS)",
+              "displayName": ".NET Core 3",
               "hidden": false,
-              "diplayVersion": "v3",
-              "targetFramework": ".NET Core"
+              "displayVersion": "v3",
+              "targetFramework": ".NET Core",
+              "description": "LTS"
             },
-            "capabilites": "inProc",
+            "capabilites": "",
             "sdkName": "Microsoft.NET.Sdk.Functions",
             "sdkVersion": "3.0.1",
             "localEntryPoint": "func.exe",
+            "targetFramework": "netcoreapp3.1",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1648",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/3.1.1648",
             "projectTemplateId": {
