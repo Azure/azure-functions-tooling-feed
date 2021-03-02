@@ -53,11 +53,12 @@
               "displayVersion": "v1",
               "targetFramework": ".NET Framework"
             },
-            "capabilites": "",
+            "capabilities": "",
             "sdk": {
               "name": "Microsoft.NET.Sdk.Functions",
               "version": "1.0.29"
             },
+            "default": true,
             "localEntryPoint": "func.exe",
             "targetFramework": "net461",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10324",
@@ -97,11 +98,12 @@
               "displayVersion": "v2",
               "targetFramework": ".NET Core"
             },
-            "capabilites": "",
+            "capabilities": "",
             "sdk": {
               "name": "Microsoft.NET.Sdk.Functions",
               "version": "1.0.31"
             },
+            "default": true,
             "localEntryPoint": "func.exe",
             "targetFramework": "netcoreapp2.1",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1642",
@@ -170,38 +172,6 @@
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
         "dotnet": {
-          "net5-isolated": {
-            "displayInfo": {
-              "displayName": ".NET 5",
-              "hidden": false,
-              "displayVersion": "v3",
-              "targetFramework": ".NET 5",
-              "description": "Isolated"
-            },
-            "capabilites": "isolated,net5",
-            "sdk": {
-              "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.0.1-preview5"
-            },
-            "localEntryPoint": "dotnet.exe",
-            "targetFramework": "net5.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1711-preview1",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/3.1.1711-preview1",
-            "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
-            },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:3.0-dotnet-isolated5.0-appservice",
-            "serviceAppSettings": {
-              "FUNCTIONS_EXTENSION_VERSION": "~3",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
-            },
-            "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
-            },
-            "linuxSiteConfig": {
-              "linuxFxVersion": "DOTNET-ISOLATED|5.0"
-            }
-          },
           "netcore3": {
             "displayInfo": {
               "displayName": ".NET Core 3",
@@ -210,11 +180,12 @@
               "targetFramework": ".NET Core",
               "description": "LTS"
             },
-            "capabilites": "",
+            "capabilities": "",
             "sdk": {
               "name": "Microsoft.NET.Sdk.Functions",
               "version": "3.0.1"
             },
+            "default": true,
             "localEntryPoint": "func.exe",
             "targetFramework": "netcoreapp3.1",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1648",
@@ -232,6 +203,39 @@
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET|3.1"
+            }
+          },
+          "net5-isolated": {
+            "displayInfo": {
+              "displayName": ".NET 5",
+              "hidden": false,
+              "displayVersion": "v3",
+              "targetFramework": ".NET 5",
+              "description": "Isolated"
+            },
+            "capabilities": "isolated,net5",
+            "sdk": {
+              "name": "Microsoft.Azure.Functions.Worker.Sdk",
+              "version": "1.0.1-preview5"
+            },
+            "default": false,
+            "localEntryPoint": "dotnet.exe",
+            "targetFramework": "net5.0",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1711-preview1",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/3.1.1711-preview1",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
+            },
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:3.0-dotnet-isolated5.0-appservice",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~3",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v5.0"
+            },
+            "linuxSiteConfig": {
+              "linuxFxVersion": "DOTNET-ISOLATED|5.0"
             }
           }
         }
