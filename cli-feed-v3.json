@@ -41,7 +41,7 @@
       "hidden": true
     },
     "v3-preview": {
-      "release": "3.21.0",
+      "release": "3.22.0",
       "displayName": "Azure Functions v3 Preview (.NET Core)",
       "displayVersion": "v3",
       "releaseQuality": "Preview",
@@ -57,7 +57,7 @@
       "hidden": true
     },
     "v3": {
-      "release": "3.21.0",
+      "release": "3.22.0",
       "displayName": "Azure Functions v3 (.NET Core)",
       "displayVersion": "v3",
       "releaseQuality": "GA",
