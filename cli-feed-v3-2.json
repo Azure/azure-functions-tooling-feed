@@ -3580,7 +3580,7 @@
       ]
     },
     "2.60.1": {
-      "Microsoft.NET.Sdk.Functions": "1.0.31",
+      "Microsoft.NET.Sdk.Functions": "1.0.38",
       "cli": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.min.win-x86.2.7.3188.zip",
       "sha2": "f04accdc23432695786f434835b12558e603866a5c3b6d5c398965d3dccc78e9",
       "nodeVersion": "~10",

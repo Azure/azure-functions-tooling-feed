@@ -5083,7 +5083,7 @@
       ]
     },
     "3.22.1": {
-      "Microsoft.NET.Sdk.Functions": "3.0.1",
+      "Microsoft.NET.Sdk.Functions": "3.0.11",
       "cli": "https://functionscdn.azureedge.net/public/3.0.3354/Azure.Functions.Cli.min.win-x86.3.0.3354.zip",
       "sha2": "4137224da3908e1ae8fc8dbd377a9b74c140fd12dcc754357ec8b2304251780f",
       "nodeVersion": "~12",
