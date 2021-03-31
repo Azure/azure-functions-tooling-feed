@@ -16,7 +16,7 @@
       "hidden": false
     },
     "v2-prerelease": {
-      "release": "2.60.0",
+      "release": "2.60.1",
       "releaseQuality": "Prerelease",
       "hidden": true
     },
@@ -31,7 +31,7 @@
       "hidden": true
     },
     "v3-prerelease": {
-      "release": "3.22.1",
+      "release": "3.22.2",
       "releaseQuality": "Prerelease",
       "hidden": true
     },
@@ -249,7 +249,7 @@
           "default": "true"
         }
       ]
-    }
+    },
     "3.20.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
