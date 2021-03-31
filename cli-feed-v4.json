@@ -168,6 +168,88 @@
         }
       ]
     },
+    "2.60.1": {
+      "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/2.1.1642.zip",
+      "workerRuntimes": {
+        "dotnet": {
+          "netcore2": {
+            "displayInfo": {
+              "displayName": ".NET Core 2",
+              "hidden": false,
+              "displayVersion": "v2",
+              "targetFramework": ".NET Core"
+            },
+            "capabilities": "",
+            "sdk": {
+              "name": "Microsoft.NET.Sdk.Functions",
+              "version": "1.0.31"
+            },
+            "default": true,
+            "toolingSuffix": "",
+            "localEntryPoint": "func.exe",
+            "targetFramework": "netcoreapp2.1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/2.1.1642",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/2.1.1642",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.2.x"
+            },
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0-appservice",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~2",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v4.0"
+            },
+            "linuxSiteConfig": {
+              "linuxFxVersion": "DOTNET|2.2"
+            }
+          }
+        }
+      },
+      "coreTools": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.linux-x64.2.7.3188.zip",
+          "sha2": "f8cff611d0cc2198589a7ff0b1b268549bf86c11afd799098df59f7721d6b771",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.osx-x64.2.7.3188.zip",
+          "sha2": "baa850c449e9be5fcef8e2bf91883885ec9ab9471437c998701435f5164d72e5",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.min.win-x64.2.7.3188.zip",
+          "sha2": "1c5c49bfb683e45fc4b44e52e25f63324f9d8e931d47259c55fc66c9b7019fc9",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.win-x86.2.7.3188.zip",
+          "sha2": "4a0342497a606e763aa148a10852d6da91d2d5cc7fdb7e705a0c17df4e038023",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/2.7.3188/Azure.Functions.Cli.min.win-x86.2.7.3188.zip",
+          "sha2": "f04accdc23432695786f434835b12558e603866a5c3b6d5c398965d3dccc78e9",
+          "size": "minified",
+          "default": "true"
+        }
+      ]
+    }
     "3.20.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
@@ -564,6 +646,123 @@
               "version": "1.0.1"
             },
             "default": false,
+            "localEntryPoint": "dotnet.exe",
+            "targetFramework": "net5.0",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1733",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/3.1.1733",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
+            },
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:3.0-dotnet-isolated5.0-appservice",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~3",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v5.0"
+            },
+            "linuxSiteConfig": {
+              "linuxFxVersion": "DOTNET-ISOLATED|5.0"
+            }
+          }
+        }
+      },
+      "coreTools": [
+        {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3388/Azure.Functions.Cli.linux-x64.3.0.3388.zip",
+          "sha2": "ef904fb0eb248c3a863eac2fd318ffb4eff19f0aa0751c35eb0791afbb31061a",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3388/Azure.Functions.Cli.osx-x64.3.0.3388.zip",
+          "sha2": "a8c32b29a0aef642bb70ae61260b429a0800ac9c17213497a0892224c656f3bf",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3388/Azure.Functions.Cli.min.win-x64.3.0.3388.zip",
+          "sha2": "83dd2b34c05ec8f89e68bb16da975058bbc1e796c74b174934abc81644bd0c9d",
+          "size": "minified",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3388/Azure.Functions.Cli.win-x86.3.0.3388.zip",
+          "sha2": "ab28b784c22282365d5a39ef3f2cb03ab059ec2b483721600a0c2334aef74dfc",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/3.0.3388/Azure.Functions.Cli.min.win-x86.3.0.3388.zip",
+          "sha2": "e60a10086f0709aed699c99fdf5fe97d48411daa7c6a935b3eb0e0c22fed10cf",
+          "size": "minified",
+          "default": "true"
+        }
+      ]
+    },
+    "3.22.2": {
+      "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
+      "workerRuntimes": {
+        "dotnet": {
+          "netcore3": {
+            "displayInfo": {
+              "displayName": ".NET Core 3",
+              "hidden": false,
+              "displayVersion": "v3",
+              "targetFramework": ".NET Core",
+              "description": "LTS"
+            },
+            "capabilities": "",
+            "sdk": {
+              "name": "Microsoft.NET.Sdk.Functions",
+              "version": "3.0.11"
+            },
+            "default": true,
+            "localEntryPoint": "func.exe",
+            "targetFramework": "netcoreapp3.1",
+            "toolingSuffix": "",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/3.1.1648",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/3.1.1648",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
+            },
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:3.0-appservice",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~3",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v4.0"
+            },
+            "linuxSiteConfig": {
+              "linuxFxVersion": "DOTNET|3.1"
+            }
+          },
+          "net5-isolated": {
+            "displayInfo": {
+              "displayName": ".NET 5",
+              "hidden": false,
+              "displayVersion": "v3",
+              "targetFramework": ".NET 5",
+              "description": "Isolated"
+            },
+            "capabilities": "isolated,net5",
+            "sdk": {
+              "name": "Microsoft.Azure.Functions.Worker.Sdk",
+              "version": "1.0.1"
+            },
+            "default": false,
+            "toolingSuffix": "net5-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net5.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1733",
