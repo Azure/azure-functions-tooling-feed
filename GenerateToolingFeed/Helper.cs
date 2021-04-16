@@ -16,14 +16,14 @@ namespace GenerateToolingFeed
     {
         public static System.Net.Http.HttpClient HttpClient => _lazyClient.Value;
 
-        public static string GetDownloadLink(CliEntry cliEntry, string cliVersion, bool isMinified = false)
+        public static string GetDownloadLink(string os, string architecture, string cliVersion, bool isMinified = false)
         {
             string rid = string.Empty;
             if (isMinified)
             {
                 rid = "min.";
             }
-            rid += GetRuntimeIdentifier(false, cliEntry.OperatingSystem ?? cliEntry.OS, cliEntry.Architecture);
+            rid += GetRuntimeIdentifier(false, os, architecture);
             var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}.{cliVersion}.zip";
 
             // bypassing validation for now
@@ -57,16 +57,16 @@ namespace GenerateToolingFeed
             return releaseVersion.ToString();
         }
 
-        public static string GetShaFileContent(CliEntry cliEntry, string cliVersion, string filePath, bool isMinified = false)
+        public static string GetShaFileContent(string os, string architecture, string cliVersion, string filePath, bool isMinified = false)
         {
-            string rid = GetRuntimeIdentifier(isMinified, cliEntry.OperatingSystem ?? cliEntry.OS, cliEntry.Architecture);
+            string rid = GetRuntimeIdentifier(isMinified, os, architecture);
             string fileName = $"Azure.Functions.Cli.{rid}.{cliVersion}.zip.sha2";
 
             string path = Path.Combine(filePath, fileName);
             return File.ReadAllText(path);
         }
 
-        public static string GetLatestPackageVersion(string packageId, string cliVersion)
+        public static string GetLatestPackageVersion(string packageId, int cliMajor)
         {
             string url = $"https://api.nuget.org/v3-flatcontainer/{packageId.ToLower()}/index.json";
             var response = HttpClient.GetStringAsync(url).Result;
@@ -74,10 +74,9 @@ namespace GenerateToolingFeed
 
             var versions = JsonConvert.DeserializeObject<IEnumerable<string>>(versionsObject["versions"].ToString());
 
-            NuGetVersion version = new NuGetVersion(cliVersion);
             var nuGetVersions = versions.Select(p =>
             {
-                if (NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion) && nuGetVersion.Major == version.Major)
+                if (NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion) && nuGetVersion.Major == cliMajor)
                 {
                     return nuGetVersion;
                 }
@@ -86,9 +85,9 @@ namespace GenerateToolingFeed
             return nuGetVersions.OrderByDescending(p => p.Version).FirstOrDefault()?.ToString();
         }
 
-        public static string GetTemplateUrl(string packageId, string cliVersion)
+        public static string GetTemplateUrl(string packageId, int cliMajor)
         {
-            string version = GetLatestPackageVersion(packageId, cliVersion);
+            string version = GetLatestPackageVersion(packageId, cliMajor);
             return $"https://www.nuget.org/api/v2/package/{packageId}/{version}";
         }
 
