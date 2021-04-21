@@ -51,7 +51,9 @@ namespace GenerateToolingFeed.V4Format
             foreach (KeyValuePair<string, object> keyValInfo in dotnetInfo)
             {
                 string dotnetEntryLabel = keyValInfo.Key;
-                V4FormatDotnetEntry dotnetEntry = keyValInfo.Value as V4FormatDotnetEntry ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
+                JToken dotnetEntryToken = keyValInfo.Value as JToken;
+
+                V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
                 if (!_dotnetToTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string templatePrefix))
                 {
