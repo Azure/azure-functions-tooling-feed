@@ -38,7 +38,7 @@ namespace GenerateToolingFeed.V4Format
         private static bool ShouldBeMinified(V4FormatCliEntry cliEntry)
         {
             return !string.IsNullOrEmpty(cliEntry.size)
-                && string.Equals(cliEntry.size, "minifed", StringComparison.OrdinalIgnoreCase);
+                && string.Equals(cliEntry.size, "minified", StringComparison.OrdinalIgnoreCase);
         }
 
         private static void UpdateDotnetTemplatesToLatest(IDictionary<string, IDictionary<string, object>> workerRuntimes, int coreToolsMajor)
