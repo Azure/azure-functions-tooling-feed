@@ -13,9 +13,9 @@ namespace GenerateToolingFeed
     {
         private static readonly Dictionary<string, string> _feedNameToLink = new Dictionary<string, string>()
         {
-            { Constants.FeedAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v3.json" },
+            { Constants.FeedAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/ankitkumarr/generate-v4-tests/cli-feed-v3.json" },
             { Constants.FeedV1AndV2Only, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v3-2.json" },
-            { Constants.FeedV4FormatAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v4.json" }
+            { Constants.FeedV4FormatAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/ankitkumarr/generate-v4-tests/cli-feed-v4.json" }
         };
 
         private static readonly Dictionary<string, FeedFormat> _feedNameToFormat = new Dictionary<string, FeedFormat>()
