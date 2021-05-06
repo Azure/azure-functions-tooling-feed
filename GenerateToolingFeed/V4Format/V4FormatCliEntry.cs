@@ -16,10 +16,8 @@ namespace GenerateToolingFeed
 
         public string sha2 { get; set; }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string size { get; set; }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string @default { get; set; }
     }
 }

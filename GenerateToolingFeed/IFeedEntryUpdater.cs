@@ -7,6 +7,6 @@ namespace GenerateToolingFeed
 {
     interface IFeedEntryUpdater
     {
-        JToken GetUpdatedFeedEntry(JToken feed, CoreToolsInfo coreToolsInfo);
+        JObject GetUpdatedFeedEntry(JObject feed, CoreToolsInfo coreToolsInfo);
     }
 }

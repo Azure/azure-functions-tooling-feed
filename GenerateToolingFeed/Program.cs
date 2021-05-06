@@ -74,7 +74,7 @@ namespace GenerateToolingFeed
         private static JObject GetNewReleaseEntryJson(JObject currentReleaseEntry, FeedFormat format, CoreToolsInfo coreToolsInfo)
         {
             IFeedEntryUpdater feedEntryUpdater = FeedEntryUpdaterFactory.GetFeedEntryUpdater(format);
-            return feedEntryUpdater.GetUpdatedFeedEntry(currentReleaseEntry, coreToolsInfo) as JObject;
+            return feedEntryUpdater.GetUpdatedFeedEntry(currentReleaseEntry, coreToolsInfo);
         }
 
         private static void AddNewReleaseToFeed(JObject feed, JObject newRelease, int majorVersion)
