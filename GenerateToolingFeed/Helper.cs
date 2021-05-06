@@ -122,6 +122,27 @@ namespace GenerateToolingFeed
             return rid;
         }
 
+        public static void MergeObjectToJToken(JObject source, object toMerge)
+        {
+            // Clone source for iterating. That way we can modify acutal source in place
+            JObject cloneSource = source.DeepClone() as JObject;
+
+            foreach (var jsonItem in cloneSource)
+            {
+                string tokenName = jsonItem.Key;
+                JToken tokenValue = jsonItem.Value;
+
+                foreach (var prop in toMerge.GetType().GetProperties())
+                {
+                    if (string.Equals(tokenName, prop.Name, StringComparison.OrdinalIgnoreCase))
+                    {
+                        source[tokenName] = JToken.FromObject(prop.GetValue(toMerge));
+                        break;
+                    }
+                }
+            }
+        }
+
         public static bool IsValidDownloadLink(string url)
         {
             var result = HttpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).Result;

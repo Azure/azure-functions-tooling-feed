@@ -5,14 +5,16 @@ namespace GenerateToolingFeed.V3Format
 {
     internal class V3FormatFeedEntryUpdater : IFeedEntryUpdater
     {
-        public JToken GetUpdatedFeedEntry(JToken feed, CoreToolsInfo coreToolsInfo)
+        public JObject GetUpdatedFeedEntry(JObject feed, CoreToolsInfo coreToolsInfo)
         {
             var feedEntry = feed.ToObject<V3FormatFeedEntry>();
 
             UpdateCoreToolsReferences(feedEntry, coreToolsInfo);
             UpdateDotnetTemplatesToLatest(feedEntry, coreToolsInfo.MajorVersion);
 
-            return JToken.FromObject(feedEntry);
+            Helper.MergeObjectToJToken(feed, feedEntry);
+
+            return feed;
         }
 
         private void UpdateCoreToolsReferences(V3FormatFeedEntry feedEntry, CoreToolsInfo coreToolsInfo)

@@ -14,14 +14,16 @@ namespace GenerateToolingFeed.V4Format
             { "netframework", "Microsoft.Azure.WebJobs" }
         };
 
-        public JToken GetUpdatedFeedEntry(JToken feed, CoreToolsInfo coreToolsInfo)
+        public JObject GetUpdatedFeedEntry(JObject feed, CoreToolsInfo coreToolsInfo)
         {
             V4FormatFeedEntry feedEntry = feed.ToObject<V4FormatFeedEntry>();
 
             UpdateCoreToolsReferences(feedEntry.coreTools, coreToolsInfo.ArtifactsDirectory, coreToolsInfo.Version);
             UpdateDotnetTemplatesToLatest(feedEntry.workerRuntimes, coreToolsInfo.MajorVersion);
 
-            return JToken.FromObject(feedEntry);
+            Helper.MergeObjectToJToken(feed, feedEntry);
+
+            return feed;
         }
 
         private static void UpdateCoreToolsReferences(V4FormatCliEntry[] cliEntries, string coreToolsArtifactsDirectory, string cliVersion)
@@ -38,7 +40,7 @@ namespace GenerateToolingFeed.V4Format
         private static bool ShouldBeMinified(V4FormatCliEntry cliEntry)
         {
             return !string.IsNullOrEmpty(cliEntry.size)
-                && string.Equals(cliEntry.size, "minifed", StringComparison.OrdinalIgnoreCase);
+                && string.Equals(cliEntry.size, "minified", StringComparison.OrdinalIgnoreCase);
         }
 
         private static void UpdateDotnetTemplatesToLatest(IDictionary<string, IDictionary<string, object>> workerRuntimes, int coreToolsMajor)
@@ -51,7 +53,9 @@ namespace GenerateToolingFeed.V4Format
             foreach (KeyValuePair<string, object> keyValInfo in dotnetInfo)
             {
                 string dotnetEntryLabel = keyValInfo.Key;
-                V4FormatDotnetEntry dotnetEntry = keyValInfo.Value as V4FormatDotnetEntry ?? throw new Exception("Cannot parse 'dotnet' object in the feed");
+                JObject dotnetEntryToken = keyValInfo.Value as JObject;
+
+                V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
                 if (!_dotnetToTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string templatePrefix))
                 {
@@ -60,6 +64,8 @@ namespace GenerateToolingFeed.V4Format
 
                 dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{templatePrefix}.ItemTemplates", coreToolsMajor);
                 dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{templatePrefix}.ProjectTemplates", coreToolsMajor);
+
+                Helper.MergeObjectToJToken(dotnetEntryToken, dotnetEntry);
             }
         }
     }
