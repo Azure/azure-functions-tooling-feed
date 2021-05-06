@@ -65,7 +65,8 @@ namespace GenerateToolingFeed
 
         private static void UpdateFeedWithNewToolsAndTemplates(JObject feed, FeedFormat format, CoreToolsInfo coreToolsInfo)
         {
-            JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion);
+            // Get a cloned object to not modify the exisiting release
+            JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion).DeepClone() as JObject;
             JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo);
 
             AddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
