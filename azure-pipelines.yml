@@ -15,6 +15,7 @@ steps:
     packageType: 'sdk'
     version: '2.2.207'
 - task: DownloadPipelineArtifact@2
+  displayName: Download Core Tools artifacts
   inputs:
     buildType: 'specific'
     project: 'e6a70c92-4128-439f-8012-382fe78d6396'
@@ -26,23 +27,34 @@ steps:
     itemPattern: '**/?(A*.sha2|Azure.Functions.Cli.win-x64*.zip)'
     downloadPath: '$(Build.Repository.LocalPath)\artifacts'
 - task: DotNetCoreCLI@2
+  displayName: Generate Tooling feed
   inputs:
     command: 'run'
     arguments: '$(Build.Repository.LocalPath)\artifacts\drop'
     workingDirectory: '$(Build.Repository.LocalPath)\GenerateToolingFeed'
 - task: CopyFiles@2
+  displayName: Copy cli-feed-v3.json
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
     Contents: '*cli-feed-v3.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
 - task: CopyFiles@2
+  displayName: Copy cli-feed-v3-2.json
   inputs:
     SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
     Contents: '*cli-feed-v3-2.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: false
+- task: CopyFiles@2
+  displayName: Copy cli-feed-v4.json
+  inputs:
+    SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
+    Contents: '*cli-feed-v4.json'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: false
 - task: PublishBuildArtifacts@1
+  displayName: Publish feed artifacts
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
