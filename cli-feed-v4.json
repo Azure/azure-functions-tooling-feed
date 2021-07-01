@@ -2263,10 +2263,10 @@
           "net6": {
             "displayInfo": {
               "displayName": ".NET 6",
-              "hidden": true,
+              "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "LTS"
+              "description": "Preview"
             },
             "capabilities": "net6",
             "sdk": {
@@ -2301,7 +2301,7 @@
               "targetFramework": ".NET 5",
               "description": "Isolated"
             },
-            "capabilities": "isolated,net5",
+            "capabilities": "isolated,net5,net6",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
               "version": "1.0.3"
