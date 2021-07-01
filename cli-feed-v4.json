@@ -40,10 +40,10 @@
       "releaseQuality": "GA",
       "hidden": false
     },
-    "v4-prerelease": {
+    "v4": {
       "release": "4.0.0",
-      "releaseQuality": "Prerelease",
-      "hidden": true
+      "releaseQuality": "GA",
+      "hidden": false
     }
   },
   "releases": {
