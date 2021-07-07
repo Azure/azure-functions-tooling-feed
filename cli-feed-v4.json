@@ -2281,7 +2281,7 @@
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
             },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:6.0-appservice",
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet:4-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
               "FUNCTIONS_WORKER_RUNTIME": "dotnet"
@@ -2315,7 +2315,7 @@
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:3.0-dotnet-isolated5.0-appservice",
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated5.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
@@ -2349,7 +2349,7 @@
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4.0-dotnet-isolated6.0-appservice",
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated6.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
