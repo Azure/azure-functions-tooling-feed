@@ -2275,7 +2275,7 @@
             },
             "default": true,
             "localEntryPoint": "func.exe",
-            "targetFramework": "netcore6.0",
+            "targetFramework": "net6.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.1844-preview1",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.1844-preview1",
             "projectTemplateId": {
