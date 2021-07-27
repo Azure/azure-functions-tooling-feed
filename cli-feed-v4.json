@@ -6,7 +6,7 @@
       "hidden": false
     },
     "v1-prerelease": {
-      "release": "1.13.0",
+      "release": "1.13.1",
       "releaseQuality": "Prerelease",
       "hidden": true
     },
@@ -68,6 +68,51 @@
             "targetFramework": "net461",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10324",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10324",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.1.x"
+            },
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~1",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v4.0"
+            }
+          }
+        }
+      },
+      "coreTools": [
+        {
+          "OS": "Windows",
+          "Architecture": "x86",
+          "downloadLink": "https://functionscdn.azureedge.net/public/1.0.28/Azure.Functions.Cli.zip",
+          "sha2": "BB4978D83CFBABAE67D4D720FEC1F1171BE0406B2147EF3FECA476C19ADD9920",
+          "size": "full",
+          "default": "true"
+        }
+      ]
+    },
+    "1.13.1": {
+      "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/1.0.3.10182.zip",
+      "workerRuntimes": {
+        "dotnet": {
+          "netframework": {
+            "displayInfo": {
+              "displayName": ".NET Framework",
+              "hidden": false,
+              "displayVersion": "v1",
+              "targetFramework": ".NET Framework"
+            },
+            "capabilities": "",
+            "sdk": {
+              "name": "Microsoft.NET.Sdk.Functions",
+              "version": "1.0.29"
+            },
+            "default": true,
+            "localEntryPoint": "func.exe",
+            "targetFramework": "net461",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/1.0.3.10448",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/1.0.3.10448",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.1.x"
             },
