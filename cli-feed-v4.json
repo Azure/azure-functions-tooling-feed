@@ -1,7 +1,7 @@
 {
   "tags": {
     "v1": {
-      "release": "1.13.0",
+      "release": "1.13.2",
       "releaseQuality": "GA",
       "hidden": false
     },
