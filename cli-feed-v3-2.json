@@ -1,7 +1,7 @@
 {
   "tags": {
     "v1": {
-      "release": "1.10.0",
+      "release": "1.10.2",
       "displayName": "Azure Functions v1 (.NET Framework)",
       "displayVersion": "v1",
       "releaseQuality": "GA",
