@@ -98,7 +98,13 @@ namespace GenerateToolingFeed
 
         private static void UpdateFeedTagToNewVersion(JObject feed, int majorVersion, string newVersion)
         {
-            string prereleaseTag = majorVersion == 2 ? "v2-prerelease" : "v3-prerelease";
+            string prereleaseTag = majorVersion switch
+            {
+                2 => "v2-prerelease",
+                3 => "v3-prerelease",
+                4 => "v4", // directly add to v4 for now
+                _ => throw new ArgumentException($"Major version {majorVersion} is not supported.", nameof(majorVersion))
+            };
             feed["tags"][prereleaseTag]["release"] = newVersion;
         }
 
