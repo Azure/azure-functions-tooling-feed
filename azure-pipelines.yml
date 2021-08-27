@@ -13,7 +13,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '2.2.207'
+    version: '3.1.412'
 - task: DownloadPipelineArtifact@2
   displayName: Download Core Tools artifacts
   inputs:
