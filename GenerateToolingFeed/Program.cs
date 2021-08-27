@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NuGet.Versioning;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Versioning;
 
 namespace GenerateToolingFeed
 {
@@ -52,24 +52,26 @@ namespace GenerateToolingFeed
 
         public static void GenerateNewFeed(string feedName, CoreToolsInfo coreToolsInfo)
         {
+            Console.WriteLine();
             Console.WriteLine($"Preparing CLI feed for version: '{coreToolsInfo.Version}' for feed: '{feedName}'");
 
             JObject feedJson = GetFeedJSON(feedName);
             FeedFormat format = _feedNameToFormat[feedName];
 
-            UpdateFeedWithNewToolsAndTemplates(feedJson, format, coreToolsInfo);
-
-            string path = Path.Combine(coreToolsInfo.ArtifactsDirectory, feedName);
-            WriteToJsonFile(feedJson, path);
+            if (TryUpdateFeedWithNewToolsAndTemplates(feedJson, format, coreToolsInfo))
+            {
+                string path = Path.Combine(coreToolsInfo.ArtifactsDirectory, feedName);
+                WriteToJsonFile(feedJson, path);
+            }
         }
 
-        private static void UpdateFeedWithNewToolsAndTemplates(JObject feed, FeedFormat format, CoreToolsInfo coreToolsInfo)
+        private static bool TryUpdateFeedWithNewToolsAndTemplates(JObject feed, FeedFormat format, CoreToolsInfo coreToolsInfo)
         {
             // Get a cloned object to not modify the exisiting release
             JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion).DeepClone() as JObject;
             JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo);
 
-            AddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
+            return TryAddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
         }
 
         private static JObject GetNewReleaseEntryJson(JObject currentReleaseEntry, FeedFormat format, CoreToolsInfo coreToolsInfo)
@@ -78,13 +80,20 @@ namespace GenerateToolingFeed
             return feedEntryUpdater.GetUpdatedFeedEntry(currentReleaseEntry, coreToolsInfo);
         }
 
-        private static void AddNewReleaseToFeed(JObject feed, JObject newRelease, int majorVersion)
+        private static bool TryAddNewReleaseToFeed(JObject feed, JObject newRelease, int majorVersion)
         {
             JObject feedReleases = feed["releases"] as JObject;
             string newReleaseVersion = Helper.GetReleaseVersion(feedReleases, majorVersion);
 
+            if (newReleaseVersion == null)
+            {
+                Console.WriteLine($"WARNING: No existing entries found for version {majorVersion}. You may have to manually add a version before this tool will work. Skipping this feed.");
+                return false;
+            }
+
             feedReleases.Add(newReleaseVersion, newRelease);
             UpdateFeedTagToNewVersion(feed, majorVersion, newReleaseVersion);
+            return true;
         }
 
         private static void UpdateFeedTagToNewVersion(JObject feed, int majorVersion, string newVersion)
@@ -118,6 +127,7 @@ namespace GenerateToolingFeed
         private static string GetCliVersion(string path)
         {
             string cliVersion = string.Empty;
+            Console.WriteLine($"Searching for core tools builds in {path}...");
             foreach (string file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
             {
                 if (file.EndsWith(".zip"))

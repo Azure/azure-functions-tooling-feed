@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NuGet;
-using NuGet.Versioning;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Versioning;
 
 namespace GenerateToolingFeed
 {
@@ -45,6 +43,11 @@ namespace GenerateToolingFeed
                 {
                     versions.Add(item.Name);
                 }
+            }
+
+            if (!versions.Any())
+            {
+                return null;
             }
 
             var nuGetVersions = versions.Select(p =>
@@ -174,7 +177,7 @@ namespace GenerateToolingFeed
                 default:
                     return "v2";
             }
-            
+
         }
 
     }
