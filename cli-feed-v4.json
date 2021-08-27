@@ -31,7 +31,7 @@
       "hidden": true
     },
     "v3-prerelease": {
-      "release": "4.4.0",
+      "release": "3.26.2",
       "releaseQuality": "Prerelease",
       "hidden": true
     },
@@ -41,7 +41,7 @@
       "hidden": false
     },
     "v4": {
-      "release": "4.3.0",
+      "release": "4.4.0",
       "releaseQuality": "GA",
       "hidden": false
     }
