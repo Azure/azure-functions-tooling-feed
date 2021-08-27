@@ -63,15 +63,25 @@ namespace GenerateToolingFeed
                 string path = Path.Combine(coreToolsInfo.ArtifactsDirectory, feedName);
                 WriteToJsonFile(feedJson, path);
             }
+            else
+            {
+                Console.WriteLine($"WARNING: No existing entries found for version {coreToolsInfo.MajorVersion} in {feedName}. You may have to manually add a version before this tool will work. Skipping this feed.");
+            }
         }
 
         private static bool TryUpdateFeedWithNewToolsAndTemplates(JObject feed, FeedFormat format, CoreToolsInfo coreToolsInfo)
         {
-            // Get a cloned object to not modify the exisiting release
-            JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion).DeepClone() as JObject;
-            JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo);
-
-            return TryAddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
+            try
+            {
+                // Get a cloned object to not modify the exisiting release
+                JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion).DeepClone() as JObject;
+                JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo);
+                return TryAddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private static JObject GetNewReleaseEntryJson(JObject currentReleaseEntry, FeedFormat format, CoreToolsInfo coreToolsInfo)
@@ -87,7 +97,6 @@ namespace GenerateToolingFeed
 
             if (newReleaseVersion == null)
             {
-                Console.WriteLine($"WARNING: No existing entries found for version {majorVersion}. You may have to manually add a version before this tool will work. Skipping this feed.");
                 return false;
             }
 

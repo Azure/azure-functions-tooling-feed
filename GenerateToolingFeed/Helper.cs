@@ -166,19 +166,12 @@ namespace GenerateToolingFeed
             return releaseVersion;
         }
 
-        public static string GetTagFromMajorVersion(int majorVersion)
+        public static string GetTagFromMajorVersion(int majorVersion) => majorVersion switch
         {
-            switch (majorVersion)
-            {
-                case 2:
-                    return "v2";
-                case 3:
-                    return "v3";
-                default:
-                    return "v2";
-            }
-
-        }
-
+            2 => "v2",
+            3 => "v3",
+            4 => "v4",
+            _ => throw new ArgumentNullException($"{majorVersion} is not a supported version.", nameof(majorVersion))
+        };
     }
 }
