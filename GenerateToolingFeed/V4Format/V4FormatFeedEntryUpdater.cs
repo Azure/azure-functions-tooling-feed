@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace GenerateToolingFeed.V4Format
 {
@@ -8,6 +8,8 @@ namespace GenerateToolingFeed.V4Format
     {
         private static readonly IDictionary<string, string> _dotnetToTemplatesPrefix = new Dictionary<string, string>()
         {
+            { "net6-isolated", "Microsoft.Azure.Functions.Worker" },
+            { "net6", "Microsoft.Azure.WebJobs" },
             { "net5-isolated", "Microsoft.Azure.Functions.Worker" },
             { "netcore3", "Microsoft.Azure.WebJobs" },
             { "netcore2", "Microsoft.Azure.WebJobs" },
