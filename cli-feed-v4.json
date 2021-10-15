@@ -3818,7 +3818,7 @@
           "net6-isolated": {
             "displayInfo": {
               "displayName": ".NET 6",
-              "hidden": true,
+              "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
               "description": "Isolated"
