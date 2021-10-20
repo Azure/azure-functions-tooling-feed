@@ -3909,7 +3909,7 @@
             "capabilities": "net6",
             "sdk": {
               "name": "Microsoft.NET.Sdk.Functions",
-              "version": "3.0.13"
+              "version": "4.0.0"
             },
             "default": true,
             "localEntryPoint": "func.exe",
@@ -3937,19 +3937,19 @@
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 5",
-              "description": "Isolated"
+              "description": "Isolated Preview"
             },
             "capabilities": "isolated,net5,net6",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.0.3"
+              "version": "1.2.0"
             },
             "default": false,
             "toolingSuffix": "net5-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net5.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.1938",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.1938",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1940",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/3.1.1940",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -3968,15 +3968,15 @@
           "net6-isolated": {
             "displayInfo": {
               "displayName": ".NET 6",
-              "hidden": true,
+              "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
-              "description": "Isolated"
+              "description": "Isolated Preview"
             },
             "capabilities": "isolated,net6",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.0.3"
+              "version": "1.2.0"
             },
             "default": false,
             "toolingSuffix": "net6-isolated",
