@@ -4170,7 +4170,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "Preview"
+              "description": ""
             },
             "capabilities": "net6",
             "sdk": {
@@ -4203,7 +4203,7 @@
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 5",
-              "description": "Isolated Preview"
+              "description": "Isolated"
             },
             "capabilities": "isolated,net5,net6",
             "sdk": {
@@ -4214,8 +4214,8 @@
             "toolingSuffix": "net5-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net5.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.1957",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.1957",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/3.1.1940",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/3.1.1940",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -4237,7 +4237,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
-              "description": "Isolated Preview"
+              "description": "Isolated"
             },
             "capabilities": "isolated,net6",
             "sdk": {
