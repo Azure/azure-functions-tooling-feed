@@ -363,7 +363,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -478,7 +478,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -593,7 +593,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -708,7 +708,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -824,7 +824,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -940,7 +940,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1056,7 +1056,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1172,7 +1172,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1288,7 +1288,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1404,7 +1404,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1520,7 +1520,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1636,7 +1636,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1752,7 +1752,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1868,7 +1868,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -1984,7 +1984,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2100,7 +2100,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2216,7 +2216,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2366,7 +2366,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2516,7 +2516,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2666,7 +2666,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -2816,7 +2816,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3011,7 +3011,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3127,7 +3127,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3277,7 +3277,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3427,7 +3427,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3577,7 +3577,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3693,7 +3693,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3809,7 +3809,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -3959,7 +3959,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -4109,7 +4109,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -4225,7 +4225,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v5.0"
+              "netFrameworkVersion": "v4.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
