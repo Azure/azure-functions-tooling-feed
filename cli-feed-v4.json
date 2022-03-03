@@ -44,6 +44,11 @@
       "release": "4.10.3",
       "releaseQuality": "GA",
       "hidden": false
+    },
+    "v4-prerelease": {
+      "release": "4.10.3",
+      "releaseQuality": "Prerelease",
+      "hidden": true
     }
   },
   "releases": {
