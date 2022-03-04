@@ -16,7 +16,8 @@ namespace GenerateToolingFeed
         public static readonly Dictionary<string, string> Architecture = new Dictionary<string, string>()
             {
                 { "x64" ,"x64" },
-                { "x86" ,"x86" }
+                { "x86" ,"x86" },
+                { "arm64" ,"arm64" }
             };
 
         public const string FeedAllVersions = "cli-feed-v3.json";

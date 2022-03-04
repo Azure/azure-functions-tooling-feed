@@ -5654,6 +5654,14 @@
           "default": "false"
         },
         {
+          "OS": "MacOS",
+          "Architecture": "arm64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.4385/Azure.Functions.Cli.osx-arm64.4.0.4385.zip",
+          "sha2": "520a79a29fdb5755f431fcaebf270802438d5dcfe6d9d1d220a6ca3688aac0ab",
+          "size": "full",
+          "default": "false"
+        },
+        {
           "OS": "Windows",
           "Architecture": "x64",
           "downloadLink": "https://functionscdn.azureedge.net/public/4.0.4385/Azure.Functions.Cli.min.win-x64.4.0.4385.zip",
