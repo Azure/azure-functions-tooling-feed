@@ -11,13 +11,6 @@ namespace GenerateToolingFeed
 {
     class Program
     {
-        private static readonly Dictionary<string, string> _feedNameToLink = new Dictionary<string, string>()
-        {
-            { Constants.FeedAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v3.json" },
-            { Constants.FeedV1AndV2Only, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v3-2.json" },
-            { Constants.FeedV4FormatAllVersions, "https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-v4.json" }
-        };
-
         private static readonly Dictionary<string, FeedFormat> _feedNameToFormat = new Dictionary<string, FeedFormat>()
         {
             { Constants.FeedAllVersions, FeedFormat.V3 },
@@ -111,7 +104,7 @@ namespace GenerateToolingFeed
             {
                 2 => "v2-prerelease",
                 3 => "v3-prerelease",
-                4 => "v4", // directly add to v4 for now
+                4 => "v4-prerelease",
                 _ => throw new ArgumentException($"Major version {majorVersion} is not supported.", nameof(majorVersion))
             };
             feed["tags"][prereleaseTag]["release"] = newVersion;
@@ -127,7 +120,8 @@ namespace GenerateToolingFeed
 
         private static JObject GetFeedJSON(string feedName)
         {
-            string feedContent = Helper.HttpClient.GetStringAsync(_feedNameToLink[feedName]).Result;
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "..", feedName);
+            string feedContent = File.ReadAllText(path);
             return JObject.Parse(feedContent);
         }
 
