@@ -6204,7 +6204,7 @@
               "version": "1.3.0"
             },
             "default": false,
-            "toolingSuffix": "net6-isolated",
+            "toolingSuffix": "nefx-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": ".NET Framework",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2057",
