@@ -6232,7 +6232,7 @@
               "targetFramework": ".NET Framework",
               "description": "Isolated"
             },
-            "capabilities": "isolated,netfx,net6",
+            "capabilities": "isolated,net6",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
               "version": "1.3.0"
