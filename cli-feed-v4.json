@@ -46,7 +46,7 @@
       "hidden": false
     },
     "v4-prerelease": {
-      "release": "4.15.0",
+      "release": "4.14.0",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
@@ -6119,7 +6119,7 @@
         }
       ]
     },
-    "4.15.0": {
+    "4.14.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
         "dotnet": {
@@ -6192,10 +6192,10 @@
           },
           "net6-isolated": {
             "displayInfo": {
-              "displayName": ".NET Framework",
+              "displayName": ".NET 6",
               "hidden": false,
               "displayVersion": "v4",
-              "targetFramework": ".NET Framework",
+              "targetFramework": ".NET 6",
               "description": "Isolated"
             },
             "capabilities": "isolated,net6",
@@ -6204,9 +6204,9 @@
               "version": "1.3.0"
             },
             "default": false,
-            "toolingSuffix": "nefx-isolated",
+            "toolingSuffix": "net6-isolated",
             "localEntryPoint": "dotnet.exe",
-            "targetFramework": ".NET Framework",
+            "targetFramework": "net6.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2057",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2057",
             "projectTemplateId": {
