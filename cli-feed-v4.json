@@ -6240,7 +6240,7 @@
             "default": false,
             "toolingSuffix": "netfx-isolated",
             "localEntryPoint": "dotnet.exe",
-            "targetFramework": ".NET Framework",
+            "targetFramework": "net472",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2057",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2057",
             "projectTemplateId": {
