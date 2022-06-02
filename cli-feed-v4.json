@@ -26,7 +26,7 @@
       "hidden": true
     },
     "v3-preview": {
-      "release": "3.35.0",
+      "release": "3.36.0",
       "releaseQuality": "Preview",
       "hidden": true
     },
@@ -36,7 +36,7 @@
       "hidden": true
     },
     "v3": {
-      "release": "3.35.0",
+      "release": "3.36.0",
       "releaseQuality": "GA",
       "hidden": false
     },
