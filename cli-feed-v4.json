@@ -7298,7 +7298,7 @@
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2185",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2185",
             "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Dotnet7.Isolated.4.x"
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Net7.Isolated.4.x"
             },
             "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated7.0-appservice",
             "serviceAppSettings": {
