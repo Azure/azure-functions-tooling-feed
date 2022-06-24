@@ -46,7 +46,7 @@
       "hidden": false
     },
     "v4-prerelease": {
-      "release": "4.16.0",
+      "release": "4.17.0",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
@@ -7173,7 +7173,7 @@
         }
       ]
     },
-    "v4-preview": {
+    "4.17.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
         "dotnet": {
@@ -7281,7 +7281,7 @@
           "net7-isolated": {
             "displayInfo": {
               "displayName": ".NET 7.0",
-              "hidden": false,
+              "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
               "description": "Isolated LTS"
@@ -7298,7 +7298,7 @@
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2185",
             "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2185",
             "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Dotnet7.Isolated.4.x"
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Net7.Isolated.4.x"
             },
             "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated7.0-appservice",
             "serviceAppSettings": {
