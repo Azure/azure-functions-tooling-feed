@@ -7289,14 +7289,14 @@
             "capabilities": "isolated,net6,netfxisolated",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.5.0-preview2"
+              "version": "1.7.0-preview1"
             },
             "default": false,
             "toolingSuffix": "netfx-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net48",
-            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.1939-preview1",
-            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.1939-preview1",
+            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.1939-preview2",
+            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.1939-preview2",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.NetFx48.Isolated.4.x"
             },
