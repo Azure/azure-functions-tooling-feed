@@ -7179,7 +7179,7 @@
         "dotnet": {
           "net6": {
             "displayInfo": {
-              "displayName": ".NET 6",
+              "displayName": ".NET 6.0",
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
@@ -7212,7 +7212,7 @@
           },
           "net5-isolated": {
             "displayInfo": {
-              "displayName": ".NET 5",
+              "displayName": ".NET 5.0",
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 5",
@@ -7246,7 +7246,7 @@
           },
           "net6-isolated": {
             "displayInfo": {
-              "displayName": ".NET 6",
+              "displayName": ".NET 6.0",
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
@@ -7294,7 +7294,7 @@
             "default": false,
             "toolingSuffix": "netfx-isolated",
             "localEntryPoint": "dotnet.exe",
-            "targetFramework": "net472",
+            "targetFramework": "net48",
             "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.1939-preview1",
             "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.1939-preview1",
             "projectTemplateId": {
