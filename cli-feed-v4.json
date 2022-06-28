@@ -41,7 +41,7 @@
       "hidden": false
     },
     "v4": {
-      "release": "4.16.0",
+      "release": "4.17.1",
       "releaseQuality": "GA",
       "hidden": false
     },
@@ -7439,7 +7439,7 @@
           "netfx-isolated": {
             "displayInfo": {
               "displayName": ".NET Framework",
-              "hidden": true,
+              "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET Framework",
               "description": "Isolated"
