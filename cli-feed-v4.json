@@ -7295,8 +7295,8 @@
             "toolingSuffix": "net7-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net7.0",
-            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2186-preview1",
-            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2186-preview1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2211",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2211",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Net7.Isolated.4.x"
             },
