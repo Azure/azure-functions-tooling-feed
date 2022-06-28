@@ -7238,7 +7238,7 @@
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
-              "netFrameworkVersion": "v4.0"
+              "netFrameworkVersion": "v5.0"
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|5.0"
@@ -7300,16 +7300,13 @@
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.NetFx48.Isolated.4.x"
             },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated6.0-appservice",
+            "localContainerBaseImage": "",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
             },
             "windowsSiteConfig": {
               "netFrameworkVersion": "v6.0"
-            },
-            "linuxSiteConfig": {
-              "linuxFxVersion": "DOTNET-ISOLATED|6.0"
             }
           }
         }
