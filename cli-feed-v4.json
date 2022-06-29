@@ -7284,9 +7284,9 @@
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
-              "description": "Isolated LTS"
+              "description": "Isolated"
             },
-            "capabilities": "isolated,net7",
+            "capabilities": "isolated,net6,net7",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
               "version": "1.7.0-preview1"
