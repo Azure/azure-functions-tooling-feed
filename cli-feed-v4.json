@@ -7193,8 +7193,8 @@
             "default": true,
             "localEntryPoint": "func.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2216",
-            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2216",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2226",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2226",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
             },
@@ -7261,8 +7261,8 @@
             "toolingSuffix": "net6-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2216",
-            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2216",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2226",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2226",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -7295,8 +7295,8 @@
             "toolingSuffix": "net7-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net7.0",
-            "itemTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2216",
-            "projectTemplates": "https://www.myget.org/F/azure-appservice/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2216",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2226",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2226",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
