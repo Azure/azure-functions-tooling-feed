@@ -7834,7 +7834,7 @@
         "dotnet": {
           "netcore3": {
             "displayInfo": {
-              "displayName": ".NET Core 3",
+              "displayName": ".NET Core 3.1",
               "hidden": false,
               "displayVersion": "v3",
               "targetFramework": ".NET Core",
