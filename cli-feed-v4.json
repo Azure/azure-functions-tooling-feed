@@ -9850,6 +9850,14 @@
           "sha2": "5609a0780d492170552ff8830fe9a28f6bdcd69e805a8b2f8865cd734e7f4d7e",
           "size": "minified",
           "default": "true"
+        },
+        {
+          "OS": "Windows",
+          "Architecture": "arm64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.4804/Azure.Functions.Cli.min.win-arm64.4.0.4804.zip",
+          "sha2": "e0b8d79c042c9edefd05fee8b8047c0e8489730d2213847a6ac5bac09bb3c938",
+          "size": "minified",
+          "default": "false"
         }
       ]
     }
