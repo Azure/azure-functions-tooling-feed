@@ -16,18 +16,21 @@ function LogErrorAndExit($errorMessage, $exception) {
     throw $errorMessage
 }
 
-Function validateFeedJson()
+Function validateFeedJson($fileName)
 {
     try {
-        $file = Get-Content ".\cli-feed-v3.json" -Raw
+        $file = Get-Content $fileName -Raw
         $jsonObj = ConvertFrom-Json $file
     } catch  {
-        LogErrorAndExit "The feed content is not valid JSON"  $_.Exception
+        LogErrorAndExit "The feed content for $fileName is not valid JSON"  $_.Exception
     }
 }
 
 # start tests
 
 LogOperationStart "Checking if the feed content is valid json"
-validateFeedJson
+$files = Get-ChildItem -Filter "cli-feed*.json"
+foreach ($file in $files) {
+    validateFeedJson $file.Name
+}
 LogSuccess 
