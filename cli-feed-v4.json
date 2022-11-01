@@ -10800,7 +10800,8 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "LTS"
+              "description": "LTS",
+              "endOfLifeDate": "2024-11-12T00:00:00.0000000Z"
             },
             "capabilities": "net6",
             "sdk": {
@@ -10833,7 +10834,8 @@
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 5",
-              "description": "Isolated"
+              "description": "Isolated",
+              "endOfLifeDate": "2022-05-10T00:00:00.0000000Z"
             },
             "capabilities": "isolated,net5,net6",
             "sdk": {
@@ -10867,7 +10869,8 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
-              "description": "Isolated LTS"
+              "description": "Isolated LTS",
+              "endOfLifeDate": "2024-11-12T00:00:00.0000000Z"
             },
             "capabilities": "isolated,net6",
             "sdk": {
@@ -10901,7 +10904,8 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
-              "description": "Isolated"
+              "description": "Isolated",
+              "endOfLifeDate": "2024-05-10T00:00:00.0000000Z"
             },
             "capabilities": "isolated,net6,net7",
             "sdk": {
