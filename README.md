@@ -1,5 +1,5 @@
 # Azure Functions Tooling Feed
-
+ 
 The Azure Functions Tooling Feed is consumed by Visual Studio and Visual Studio code to make sure they are always using the latest [core tools](https://github.com/Azure/azure-functions-core-tools) and matching [templates](https://github.com/Azure/azure-functions-templates). The Azure Functions Tooling Feed is hosted at https://functionscdn.azureedge.net/public/cli-feed-v3.json.
 
 ## Structure
