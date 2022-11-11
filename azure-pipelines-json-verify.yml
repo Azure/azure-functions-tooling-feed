@@ -1,0 +1,20 @@
+pr:
+  branches:
+    include:
+    - main
+    
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  name: '1ES-Hosted-AzFunc'
+  demands:
+    - ImageOverride -equals MMS2019TLS
+
+steps:
+- task: 1ESHostedPoolValidation@1
+
+- pwsh: .\build.ps1
+  displayName: "Verify JSON"
