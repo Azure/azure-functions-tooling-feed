@@ -11864,8 +11864,8 @@
             "default": true,
             "localEntryPoint": "func.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2288",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2288",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2408",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2408",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
             },
@@ -11899,8 +11899,8 @@
             "toolingSuffix": "net5-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net5.0",
-            "itemTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ItemTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
-            "projectTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ProjectTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2408",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2408",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -11934,8 +11934,8 @@
             "toolingSuffix": "net6-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ItemTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
-            "projectTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ProjectTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2408",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2408",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -11969,8 +11969,8 @@
             "toolingSuffix": "net7-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net7.0",
-            "itemTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ItemTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
-            "projectTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ProjectTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2408",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2408",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -12003,8 +12003,8 @@
             "toolingSuffix": "netfx-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net48",
-            "itemTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ItemTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
-            "projectTemplates": "https://pkgs.dev.azure.com/azfunc/Azure%20Functions/_apis/packaging/feeds/AzureFunctions/nuget/packages/Microsoft.Azure.Functions.Worker.ProjectTemplates/versions/4.0.2403/content?api-version=7.0-preview.1",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.2408",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.2408",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
