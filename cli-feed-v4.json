@@ -14941,7 +14941,7 @@
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net8.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.2529",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2641",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_apis/packaging/feeds/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/packages/Microsoft.Azure.Functions.Worker.ProjectTemplates/versions/4.0.2678/content",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
