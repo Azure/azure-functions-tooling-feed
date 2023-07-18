@@ -46,7 +46,7 @@
       "hidden": false
     },
     "v4-prerelease": {
-      "release": "4.44.0",
+      "release": "4.43.0",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
@@ -15014,7 +15014,7 @@
         }
       ]
     },
-    "4.44.0": {
+    "4.43.0": {
       "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
       "workerRuntimes": {
         "dotnet": {
