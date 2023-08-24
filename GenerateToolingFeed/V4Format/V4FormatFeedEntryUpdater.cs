@@ -8,6 +8,7 @@ namespace GenerateToolingFeed.V4Format
     {
         private static readonly IDictionary<string, string> _dotnetToTemplatesPrefix = new Dictionary<string, string>()
         {
+            { "net8-isolated", "Microsoft.Azure.Functions.Worker" },
             { "net7-isolated", "Microsoft.Azure.Functions.Worker" },
             { "net6-isolated", "Microsoft.Azure.Functions.Worker" },
             { "net6", "Microsoft.Azure.WebJobs" },
