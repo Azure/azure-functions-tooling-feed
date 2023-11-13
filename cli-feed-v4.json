@@ -20489,7 +20489,8 @@
             "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated6.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+              "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED ": "1"
             },
             "windowsSiteConfig": {
               "netFrameworkVersion": "v6.0"
@@ -20524,7 +20525,8 @@
             "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated7.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+              "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED ": "1"
             },
             "windowsSiteConfig": {
               "netFrameworkVersion": "v7.0"
@@ -20559,7 +20561,8 @@
             "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated8.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+              "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED ": "1"
             },
             "windowsSiteConfig": {
               "netFrameworkVersion": "v8.0"
