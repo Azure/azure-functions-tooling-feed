@@ -41,12 +41,12 @@
       "hidden": false
     },
     "v4": {
-      "release": "4.63.0",
+      "release": "4.64.0",
       "releaseQuality": "GA",
       "hidden": false
     },
     "v4-prerelease": {
-      "release": "4.63.0",
+      "release": "4.64.0",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
