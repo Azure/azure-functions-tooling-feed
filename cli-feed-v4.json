@@ -22084,8 +22084,8 @@
             "toolingSuffix": "net5-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net5.0",
-            "itemTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ItemTemplates.NetCore.4.0.2941.nupkg",
-            "projectTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ProjectTemplates.4.0.2941.nupkg",
+            "itemTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.itemtemplates.netcore/4.0.2941/microsoft.azure.functions.worker.itemtemplates.netcore.4.0.2941.nupkg",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.projecttemplates/4.0.2941/microsoft.azure.functions.worker.projecttemplates.4.0.2941.nupkg",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -22119,8 +22119,8 @@
             "toolingSuffix": "net6-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ItemTemplates.NetCore.4.0.2941.nupkg",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2937",
+            "itemTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.itemtemplates.netcore/4.0.2941/microsoft.azure.functions.worker.itemtemplates.netcore.4.0.2941.nupkg",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.projecttemplates/4.0.2941/microsoft.azure.functions.worker.projecttemplates.4.0.2941.nupkg",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -22155,8 +22155,8 @@
             "toolingSuffix": "net7-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net7.0",
-            "itemTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ItemTemplates.NetCore.4.0.2941.nupkg",
-            "projectTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ProjectTemplates.4.0.2941.nupkg",
+            "itemTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.itemtemplates.netcore/4.0.2941/microsoft.azure.functions.worker.itemtemplates.netcore.4.0.2941.nupkg",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.projecttemplates/4.0.2941/microsoft.azure.functions.worker.projecttemplates.4.0.2941.nupkg",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -22191,8 +22191,8 @@
             "toolingSuffix": "net8-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net8.0",
-            "itemTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ItemTemplates.NetCore.4.0.2941.nupkg",
-            "projectTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ProjectTemplates.4.0.2941.nupkg",
+            "itemTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.itemtemplates.netcore/4.0.2941/microsoft.azure.functions.worker.itemtemplates.netcore.4.0.2941.nupkg",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.projecttemplates/4.0.2941/microsoft.azure.functions.worker.projecttemplates.4.0.2941.nupkg",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
@@ -22226,8 +22226,8 @@
             "toolingSuffix": "netfx-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net48",
-            "itemTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ItemTemplates.NetFx.4.0.2941.nupkg",
-            "projectTemplates": "https://azfunc.visualstudio.com/_apis/resources/Containers/29984196/drop?itemPath=drop%2FMicrosoft.Azure.Functions.Worker.ProjectTemplates.4.0.2941.nupkg",
+            "itemTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.itemtemplates.netfx/4.0.2941/microsoft.azure.functions.worker.itemtemplates.netfx.4.0.2941.nupkg",
+            "projectTemplates": "https://azfunc.pkgs.visualstudio.com/e6a70c92-4128-439f-8012-382fe78d6396/_packaging/1e0b47db-42dd-4931-a098-8cb031234dcc/nuget/v3/flat2/microsoft.azure.functions.worker.projecttemplates/4.0.2941/microsoft.azure.functions.worker.projecttemplates.4.0.2941.nupkg",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
