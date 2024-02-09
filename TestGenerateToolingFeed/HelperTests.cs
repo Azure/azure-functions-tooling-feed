@@ -10,30 +10,6 @@ namespace TestGenerateToolingFeed.V4Format
 {
     public class HelperTests
     {
-        public static JObject? getCliFeed(string version)
-        {
-            string url = string.Empty;
-            if (!string.IsNullOrEmpty(version))
-            {
-                url = $"https://raw.githubusercontent.com/Azure/azure-functions-tooling-feed/main/cli-feed-{version}.json";
-            }
-            using (var httpClient = new HttpClient())
-            {
-                var json = httpClient.GetStringAsync(url).GetAwaiter().GetResult();
-                if (version == "v3")
-                {
-                    var feed = JsonConvert.DeserializeObject<dynamic>(json);
-                    return feed;
-                }
-                else if (version == "v4")
-                {
-                    var feed = JsonConvert.DeserializeObject<dynamic>(json);
-                    return feed;
-                }
-            }
-            return null;
-        }
-
         [Theory]
         [InlineData("Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore", 4, "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore/4.0.2945")]
         [InlineData("Microsoft.Azure.Functions.Worker.ProjectTemplates", 4, "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.2945")]

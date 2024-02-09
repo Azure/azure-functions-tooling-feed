@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="V3Format\" />
+    <Folder Include="V4Format\" />
   </ItemGroup>
 
 </Project>
