@@ -69,7 +69,7 @@ namespace GenerateToolingFeed
             return File.ReadAllText(path);
         }
 
-        public static string GetLatestPackageVersion(string packageId, int cliMajor)
+        public static string GetLatestPackageVersion(string packageId, int cliMajor, string packageVersion = null)
         {
             string url = $"https://api.nuget.org/v3-flatcontainer/{packageId.ToLower()}/index.json";
             var response = HttpClient.GetStringAsync(url).Result;
@@ -77,20 +77,25 @@ namespace GenerateToolingFeed
 
             var versions = JsonConvert.DeserializeObject<IEnumerable<string>>(versionsObject["versions"].ToString());
 
+            
             var nuGetVersions = versions.Select(p =>
             {
-                if (NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion) && nuGetVersion.Major == cliMajor)
+                if (!string.IsNullOrEmpty(packageVersion) && string.Equals(p, packageVersion) && NuGetVersion.TryParse(p, out NuGetVersion nuGetVersion) && nuGetVersion.Major == cliMajor)
                 {
                     return nuGetVersion;
+                }
+                else if (NuGetVersion.TryParse(p, out NuGetVersion nuGetPackagerVersion) && nuGetPackagerVersion.Major == cliMajor)
+                {
+                    return nuGetPackagerVersion;
                 }
                 return null;
             }).Where(v => v != null);
             return nuGetVersions.OrderByDescending(p => p.Version).FirstOrDefault()?.ToString();
         }
 
-        public static string GetTemplateUrl(string packageId, int cliMajor)
+        public static string GetTemplateUrl(string packageId, int cliMajor, string packageVersion = null)
         {
-            string version = GetLatestPackageVersion(packageId, cliMajor);
+            string version = GetLatestPackageVersion(packageId, cliMajor, packageVersion);
             return $"https://www.nuget.org/api/v2/package/{packageId}/{version}";
         }
 
