@@ -93,6 +93,7 @@ namespace GenerateToolingFeed
             string version = GetLatestPackageVersion(packageId, cliMajor);
             return $"https://www.nuget.org/api/v2/package/{packageId}/{version}";
         }
+
         public static string GetRuntimeIdentifier(bool isMinified, string os, string architecture)
         {
             string rid = string.Empty;

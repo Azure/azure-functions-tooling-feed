@@ -6,17 +6,17 @@ namespace GenerateToolingFeed.V4Format
 {
     internal class V4FormatFeedEntryUpdater : IFeedEntryUpdater
     {
-        private static readonly IDictionary<string, List<string>> _dotnetToItemTemplatesPrefix = new Dictionary<string, List<string>>()
+        private static readonly IDictionary<string, string[]> _dotnetToItemTemplatesPrefix = new Dictionary<string, string[]>()
         {
-            { "net8-isolated", new List<string> { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net7-isolated", new List<string> { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net6-isolated", new List<string> { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net6", new List<string> { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "net5-isolated", new List<string> {"Microsoft.Azure.Functions.Worker" } },
-            { "netcore3", new List<string> { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netcore2", new List<string> { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netframework", new List<string> { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netfx-isolated", new List<string> { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" } }
+            { "net8-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
+            { "net7-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
+            { "net6-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
+            { "net6", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
+            { "net5-isolated", new string[] {"Microsoft.Azure.Functions.Worker" } },
+            { "netcore3", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
+            { "netcore2", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
+            { "netframework", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
+            { "netfx-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" } }
         };
 
         private static readonly IDictionary<string, string> _dotnetToProjectTemplatesPrefix = new Dictionary<string, string>()
@@ -75,7 +75,7 @@ namespace GenerateToolingFeed.V4Format
 
                 V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
-                if (!_dotnetToItemTemplatesPrefix.TryGetValue(dotnetEntryLabel, out List<string> itemTemplatePrefixes))
+                if (!_dotnetToItemTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string[] itemTemplatePrefixes))
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
                 }
