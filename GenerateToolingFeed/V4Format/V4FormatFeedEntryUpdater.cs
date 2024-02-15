@@ -6,17 +6,30 @@ namespace GenerateToolingFeed.V4Format
 {
     internal class V4FormatFeedEntryUpdater : IFeedEntryUpdater
     {
-        private static readonly IDictionary<string, string> _dotnetToTemplatesPrefix = new Dictionary<string, string>()
+        private static readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
-            { "net8-isolated", "Microsoft.Azure.Functions.Worker" },
-            { "net7-isolated", "Microsoft.Azure.Functions.Worker" },
-            { "net6-isolated", "Microsoft.Azure.Functions.Worker" },
-            { "net6", "Microsoft.Azure.WebJobs" },
-            { "net5-isolated", "Microsoft.Azure.Functions.Worker" },
-            { "netcore3", "Microsoft.Azure.WebJobs" },
-            { "netcore2", "Microsoft.Azure.WebJobs" },
-            { "netframework", "Microsoft.Azure.WebJobs" },
-            { "netfx-isolated", "Microsoft.Azure.Functions.Worker" }
+            { "net8-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
+            { "net7-isolated",  "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"  },
+            { "net6-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"},
+            { "net6", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "net5-isolated", "Microsoft.Azure.Functions.Worker"},
+            { "netcore3", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netcore2", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netframework", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" }
+        };
+
+        private static readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
+        {
+            { "net8-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
+            { "net7-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
+            { "net6-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
+            { "net6", "Microsoft.Azure.WebJobs.ProjectTemplates" },
+            { "net5-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
+            { "netcore3", "Microsoft.Azure.WebJobs.ProjectTemplates" },
+            { "netcore2", "Microsoft.Azure.WebJobs.ProjectTemplates" },
+            { "netframework", "Microsoft.Azure.WebJobs.ProjectTemplates" },
+            { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" }
         };
 
         public JObject GetUpdatedFeedEntry(JObject feed, CoreToolsInfo coreToolsInfo)
@@ -62,13 +75,18 @@ namespace GenerateToolingFeed.V4Format
 
                 V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
-                if (!_dotnetToTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string templatePrefix))
+                if (!_dotnetToItemTemplates.TryGetValue(dotnetEntryLabel, out string itemTemplates))
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
                 }
-
-                dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{templatePrefix}.ItemTemplates", coreToolsMajor);
-                dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{templatePrefix}.ProjectTemplates", coreToolsMajor);
+                
+                dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{itemTemplates}", coreToolsMajor);
+                
+                if (!_dotnetToProjectTemplates.TryGetValue(dotnetEntryLabel, out string projecTemplate))
+                {
+                    throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
+                }
+                dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{projecTemplate}", coreToolsMajor);
 
                 Helper.MergeObjectToJToken(dotnetEntryToken, dotnetEntry);
             }
