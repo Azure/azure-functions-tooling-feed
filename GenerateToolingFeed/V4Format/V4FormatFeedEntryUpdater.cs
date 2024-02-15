@@ -6,20 +6,20 @@ namespace GenerateToolingFeed.V4Format
 {
     internal class V4FormatFeedEntryUpdater : IFeedEntryUpdater
     {
-        private static readonly IDictionary<string, string[]> _dotnetToItemTemplatesPrefix = new Dictionary<string, string[]>()
+        private static readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
-            { "net8-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net7-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net6-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" } },
-            { "net6", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "net5-isolated", new string[] {"Microsoft.Azure.Functions.Worker" } },
-            { "netcore3", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netcore2", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netframework", new string[] { "Microsoft.Azure.WebJobs.ItemTemplates" } },
-            { "netfx-isolated", new string[] { "Microsoft.Azure.Functions.Worker.ItemTemplates", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" } }
+            { "net8-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
+            { "net7-isolated",  "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"  },
+            { "net6-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"},
+            { "net6", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "net5-isolated", "Microsoft.Azure.Functions.Worker"},
+            { "netcore3", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netcore2", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netframework", "Microsoft.Azure.WebJobs.ItemTemplates" },
+            { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" }
         };
 
-        private static readonly IDictionary<string, string> _dotnetToProjectTemplatesPrefix = new Dictionary<string, string>()
+        private static readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
         {
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net7-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
@@ -75,21 +75,18 @@ namespace GenerateToolingFeed.V4Format
 
                 V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
-                if (!_dotnetToItemTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string[] itemTemplatePrefixes))
+                if (!_dotnetToItemTemplates.TryGetValue(dotnetEntryLabel, out string itemTemplates))
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
                 }
                 
-                foreach(var itemTemplatesPrefix in itemTemplatePrefixes)
-                {
-                    dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{itemTemplatesPrefix}", coreToolsMajor);
-                }
+                dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{itemTemplates}", coreToolsMajor);
                 
-                if (!_dotnetToProjectTemplatesPrefix.TryGetValue(dotnetEntryLabel, out string projecTemplatePrefix))
+                if (!_dotnetToProjectTemplates.TryGetValue(dotnetEntryLabel, out string projecTemplate))
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
                 }
-                dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{projecTemplatePrefix}", coreToolsMajor);
+                dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{projecTemplate}", coreToolsMajor);
 
                 Helper.MergeObjectToJToken(dotnetEntryToken, dotnetEntry);
             }
