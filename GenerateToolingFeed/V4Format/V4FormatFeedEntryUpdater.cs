@@ -12,7 +12,7 @@ namespace GenerateToolingFeed.V4Format
             { "net7-isolated",  "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"  },
             { "net6-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"},
             { "net6", "Microsoft.Azure.WebJobs.ItemTemplates" },
-            { "net5-isolated", "Microsoft.Azure.Functions.Worker"},
+            { "net5-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates"},
             { "netcore3", "Microsoft.Azure.WebJobs.ItemTemplates" },
             { "netcore2", "Microsoft.Azure.WebJobs.ItemTemplates" },
             { "netframework", "Microsoft.Azure.WebJobs.ItemTemplates" },
