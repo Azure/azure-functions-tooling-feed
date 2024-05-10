@@ -13,9 +13,9 @@ namespace GenerateToolingFeed
     {
         private static readonly Dictionary<string, FeedFormat> _feedNameToFormat = new Dictionary<string, FeedFormat>()
         {
-            { Constants.FeedAllVersions, FeedFormat.V3 },
-            { Constants.FeedV1AndV2Only, FeedFormat.V3 },
-            { Constants.FeedV4FormatAllVersions, FeedFormat.V4 }
+            { Constants.CliFeedV3, FeedFormat.V3 }, // update this feed for Functions v2 only.
+            { Constants.CliFeedV32, FeedFormat.V3 }, // update this feed for Functions v2 and v3
+            { Constants.CliFeedV4, FeedFormat.V4 }, // update v4 format feed for Functions v2, v3 and v4
         };
 
         static void Main(string[] args)
@@ -28,14 +28,14 @@ namespace GenerateToolingFeed
                 // update this feed for Functions v2 only.
                 if (ver.Major == 2)
                 {
-                    GenerateNewFeed(Constants.FeedV1AndV2Only, coreToolsInfo);
+                    GenerateNewFeed(Constants.CliFeedV32, coreToolsInfo);
                 }
 
                 // update this feed for Functions v2 and v3
-                GenerateNewFeed(Constants.FeedAllVersions, coreToolsInfo);
+                GenerateNewFeed(Constants.CliFeedV3, coreToolsInfo);
 
-                // update v4 format feed for Functions v2 and v3
-                GenerateNewFeed(Constants.FeedV4FormatAllVersions, coreToolsInfo);
+                // update v4 format feed for Functions v2, v3 and v4
+                GenerateNewFeed(Constants.CliFeedV4, coreToolsInfo);
             }
             else
             {
@@ -66,10 +66,21 @@ namespace GenerateToolingFeed
         {
             try
             {
-                // Get a cloned object to not modify the exisiting release
-                JObject currentReleaseEntryJson = GetCurrentReleaseEntry(feed, coreToolsInfo.MajorVersion).DeepClone() as JObject;
-                JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo);
-                return TryAddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion);
+                List<string> tags = Helper.GetTagsFromMajorVersion(coreToolsInfo.MajorVersion);
+
+                bool result = true;
+                foreach (string tag in tags)
+                {
+                    string releaseVersion = Helper.GetReleaseVersionFromTag(feed, tag);
+
+                    // Get a cloned object to not modify the exisiting release
+                    JObject currentReleaseEntryJson = feed["releases"][releaseVersion].DeepClone() as JObject;
+
+                    JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo, tag);
+
+                    result &= TryAddNewReleaseToFeed(feed, newReleaseEntryJson, coreToolsInfo.MajorVersion, tag);
+                }
+                return result;
             }
             catch
             {
@@ -77,37 +88,29 @@ namespace GenerateToolingFeed
             }
         }
 
-        private static JObject GetNewReleaseEntryJson(JObject currentReleaseEntry, FeedFormat format, CoreToolsInfo coreToolsInfo)
+        private static JObject GetNewReleaseEntryJson(JObject currentReleaseEntry, FeedFormat format, CoreToolsInfo coreToolsInfo, string tag)
         {
-            IFeedEntryUpdater feedEntryUpdater = FeedEntryUpdaterFactory.GetFeedEntryUpdater(format);
+            IFeedEntryUpdater feedEntryUpdater = FeedEntryUpdaterFactory.GetFeedEntryUpdater(format, tag);
             return feedEntryUpdater.GetUpdatedFeedEntry(currentReleaseEntry, coreToolsInfo);
         }
 
-        private static bool TryAddNewReleaseToFeed(JObject feed, JObject newRelease, int majorVersion)
+        private static bool TryAddNewReleaseToFeed(JObject feed, JObject newRelease, int majorVersion, string tag)
         {
             JObject feedReleases = feed["releases"] as JObject;
-            string newReleaseVersion = Helper.GetReleaseVersion(feedReleases, majorVersion);
+            string newReleaseVersion = Helper.GetNewReleaseVersion(feedReleases, majorVersion);
 
             if (newReleaseVersion == null)
             {
                 return false;
             }
 
-            feedReleases.Add(newReleaseVersion, newRelease);
-            UpdateFeedTagToNewVersion(feed, majorVersion, newReleaseVersion);
-            return true;
-        }
+            string versionSuffix = Constants.ReleaseVersionSuffix.ContainsKey(tag) ? Constants.ReleaseVersionSuffix[tag] : string.Empty;
+            newReleaseVersion = $"{newReleaseVersion}{versionSuffix}";
 
-        private static void UpdateFeedTagToNewVersion(JObject feed, int majorVersion, string newVersion)
-        {
-            string prereleaseTag = majorVersion switch
-            {
-                2 => "v2-prerelease",
-                3 => "v3-prerelease",
-                4 => "v4-prerelease",
-                _ => throw new ArgumentException($"Major version {majorVersion} is not supported.", nameof(majorVersion))
-            };
-            feed["tags"][prereleaseTag]["release"] = newVersion;
+            feedReleases.Add(newReleaseVersion, newRelease);
+            string prereleaseTag = $"{tag}-prerelease";
+            feed["tags"][prereleaseTag]["release"] = newReleaseVersion;
+            return true;
         }
 
         private static void WriteToJsonFile(JObject content, string path)
@@ -123,14 +126,6 @@ namespace GenerateToolingFeed
             string path = Path.Combine(Directory.GetCurrentDirectory(), "..", feedName);
             string feedContent = File.ReadAllText(path);
             return JObject.Parse(feedContent);
-        }
-
-        private static JObject GetCurrentReleaseEntry(JObject feed, int majorVersion)
-        {
-            string tag = Helper.GetTagFromMajorVersion(majorVersion);
-            string releaseVersion = Helper.GetReleaseVersionFromTag(feed, tag);
-
-            return feed["releases"][releaseVersion] as JObject;
         }
 
         private static string GetCliVersion(string path)

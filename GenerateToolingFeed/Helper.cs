@@ -14,31 +14,51 @@ namespace GenerateToolingFeed
     {
         public static System.Net.Http.HttpClient HttpClient => _lazyClient.Value;
 
-        public static string GetDownloadLink(string os, string architecture, string cliVersion, bool isMinified = false)
+        public static string newReleaseVersion = string.Empty;
+
+        public static string GetDownloadLink(string os, string architecture, string cliVersion, bool isMinified = false, string linkSuffix = "")
         {
-            string rid = string.Empty;
-            if (isMinified)
-            {
-                rid = "min.";
-            }
+            string rid = isMinified ? "min." : string.Empty;
+
             rid += GetRuntimeIdentifier(false, os, architecture);
-            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}.{cliVersion}.zip";
+            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}.{cliVersion}{linkSuffix}.zip";
 
-            // bypassing validation for now
-
-            if (!IsValidDownloadLink(url))
+            string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
+            if (bypassDownloadLinkValidation != "1" && !IsValidDownloadLink(url))
             {
                 throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
             }
             return url;
         }
 
-        public static string GetReleaseVersion(JToken jToken, int majorReleaseVersion)
+        public static void UpdateCoreToolsReferences(V4FormatCliEntry[] cliEntries, string coreToolsArtifactsDirectory, string cliVersion, string linkSuffix)
         {
+            foreach (var cliEntry in cliEntries)
+            {
+                bool minified = ShouldBeMinified(cliEntry);
+
+                cliEntry.sha2 = GetShaFileContent(cliEntry.OS, cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified);
+                cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, cliVersion, minified, linkSuffix);
+            }
+        }
+
+        public static bool ShouldBeMinified(V4FormatCliEntry cliEntry)
+        {
+            return !string.IsNullOrEmpty(cliEntry.size)
+                && string.Equals(cliEntry.size, "minified", StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static string GetNewReleaseVersion(JToken jToken, int majorReleaseVersion)
+        {
+            if (!string.IsNullOrEmpty(newReleaseVersion))
+            {
+                return newReleaseVersion;
+            }
+
             List<String> versions = new List<string>();
             foreach (JProperty item in jToken)
             {
-                string name = item.Name;
+                string name = item.Name.Split("-").First();
                 if (name.StartsWith($"{majorReleaseVersion}."))
                 {
                     versions.Add(item.Name);
@@ -57,7 +77,8 @@ namespace GenerateToolingFeed
             }).Where(v => v != null);
             var maxVersion = nuGetVersions.OrderByDescending(p => p).FirstOrDefault();
             Version releaseVersion = new Version(maxVersion.Major, maxVersion.Minor + 1, 0);
-            return releaseVersion.ToString();
+            newReleaseVersion = releaseVersion.ToString();
+            return newReleaseVersion;
         }
 
         public static string GetShaFileContent(string os, string architecture, string cliVersion, string filePath, bool isMinified = false)
@@ -166,11 +187,11 @@ namespace GenerateToolingFeed
             return releaseVersion;
         }
 
-        public static string GetTagFromMajorVersion(int majorVersion) => majorVersion switch
+        public static List<string> GetTagsFromMajorVersion(int majorVersion) => majorVersion switch
         {
-            2 => "v2",
-            3 => "v3",
-            4 => "v4",
+            2 => ["v2"],
+            3 => ["v3"],
+            4 => ["v4", "v0"],
             _ => throw new ArgumentNullException($"{majorVersion} is not a supported version.", nameof(majorVersion))
         };
     }
