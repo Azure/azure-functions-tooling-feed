@@ -20,8 +20,15 @@ namespace GenerateToolingFeed
                 { "arm64" ,"arm64" }
             };
 
-        public const string FeedAllVersions = "cli-feed-v3.json";
-        public const string FeedV4FormatAllVersions = "cli-feed-v4.json";
-        public const string FeedV1AndV2Only = "cli-feed-v3-2.json";
+        public const string CliFeedV3 = "cli-feed-v3.json";
+        public const string CliFeedV4 = "cli-feed-v4.json";
+        public const string CliFeedV32 = "cli-feed-v3-2.json";
+
+        public static readonly IDictionary<string, string> ReleaseVersionSuffix = new Dictionary<string, string>()
+        {
+            {
+                "v0", "-inprocess"
+            }
+        };
     }
 }

@@ -6,8 +6,11 @@ namespace GenerateToolingFeed.V4Format
 {
     internal class V4FormatFeedEntryUpdater : IFeedEntryUpdater
     {
-        private static readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
+        private readonly string _tag;
+
+        private readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
+            { "net8", "Microsoft.Azure.WebJobs.ItemTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
             { "net7-isolated",  "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"  },
             { "net6-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"},
@@ -19,8 +22,9 @@ namespace GenerateToolingFeed.V4Format
             { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" }
         };
 
-        private static readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
+        private readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
         {
+            { "net8", "Microsoft.Azure.WebJobs.ProjectTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net7-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net6-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
@@ -32,11 +36,24 @@ namespace GenerateToolingFeed.V4Format
             { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" }
         };
 
+        private readonly IDictionary<string, string> _linkSuffix = new Dictionary<string, string>()
+        {
+            {
+                "v0", "_net8.0"
+            }
+        };
+
+        public V4FormatFeedEntryUpdater(string tag)
+        {
+            _tag = tag;
+        }
+
         public JObject GetUpdatedFeedEntry(JObject feed, CoreToolsInfo coreToolsInfo)
         {
             V4FormatFeedEntry feedEntry = feed.ToObject<V4FormatFeedEntry>();
 
-            UpdateCoreToolsReferences(feedEntry.coreTools, coreToolsInfo.ArtifactsDirectory, coreToolsInfo.Version);
+            string linkSuffix = _linkSuffix.ContainsKey(_tag) ? _linkSuffix[_tag] : string.Empty;
+            Helper.UpdateCoreToolsReferences(feedEntry.coreTools, coreToolsInfo.ArtifactsDirectory, coreToolsInfo.Version, linkSuffix);
             UpdateDotnetTemplatesToLatest(feedEntry.workerRuntimes, coreToolsInfo.MajorVersion);
 
             Helper.MergeObjectToJToken(feed, feedEntry);
@@ -44,24 +61,7 @@ namespace GenerateToolingFeed.V4Format
             return feed;
         }
 
-        private static void UpdateCoreToolsReferences(V4FormatCliEntry[] cliEntries, string coreToolsArtifactsDirectory, string cliVersion)
-        {
-            foreach (var cliEntry in cliEntries)
-            {
-                bool minified = ShouldBeMinified(cliEntry);
-
-                cliEntry.sha2 = Helper.GetShaFileContent(cliEntry.OS, cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified);
-                cliEntry.downloadLink = Helper.GetDownloadLink(cliEntry.OS, cliEntry.Architecture, cliVersion, minified);
-            }
-        }
-
-        private static bool ShouldBeMinified(V4FormatCliEntry cliEntry)
-        {
-            return !string.IsNullOrEmpty(cliEntry.size)
-                && string.Equals(cliEntry.size, "minified", StringComparison.OrdinalIgnoreCase);
-        }
-
-        private static void UpdateDotnetTemplatesToLatest(IDictionary<string, IDictionary<string, object>> workerRuntimes, int coreToolsMajor)
+        private void UpdateDotnetTemplatesToLatest(IDictionary<string, IDictionary<string, object>> workerRuntimes, int coreToolsMajor)
         {
             if (!workerRuntimes.TryGetValue("dotnet", out IDictionary<string, object> dotnetInfo))
             {
@@ -79,9 +79,9 @@ namespace GenerateToolingFeed.V4Format
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
                 }
-                
+
                 dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{itemTemplates}", coreToolsMajor);
-                
+
                 if (!_dotnetToProjectTemplates.TryGetValue(dotnetEntryLabel, out string projecTemplate))
                 {
                     throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
