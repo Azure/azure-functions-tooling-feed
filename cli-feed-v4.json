@@ -24738,7 +24738,7 @@
               "displayVersion": "v4",
               "targetFramework": ".NET",
               "description": "LTS",
-              "endOfLifeDate": "2026-11-12T00:00:00Z"
+              "endOfLifeDate": "2026-11-10T00:00:00Z"
             },
             "capabilities": "net8",
             "sdk": {
