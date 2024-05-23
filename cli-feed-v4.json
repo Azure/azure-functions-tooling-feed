@@ -51,12 +51,12 @@
       "hidden": true
     },
     "v0": {
-      "release": "4.77.0-inprocess",
+      "release": "4.78.0-inprocess",
       "releaseQuality": "GA",
       "hidden": true
     },
     "v0-prerelease": {
-      "release": "4.77.0-inprocess",
+      "release": "4.78.0-inprocess",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
