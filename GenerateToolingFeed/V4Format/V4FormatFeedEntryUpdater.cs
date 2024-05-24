@@ -39,7 +39,7 @@ namespace GenerateToolingFeed.V4Format
         private readonly IDictionary<string, string> _linkSuffix = new Dictionary<string, string>()
         {
             {
-                "v0", "_net8.0"
+                "v0", "_net8"
             }
         };
 

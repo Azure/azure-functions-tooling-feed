@@ -21,7 +21,7 @@ namespace GenerateToolingFeed
             string rid = isMinified ? "min." : string.Empty;
 
             rid += GetRuntimeIdentifier(false, os, architecture);
-            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}.{cliVersion}{linkSuffix}.zip";
+            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}{linkSuffix}.{cliVersion}.zip";
 
             string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
             if (bypassDownloadLinkValidation != "1" && !IsValidDownloadLink(url))
