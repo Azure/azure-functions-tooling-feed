@@ -41,7 +41,7 @@
       "hidden": false
     },
     "v4": {
-      "release": "4.75.1",
+      "release": "4.82.0",
       "releaseQuality": "GA",
       "hidden": false
     },
@@ -51,7 +51,7 @@
       "hidden": true
     },
     "v0": {
-      "release": "4.81.0-inprocess",
+      "release": "4.82.0-inprocess",
       "releaseQuality": "GA",
       "hidden": false
     },
