@@ -37,7 +37,7 @@ namespace GenerateToolingFeed
             {
                 bool minified = ShouldBeMinified(cliEntry);
 
-                cliEntry.sha2 = GetShaFileContent(cliEntry.OS, cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified);
+                cliEntry.sha2 = GetShaFileContent(cliEntry.OS, cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified, linkSuffix);
                 cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, cliVersion, minified, linkSuffix);
             }
         }
@@ -81,10 +81,10 @@ namespace GenerateToolingFeed
             return newReleaseVersion;
         }
 
-        public static string GetShaFileContent(string os, string architecture, string cliVersion, string filePath, bool isMinified = false)
+        public static string GetShaFileContent(string os, string architecture, string cliVersion, string filePath, bool isMinified = false, string linkSuffix = "")
         {
             string rid = GetRuntimeIdentifier(isMinified, os, architecture);
-            string fileName = $"Azure.Functions.Cli.{rid}.{cliVersion}.zip.sha2";
+            string fileName = $"Azure.Functions.Cli.{rid}{linkSuffix}.{cliVersion}.zip.sha2";
 
             string path = Path.Combine(filePath, fileName);
             return File.ReadAllText(path);
