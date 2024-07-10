@@ -27240,10 +27240,10 @@
           "net9-isolated": {
             "displayInfo": {
               "displayName": ".NET 9.0",
-              "hidden": false,
+              "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 9",
-              "description": "Isolated LTS",
+              "description": "Isolated",
               "endOfLifeDate": "2026-11-12T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9",
