@@ -56,7 +56,7 @@
       "hidden": false
     },
     "v0-prerelease": {
-      "release": "4.84.0-inprocess",
+      "release": "4.83.0-inprocess",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
@@ -27360,103 +27360,6 @@
           "Architecture": "arm64",
           "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.min.win-arm64.4.0.5907.zip",
           "sha2": "f3145ceaa1568b56c089222c7ab304e0ecaa1962d8a3f5614bdf69458e20e9aa",
-          "size": "minified",
-          "default": "false"
-        }
-      ]
-    },
-    "4.84.0-inprocess": {
-      "templates": "https://functionscdn.azureedge.net/public/TemplatesApi/3.1.1648.zip",
-      "workerRuntimes": {
-        "dotnet": {
-          "net8": {
-            "displayInfo": {
-              "displayName": ".NET 8.0",
-              "hidden": false,
-              "displayVersion": "v4",
-              "targetFramework": ".NET",
-              "description": "LTS",
-              "endOfLifeDate": "2026-11-10T00:00:00Z"
-            },
-            "capabilities": "net8",
-            "sdk": {
-              "name": "Microsoft.NET.Sdk.Functions",
-              "version": "4.4.0"
-            },
-            "default": true,
-            "toolingSuffix": "net8-in-process",
-            "localEntryPoint": "func.exe",
-            "targetFramework": "net8.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.3038",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.3038",
-            "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
-            },
-            "serviceAppSettings": {
-              "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-              "FUNCTIONS_INPROC_NET8_ENABLED": "1"
-            },
-            "windowsSiteConfig": {
-              "netFrameworkVersion": "v8.0"
-            }
-          }
-        }
-      },
-      "coreTools": [
-        {
-          "OS": "Linux",
-          "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.linux-x64_net8.4.0.5907.zip",
-          "sha2": "50247a8e3ecca3428344ac337cbcd5aa4b273a4d7e25574cd95cb80c8a7f033a",
-          "size": "full",
-          "default": "false"
-        },
-        {
-          "OS": "MacOS",
-          "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.osx-x64_net8.4.0.5907.zip",
-          "sha2": "6a6a80008d17e53545f0553ad2bf0090065ad7cf9ff50fae33015a4222ac6ec2",
-          "size": "full",
-          "default": "false"
-        },
-        {
-          "OS": "MacOS",
-          "Architecture": "arm64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.osx-arm64_net8.4.0.5907.zip",
-          "sha2": "dfd30b6ceff48c0fb765a272a8ee0f5492f4cbb0e645c9f8313a40d4a79f6c46",
-          "size": "full",
-          "default": "false"
-        },
-        {
-          "OS": "Windows",
-          "Architecture": "x64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.min.win-x64_net8.4.0.5907.zip",
-          "sha2": "ee69142c5cb79d254af57ea445ff2648f4d4448eb19b86049b3b3844ed3ab783",
-          "size": "minified",
-          "default": "false"
-        },
-        {
-          "OS": "Windows",
-          "Architecture": "x86",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.win-x86_net8.4.0.5907.zip",
-          "sha2": "bbef603826952ec41cad616a9cf8d10b33b5d5d3544cb614144a3013bc13eb2a",
-          "size": "full",
-          "default": "false"
-        },
-        {
-          "OS": "Windows",
-          "Architecture": "x86",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.min.win-x86_net8.4.0.5907.zip",
-          "sha2": "070d9a4a681801b7dcfa40f7c4221e16f86c9c09b4f1745858555bf5ec5b1167",
-          "size": "minified",
-          "default": "true"
-        },
-        {
-          "OS": "Windows",
-          "Architecture": "arm64",
-          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.5907/Azure.Functions.Cli.min.win-arm64_net8.4.0.5907.zip",
-          "sha2": "ac6e0c33923439c5c34bf75d8c59ff08a1492ca7b6b2ae0f5320603eb8d5e97b",
           "size": "minified",
           "default": "false"
         }
