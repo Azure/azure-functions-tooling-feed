@@ -48,7 +48,7 @@
     "v4-prerelease": {
       "release": "4.84.0",
       "releaseQuality": "Prerelease",
-      "hidden": true
+      "hidden": false
     },
     "v0": {
       "release": "4.83.0-inprocess",
@@ -27172,7 +27172,7 @@
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
               "description": "Isolated",
-              "endOfLifeDate": "2024-05-10T00:00:00Z"
+              "endOfLifeDate": "2024-05-11T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7",
             "sdk": {
@@ -27240,11 +27240,11 @@
           "net9-isolated": {
             "displayInfo": {
               "displayName": ".NET 9.0",
-              "hidden": true,
+              "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 9",
               "description": "Isolated",
-              "endOfLifeDate": "2026-11-12T00:00:00Z"
+              "endOfLifeDate": "2026-05-12T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9",
             "sdk": {
