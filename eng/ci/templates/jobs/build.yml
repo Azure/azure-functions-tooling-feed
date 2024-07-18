@@ -1,13 +1,14 @@
-name: $(Build.SourceBranchName)_CoreToolsBranch_$(coretoolsBranch)_$(Build.Reason).$(Build.BuildId)
+jobs:
+- job: Build
+  displayName: Build and publish feed
 
-pr:
-- main
-
-trigger:
-- main
-
-pool:
-  vmImage: 'windows-latest'
+  templateContext:
+    outputParentDirectory: $(Build.ArtifactStagingDirectory)
+    outputs:
+    - output: pipelineArtifact
+      displayName: Publish bundles
+      path: $(Build.ArtifactStagingDirectory)
+      artifact: zip
 
 steps:
 - task: UseDotNet@2 # The pinned SDK we use to build
@@ -54,9 +55,3 @@ steps:
     Contents: '*cli-feed-v4.json'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: false
-- task: PublishBuildArtifacts@1
-  displayName: Publish feed artifacts
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
