@@ -1,6 +1,6 @@
 jobs:
 - job: Build
-  displayName: Build and publish feed
+  displayName: Build and publish feed generator tool
 
   templateContext:
     outputParentDirectory: $(Build.ArtifactStagingDirectory)
@@ -8,7 +8,7 @@ jobs:
     - output: pipelineArtifact
       displayName: Publish bundles
       path: $(Build.ArtifactStagingDirectory)
-      artifact: zip
+      artifact: feed-generator
 
   steps:
   - task: UseDotNet@2 # The pinned SDK we use to build
@@ -16,42 +16,11 @@ jobs:
     inputs:
       packageType: sdk
       useGlobalJson: true
-  - task: DownloadPipelineArtifact@2
-    displayName: Download Core Tools artifacts
-    inputs:
-      buildType: 'specific'
-      project: 'e6a70c92-4128-439f-8012-382fe78d6396'
-      pipeline: '11'
-      specificBuildWithTriggering: true
-      buildVersionToDownload: 'latestFromBranch'
-      branchName: 'refs/heads/$(coretoolsBranch)'
-      downloadType: 'specific'
-      itemPattern: '**/?(A*.sha2|Azure.Functions.Cli.win-x64*.zip)'
-      downloadPath: '$(Build.Repository.LocalPath)\artifacts'
   - task: DotNetCoreCLI@2
-    displayName: Generate Tooling feed
+    displayName: Build feed generator tool
     inputs:
-      command: 'run'
-      arguments: '$(Build.Repository.LocalPath)\artifacts\drop'
-      workingDirectory: '$(Build.Repository.LocalPath)\GenerateToolingFeed'
-  - task: CopyFiles@2
-    displayName: Copy cli-feed-v3.json
-    inputs:
-      SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
-      Contents: '*cli-feed-v3.json'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      CleanTargetFolder: true
-  - task: CopyFiles@2
-    displayName: Copy cli-feed-v3-2.json
-    inputs:
-      SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
-      Contents: '*cli-feed-v3-2.json'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      CleanTargetFolder: false
-  - task: CopyFiles@2
-    displayName: Copy cli-feed-v4.json
-    inputs:
-      SourceFolder: '$(Build.Repository.LocalPath)\artifacts\drop'
-      Contents: '*cli-feed-v4.json'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      CleanTargetFolder: false
+      command: 'publish'
+      publishWebProjects: false
+      projects: '$(Build.Repository.LocalPath)/GenerateToolingFeed/*.csproj'
+      arguments: '-o $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: false
