@@ -48,7 +48,7 @@
     "v4-prerelease": {
       "release": "4.84.0",
       "releaseQuality": "Prerelease",
-      "hidden": false
+      "hidden": true
     },
     "v0": {
       "release": "4.83.0-inprocess",
@@ -27172,7 +27172,7 @@
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
               "description": "Isolated",
-              "endOfLifeDate": "2024-05-11T00:00:00Z"
+              "endOfLifeDate": "2024-05-10T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7",
             "sdk": {
@@ -27243,7 +27243,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 9",
-              "description": "Isolated",
+              "description": "Isolated Preview",
               "endOfLifeDate": "2026-05-12T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9",
@@ -27260,7 +27260,7 @@
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
             },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated8.0-appservice",
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated9.0-appservice",
             "serviceAppSettings": {
               "FUNCTIONS_EXTENSION_VERSION": "~4",
               "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
