@@ -27240,7 +27240,7 @@
           "net9-isolated": {
             "displayInfo": {
               "displayName": ".NET 9.0",
-              "hidden": false,
+              "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 9",
               "description": "Isolated Preview",
