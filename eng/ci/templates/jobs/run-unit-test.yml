@@ -1,0 +1,8 @@
+jobs:
+- job: verifyJson
+  displayName: Verify Json
+
+  steps:
+  - task: PowerShell@2
+    inputs:
+      filePath: '.\verifyJson.ps1'
