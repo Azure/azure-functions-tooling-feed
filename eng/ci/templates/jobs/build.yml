@@ -6,7 +6,7 @@ jobs:
     outputParentDirectory: $(Build.ArtifactStagingDirectory)
     outputs:
     - output: pipelineArtifact
-      displayName: Publish bundles
+      displayName: Publish feed generator tool
       path: $(Build.ArtifactStagingDirectory)
       artifact: feed-generator
 
