@@ -27248,7 +27248,7 @@
             "capabilities": "isolated,net6,net7,net8,net9",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.16.2"
+              "version": "1.18.0-preview1-20240723.1"
             },
             "default": false,
             "toolingSuffix": "net9-isolated",
