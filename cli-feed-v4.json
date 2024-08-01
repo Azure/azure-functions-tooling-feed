@@ -27468,41 +27468,6 @@
               "linuxFxVersion": "DOTNET|6.0"
             }
           },
-          "net5-isolated": {
-            "displayInfo": {
-              "displayName": ".NET 5.0",
-              "hidden": true,
-              "displayVersion": "v4",
-              "targetFramework": ".NET 5",
-              "description": "Isolated",
-              "endOfLifeDate": "2022-05-10T00:00:00Z"
-            },
-            "capabilities": "isolated,net5,net6",
-            "sdk": {
-              "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.3.0"
-            },
-            "default": false,
-            "toolingSuffix": "net5-isolated",
-            "localEntryPoint": "dotnet.exe",
-            "targetFramework": "net5.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates/4.0.3038",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.3038",
-            "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
-            },
-            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated5.0-appservice",
-            "serviceAppSettings": {
-              "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
-            },
-            "windowsSiteConfig": {
-              "netFrameworkVersion": "v4.0"
-            },
-            "linuxSiteConfig": {
-              "linuxFxVersion": "DOTNET-ISOLATED|5.0"
-            }
-          },
           "net6-isolated": {
             "displayInfo": {
               "displayName": ".NET 6.0",
