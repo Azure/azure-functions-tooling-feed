@@ -10,6 +10,7 @@ namespace GenerateToolingFeed.V4Format
 
         private readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
+            { "net9-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
             { "net8", "Microsoft.Azure.WebJobs.ItemTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
             { "net7-isolated",  "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore"  },
@@ -24,6 +25,7 @@ namespace GenerateToolingFeed.V4Format
 
         private readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
         {
+            { "net9-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net8", "Microsoft.Azure.WebJobs.ProjectTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net7-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
