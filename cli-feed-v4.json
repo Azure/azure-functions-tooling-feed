@@ -28438,7 +28438,7 @@
               "name": "Microsoft.NET.Sdk.Functions",
               "version": "4.1.1"
             },
-            "default": true,
+            "default": false,
             "localEntryPoint": "func.exe",
             "targetFramework": "net6.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.5006",
