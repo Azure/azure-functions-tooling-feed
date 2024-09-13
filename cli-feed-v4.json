@@ -28539,7 +28539,7 @@
               "name": "Microsoft.NET.Sdk.Functions",
               "version": "4.1.1"
             },
-            "default": true,
+            "default": false,
             "localEntryPoint": "func.exe",
             "targetFramework": "net6.0",
             "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.5022",
@@ -28680,7 +28680,7 @@
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
               "version": "1.16.2"
             },
-            "default": false,
+            "default": true,
             "toolingSuffix": "net8-isolated",
             "localEntryPoint": "dotnet.exe",
             "targetFramework": "net8.0",
