@@ -13,7 +13,7 @@
     "v2": {
       "release": "2.60.0",
       "releaseQuality": "GA",
-      "hidden": false
+      "hidden": true
     },
     "v2-prerelease": {
       "release": "2.60.1",
@@ -40,16 +40,6 @@
       "releaseQuality": "GA",
       "hidden": false
     },
-    "v4": {
-      "release": "4.91.0",
-      "releaseQuality": "GA",
-      "hidden": false
-    },
-    "v4-prerelease": {
-      "release": "4.91.0",
-      "releaseQuality": "Prerelease",
-      "hidden": true
-    },
     "v0": {
       "release": "4.91.0-inprocess",
       "releaseQuality": "GA",
@@ -57,6 +47,16 @@
     },
     "v0-prerelease": {
       "release": "4.91.0-inprocess",
+      "releaseQuality": "Prerelease",
+      "hidden": true
+    },
+    "v4": {
+      "release": "4.91.0",
+      "releaseQuality": "GA",
+      "hidden": false
+    },
+    "v4-prerelease": {
+      "release": "4.91.0",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
@@ -2924,8 +2924,10 @@
             "displayInfo": {
               "displayName": ".NET Framework",
               "hidden": false,
-              "displayVersion": "v1",
-              "targetFramework": ".NET Framework"
+              "description": "in-process model",
+              "displayVersion": "- v1",
+              "targetFramework": ".NET Framework",
+              "endOfLifeDate": "2026-09-14T00:00:00Z"
             },
             "capabilities": "",
             "sdk": {
@@ -29734,7 +29736,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "LTS",
+              "description": "- in-process model LTS",
               "endOfLifeDate": "2024-11-12T00:00:00Z"
             },
             "capabilities": "net6",
@@ -29762,13 +29764,44 @@
               "linuxFxVersion": "DOTNET|6.0"
             }
           },
+          "netfx-isolated": {
+            "displayInfo": {
+              "displayName": ".NET Framework 4.8",
+              "hidden": false,
+              "displayVersion": "v4",
+              "targetFramework": ".NET Framework 4.8",
+              "description": "- isolated worker model"
+            },
+            "capabilities": "isolated,net6,netfxisolated",
+            "sdk": {
+              "name": "Microsoft.Azure.Functions.Worker.Sdk",
+              "version": "1.16.2"
+            },
+            "default": false,
+            "toolingSuffix": "netfx-isolated",
+            "localEntryPoint": "dotnet.exe",
+            "targetFramework": "net48",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx/4.0.5022",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.5022",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
+            },
+            "localContainerBaseImage": "",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~4",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v6.0"
+            }
+          },
           "net5-isolated": {
             "displayInfo": {
               "displayName": ".NET 5.0",
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET 5",
-              "description": "Isolated",
+              "description": "- isolated worker model",
               "endOfLifeDate": "2022-05-10T00:00:00Z"
             },
             "capabilities": "isolated,net5,net6",
@@ -29803,7 +29836,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 6",
-              "description": "Isolated LTS",
+              "description": "- isolated worker model LTS",
               "endOfLifeDate": "2024-11-12T00:00:00Z"
             },
             "capabilities": "isolated,net6",
@@ -29839,7 +29872,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 7",
-              "description": "Isolated",
+              "description": "- isolated worker model",
               "endOfLifeDate": "2024-05-10T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7",
@@ -29875,7 +29908,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 8",
-              "description": "Isolated LTS",
+              "description": "- isolated worker model LTS",
               "endOfLifeDate": "2026-11-10T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8",
@@ -29911,13 +29944,13 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 9",
-              "description": "Isolated Preview",
+              "description": "- isolated worker model Preview",
               "endOfLifeDate": "2026-05-12T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "2.0.0-preview1"
+              "version": "2.0.0-preview2"
             },
             "default": false,
             "toolingSuffix": "net9-isolated",
@@ -29936,37 +29969,6 @@
             },
             "linuxSiteConfig": {
               "linuxFxVersion": "DOTNET-ISOLATED|9.0"
-            }
-          },
-          "netfx-isolated": {
-            "displayInfo": {
-              "displayName": ".NET Framework",
-              "hidden": false,
-              "displayVersion": "v4",
-              "targetFramework": ".NET Framework",
-              "description": "Isolated"
-            },
-            "capabilities": "isolated,net6,netfxisolated",
-            "sdk": {
-              "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.16.2"
-            },
-            "default": false,
-            "toolingSuffix": "netfx-isolated",
-            "localEntryPoint": "dotnet.exe",
-            "targetFramework": "net48",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx/4.0.5022",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.5022",
-            "projectTemplateId": {
-              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
-            },
-            "localContainerBaseImage": "",
-            "serviceAppSettings": {
-              "FUNCTIONS_EXTENSION_VERSION": "~4",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
-            },
-            "windowsSiteConfig": {
-              "netFrameworkVersion": "v6.0"
             }
           }
         }
@@ -30024,7 +30026,7 @@
               "hidden": true,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "LTS",
+              "description": "- in-process model LTS",
               "endOfLifeDate": "2024-11-12T00:00:00Z"
             },
             "capabilities": "net6",
@@ -30059,7 +30061,7 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET",
-              "description": "LTS",
+              "description": "- in-process model LTS",
               "endOfLifeDate": "2026-11-10T00:00:00Z"
             },
             "capabilities": "net8",
