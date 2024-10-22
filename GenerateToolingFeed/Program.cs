@@ -150,5 +150,16 @@ namespace GenerateToolingFeed
             }
             return cliVersion;
         }
+
+        private ArtifactInfo GetArtifactInfo()
+        {
+            string filePath = Path.Combine(@"");
+            string jsonString = File.ReadAllText(filePath);
+            ArtifactInfo artifactInfo = JsonSerializer.Deserialize<ArtifactInfo>(jsonString);
+
+            Console.WriteLine($"InProcArtifactVersion: {artifactInfo.InProcArtifactVersion}");
+            Console.WriteLine($"ConsolidatedBuildId: {artifactInfo.ConsolidatedBuildId}");
+            Console.WriteLine($"DefaultArtifactVersion: {artifactInfo.DefaultArtifactVersion}");
+        }
     }
 }
