@@ -32834,6 +32834,30 @@
       },
       "coreTools": [
         {
+          "OS": "Linux",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.6280/Azure.Functions.Cli.linux-x64_net8.4.0.6280.zip",
+          "sha2": "8689ac0eb6bc0b473a079993290741a883580ee7ce34beb974bd6290d282c119",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "MacOS",
+          "Architecture": "x64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.6280/Azure.Functions.Cli.osx-x64_net8.4.0.6280.zip",
+          "sha2": "e8240c581bec0ea139101024b661711285a5c62e47ce53b440776ba1d7762a30",
+          "size": "full",
+          "default": "false"
+        },
+        {
+          "OS": "MacOS",
+          "Architecture": "arm64",
+          "downloadLink": "https://functionscdn.azureedge.net/public/4.0.6280/Azure.Functions.Cli.osx-arm64_net8.4.0.6280.zip",
+          "sha2": "85bb47298ed40d555cf8acdfb91d372de90a6149c30e409175476905ef96d166",
+          "size": "full",
+          "default": "false"
+        },
+        {
           "OS": "Windows",
           "Architecture": "x64",
           "downloadLink": "https://functionscdn.azureedge.net/public/4.0.117/Azure.Functions.Cli.min.win-x64_inproc.4.0.6518.zip",
