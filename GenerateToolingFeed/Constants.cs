@@ -30,5 +30,7 @@ namespace GenerateToolingFeed
                 "v0", "-inprocess"
             }
         };
+
+        public const string VersionMetadataFileName = "metadata.json";
     }
 }

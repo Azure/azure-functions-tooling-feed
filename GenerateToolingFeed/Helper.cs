@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,32 +17,6 @@ namespace GenerateToolingFeed
         public static System.Net.Http.HttpClient HttpClient => _lazyClient.Value;
 
         public static string newReleaseVersion = string.Empty;
-
-        public static string GetDownloadLink(string os, string architecture, string cliVersion, bool isMinified = false, string linkSuffix = "")
-        {
-            string rid = isMinified ? "min." : string.Empty;
-
-            rid += GetRuntimeIdentifier(false, os, architecture);
-            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}{linkSuffix}.{cliVersion}.zip";
-
-            string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
-            if (bypassDownloadLinkValidation != "1" && !IsValidDownloadLink(url))
-            {
-                throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
-            }
-            return url;
-        }
-
-        public static void UpdateCoreToolsReferences(V4FormatCliEntry[] cliEntries, string coreToolsArtifactsDirectory, string cliVersion, string linkSuffix)
-        {
-            foreach (var cliEntry in cliEntries)
-            {
-                bool minified = ShouldBeMinified(cliEntry);
-
-                cliEntry.sha2 = GetShaFileContent(cliEntry.OS, cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified, linkSuffix);
-                cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, cliVersion, minified, linkSuffix);
-            }
-        }
 
         public static bool ShouldBeMinified(V4FormatCliEntry cliEntry)
         {
@@ -194,5 +170,28 @@ namespace GenerateToolingFeed
             4 => ["v4", "v0"],
             _ => throw new ArgumentNullException($"{majorVersion} is not a supported version.", nameof(majorVersion))
         };
+
+        public static string GetCliVersion(string path)
+        {
+            string cliVersion = string.Empty;
+            Console.WriteLine($"Searching for core tools builds in {path}...");
+            foreach (string file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+            {
+                if (file.EndsWith(".zip"))
+                {
+                    var zip = ZipFile.OpenRead(file);
+                    foreach (var entry in zip.Entries)
+                    {
+                        if (entry.Name == "func.dll")
+                        {
+                            ZipFileExtensions.ExtractToFile(entry, "func.dll", true);
+                            cliVersion = FileVersionInfo.GetVersionInfo(".\\func.dll").FileVersion;
+                            break;
+                        }
+                    }
+                }
+            }
+            return cliVersion;
+        }
     }
 }

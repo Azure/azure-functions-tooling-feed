@@ -20,27 +20,22 @@ namespace GenerateToolingFeed
 
         static void Main(string[] args)
         {
-            string coreToolsVersion = GetCliVersion(args[0]);
-            if (NuGetVersion.TryParse(coreToolsVersion, out NuGetVersion ver))
+            string artifactDirectoryPath = args[0];
+            var artifactInfo = GetArtifactInfo(artifactDirectoryPath);
+            var coreToolsInfo = new CoreToolsInfo(artifactInfo, artifactDirectoryPath);
+
+            // update this feed for Functions v2 only.
+            if (coreToolsInfo.MajorVersion == 2)
             {
-                var coreToolsInfo = new CoreToolsInfo(coreToolsVersion, ver.Major, args[0]);
-
-                // update this feed for Functions v2 only.
-                if (ver.Major == 2)
-                {
-                    GenerateNewFeed(Constants.CliFeedV32, coreToolsInfo);
-                }
-
-                // update this feed for Functions v2 and v3
-                GenerateNewFeed(Constants.CliFeedV3, coreToolsInfo);
-
-                // update v4 format feed for Functions v2, v3 and v4
-                GenerateNewFeed(Constants.CliFeedV4, coreToolsInfo);
+                GenerateNewFeed(Constants.CliFeedV32, coreToolsInfo);
             }
-            else
-            {
-                throw new Exception($"Could not parse the version for core tools located at '{args[0]}'");
-            }
+
+            // update this feed for Functions v2 and v3
+            GenerateNewFeed(Constants.CliFeedV3, coreToolsInfo);
+
+            //update v4 format feed for Functions v2, v3 and v4
+           GenerateNewFeed(Constants.CliFeedV4, coreToolsInfo);
+
         }
 
         public static void GenerateNewFeed(string feedName, CoreToolsInfo coreToolsInfo)
@@ -128,27 +123,16 @@ namespace GenerateToolingFeed
             return JObject.Parse(feedContent);
         }
 
-        private static string GetCliVersion(string path)
+        private static ArtifactInfo GetArtifactInfo(string path)
         {
-            string cliVersion = string.Empty;
-            Console.WriteLine($"Searching for core tools builds in {path}...");
-            foreach (string file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+            string filePath = Path.Combine(path, Constants.VersionMetadataFileName);
+            ArtifactInfo artifactInfo = null;
+            if (File.Exists(filePath))
             {
-                if (file.EndsWith(".zip"))
-                {
-                    var zip = ZipFile.OpenRead(file);
-                    foreach (var entry in zip.Entries)
-                    {
-                        if (entry.Name == "func.dll")
-                        {
-                            ZipFileExtensions.ExtractToFile(entry, "func.dll", true);
-                            cliVersion = FileVersionInfo.GetVersionInfo(".\\func.dll").FileVersion;
-                            break;
-                        }
-                    }
-                }
+                string jsonString = File.ReadAllText(filePath);
+                artifactInfo = JObject.Parse(jsonString).ToObject<ArtifactInfo>();
             }
-            return cliVersion;
+            return artifactInfo;
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Newtonsoft.Json.Linq;
 
 namespace GenerateToolingFeed.V4Format
@@ -38,10 +41,10 @@ namespace GenerateToolingFeed.V4Format
             { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" }
         };
 
-        private readonly IDictionary<string, string> _linkSuffix = new Dictionary<string, string>()
+        private static readonly IDictionary<string, string> _linkSuffix = new Dictionary<string, string>()
         {
             {
-                "v0", "_net8"
+                "v0", "_inproc"
             }
         };
 
@@ -54,13 +57,61 @@ namespace GenerateToolingFeed.V4Format
         {
             V4FormatFeedEntry feedEntry = feed.ToObject<V4FormatFeedEntry>();
 
-            string linkSuffix = _linkSuffix.ContainsKey(_tag) ? _linkSuffix[_tag] : string.Empty;
-            Helper.UpdateCoreToolsReferences(feedEntry.coreTools, coreToolsInfo.ArtifactsDirectory, coreToolsInfo.Version, linkSuffix);
+            UpdateCoreToolsReferences(feedEntry.coreTools, coreToolsInfo);
             UpdateDotnetTemplatesToLatest(feedEntry.workerRuntimes, coreToolsInfo.MajorVersion);
 
             Helper.MergeObjectToJToken(feed, feedEntry);
 
             return feed;
+        }
+
+        public void UpdateCoreToolsReferences(V4FormatCliEntry[] cliEntries, CoreToolsInfo coreToolsInfo)
+        {
+            foreach (var cliEntry in cliEntries)
+            {
+                bool minified = Helper.ShouldBeMinified(cliEntry);
+
+                string zipFileName = GetZipFileName(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
+                cliEntry.sha2 = GetShaFileContent(coreToolsInfo.ArtifactsDirectory, zipFileName);
+                cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
+            }
+        }
+
+        private static string GetZipFileName(string os, string architecture, CoreToolsInfo coreToolsInfo, string tag, bool isMinified = false)
+        {
+            string rid = isMinified ? "min." : string.Empty;
+            rid += Helper.GetRuntimeIdentifier(false, os, architecture);
+
+            string linkSuffix = _linkSuffix.ContainsKey(tag) ? _linkSuffix[tag] : string.Empty;
+            string version = _linkSuffix.ContainsKey(tag) ? coreToolsInfo.InprocVersion : coreToolsInfo.Version;
+            return $"Azure.Functions.Cli.{rid}{linkSuffix}.{version}.zip";
+        }
+
+        private static string GetDownloadLink(string os, string architecture, CoreToolsInfo coreToolsInfo, string tag, bool isMinified = false)
+        {
+            string linkSuffix = _linkSuffix.ContainsKey(tag) ? _linkSuffix[tag] : string.Empty;
+            string version = _linkSuffix.ContainsKey(tag) ? coreToolsInfo.InprocVersion : coreToolsInfo.Version;
+
+            string rid = isMinified ? "min." : string.Empty;
+
+            rid += Helper.GetRuntimeIdentifier(false, os, architecture);
+
+            string containerName = $"{coreToolsInfo.MajorVersion}.0.{coreToolsInfo.BuildId}";
+            var url = $"https://functionscdn.azureedge.net/public/{containerName}/Azure.Functions.Cli.{rid}{linkSuffix}.{version}.zip";
+
+            string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
+            if (bypassDownloadLinkValidation != "1" && !Helper.IsValidDownloadLink(url))
+            {
+                throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
+            }
+            return url;
+        }
+
+        public static string GetShaFileContent(string zipfilePath, string fileName)
+        {
+            string path = Path.Combine(zipfilePath, fileName);
+            string shaFilePath = $"{path}.sha2";
+            return File.ReadAllText(shaFilePath);
         }
 
         private void UpdateDotnetTemplatesToLatest(IDictionary<string, IDictionary<string, object>> workerRuntimes, int coreToolsMajor)

@@ -21,7 +21,7 @@ namespace GenerateToolingFeed.V3Format
         {
             var cliEntry = new V3FormatCliEntry { OS = "windows", Architecture = "x86" };
 
-            feedEntry.cli = Helper.GetDownloadLink(cliEntry.OS ?? cliEntry.OperatingSystem,
+            feedEntry.cli = GetDownloadLink(cliEntry.OS ?? cliEntry.OperatingSystem,
                     cliEntry.Architecture, coreToolsInfo.Version, isMinified: true);
 
             feedEntry.sha2 = Helper.GetShaFileContent(cliEntry.OS ?? cliEntry.OperatingSystem,
@@ -45,7 +45,7 @@ namespace GenerateToolingFeed.V3Format
                 cliEntry.sha2 = Helper.GetShaFileContent(cliEntry.OS ?? cliEntry.OperatingSystem,
                     cliEntry.Architecture, cliVersion, coreToolsArtifactsDirectory, minified);
 
-                cliEntry.downloadLink = Helper.GetDownloadLink(cliEntry.OS ?? cliEntry.OperatingSystem,
+                cliEntry.downloadLink = GetDownloadLink(cliEntry.OS ?? cliEntry.OperatingSystem,
                     cliEntry.Architecture, cliVersion, minified);
             }
 
@@ -58,6 +58,21 @@ namespace GenerateToolingFeed.V3Format
 
             return os.Equals("Windows", StringComparison.OrdinalIgnoreCase)
                 && cliEntry.Architecture.Equals("x64", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string GetDownloadLink(string os, string architecture, string cliVersion, bool isMinified = false, string linkSuffix = "")
+        {
+            string rid = isMinified ? "min." : string.Empty;
+
+            rid += Helper.GetRuntimeIdentifier(false, os, architecture);
+            var url = $"https://functionscdn.azureedge.net/public/{cliVersion}/Azure.Functions.Cli.{rid}{linkSuffix}.{cliVersion}.zip";
+
+            string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
+            if (bypassDownloadLinkValidation != "1" && !Helper.IsValidDownloadLink(url))
+            {
+                throw new Exception($"{url} is not valid or no found. Cannot generate cli feed file");
+            }
+            return url;
         }
     }
 }

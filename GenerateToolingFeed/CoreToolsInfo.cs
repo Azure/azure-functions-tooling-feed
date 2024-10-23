@@ -1,20 +1,36 @@
-﻿using System;
+﻿using NuGet.Versioning;
+using System;
 
 namespace GenerateToolingFeed
 {
     public class CoreToolsInfo
     {
-        public CoreToolsInfo(string version, int majorVersion, string artifactsDirectory)
+        public CoreToolsInfo(ArtifactInfo artifactInfo, string artifactsDirectory)
         {
-            Version = version ?? throw new ArgumentNullException(nameof(version));
+            if (artifactInfo == null)
+            {
+                Version = Helper.GetCliVersion(artifactsDirectory);
+            }
+            else
+            {
+                Version = artifactInfo?.DefaultArtifactVersion;
+                InprocVersion = artifactInfo?.InProcArtifactVersion;
+                BuildId = artifactInfo.ConsolidatedBuildId;
+            }
             ArtifactsDirectory = artifactsDirectory ?? throw new ArgumentNullException(nameof(artifactsDirectory));
-            MajorVersion = majorVersion;
+
+            var coreToolsVersion = NuGetVersion.Parse(Version);
+            MajorVersion = coreToolsVersion.Major;
         }
 
         public string Version { get; }
 
+        public string InprocVersion { get; }
+
         public int MajorVersion { get; }
 
         public string ArtifactsDirectory { get; }
+
+        public string BuildId { get; }
     }
 }
