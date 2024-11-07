@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using Newtonsoft.Json.Linq;
@@ -48,6 +49,12 @@ namespace GenerateToolingFeed.V4Format
             }
         };
 
+        private static readonly IDictionary<string, List<string>> FilteredOSByTag = new Dictionary<string, List<string>>()
+        {
+            { "v0", new List<string> {"Windows" } },
+            { "v4", new List<string> {"Windows", "MacOs", "Linux"} }
+        };
+
         public V4FormatFeedEntryUpdater(string tag)
         {
             _tag = tag;
@@ -69,11 +76,16 @@ namespace GenerateToolingFeed.V4Format
         {
             foreach (var cliEntry in cliEntries)
             {
-                bool minified = Helper.ShouldBeMinified(cliEntry);
+                var OperatingSystems = FilteredOSByTag[_tag];
 
-                string zipFileName = GetZipFileName(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
-                cliEntry.sha2 = GetShaFileContent(coreToolsInfo.ArtifactsDirectory, zipFileName);
-                cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
+                // temporary change to get around the disk space issue on agents
+                if (OperatingSystems.Contains(cliEntry.OS, StringComparer.InvariantCultureIgnoreCase))
+                {
+                    bool minified = Helper.ShouldBeMinified(cliEntry);
+                    string zipFileName = GetZipFileName(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
+                    cliEntry.sha2 = GetShaFileContent(coreToolsInfo.ArtifactsDirectory, zipFileName);
+                    cliEntry.downloadLink = GetDownloadLink(cliEntry.OS, cliEntry.Architecture, coreToolsInfo, _tag, minified);
+                }
             }
         }
 
