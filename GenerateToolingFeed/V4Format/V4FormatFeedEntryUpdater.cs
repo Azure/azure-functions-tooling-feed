@@ -51,7 +51,7 @@ namespace GenerateToolingFeed.V4Format
 
         private static readonly IDictionary<string, List<string>> FilteredOSByTag = new Dictionary<string, List<string>>()
         {
-            { "v0", new List<string> {"Windows" } },
+            { "v0", new List<string> {"Windows", "MacOs", "Linux" } },
             { "v4", new List<string> {"Windows", "MacOs", "Linux"} }
         };
 
