@@ -109,7 +109,7 @@ namespace GenerateToolingFeed.V4Format
             rid += Helper.GetRuntimeIdentifier(false, os, architecture);
 
             string containerName = $"{coreToolsInfo.MajorVersion}.0.{coreToolsInfo.BuildId}";
-            var url = $"https://functionscdn.azureedge.net/public/{containerName}/Azure.Functions.Cli.{rid}{linkSuffix}.{version}.zip";
+            var url = $"https://cdn.functions.azure.com/public/{containerName}/Azure.Functions.Cli.{rid}{linkSuffix}.{version}.zip";
 
             string bypassDownloadLinkValidation = Environment.GetEnvironmentVariable("bypassDownloadLinkValidation");
             if (bypassDownloadLinkValidation != "1" && !Helper.IsValidDownloadLink(url))
