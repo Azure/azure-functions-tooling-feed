@@ -41,22 +41,22 @@
       "hidden": false
     },
     "v4": {
-      "release": "4.105.0",
+      "release": "4.105.1",
       "releaseQuality": "GA",
       "hidden": false
     },
     "v4-prerelease": {
-      "release": "4.105.0",
+      "release": "4.105.1",
       "releaseQuality": "Prerelease",
       "hidden": true
     },
     "v0": {
-      "release": "4.105.0-inprocess",
+      "release": "4.105.1-inprocess",
       "releaseQuality": "GA",
       "hidden": false
     },
     "v0-prerelease": {
-      "release": "4.105.0-inprocess",
+      "release": "4.105.1-inprocess",
       "releaseQuality": "Prerelease",
       "hidden": true
     }
