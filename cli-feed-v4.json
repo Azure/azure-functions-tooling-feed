@@ -36635,7 +36635,7 @@
               "displayName": ".NET 5.0",
               "hidden": true,
               "displayVersion": "v4",
-                "targetFramework": ".NET 5",
+              "targetFramework": ".NET 5",
               "description": "Isolated",
               "endOfLifeDate": "2022-05-10T00:00:00Z"
             },
@@ -36713,7 +36713,7 @@
             "capabilities": "isolated,net6,net7",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.16.2"
+              "version": "1.18.1"
             },
             "default": false,
             "toolingSuffix": "net7-isolated",
@@ -36749,7 +36749,7 @@
             "capabilities": "isolated,net6,net7,net8",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "2.0.0"
+              "version": "2.0.2"
             },
             "default": true,
             "toolingSuffix": "net8-isolated",
@@ -36785,7 +36785,7 @@
             "capabilities": "isolated,net6,net7,net8,net9",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "2.0.0"
+              "version": "2.0.2"
             },
             "default": false,
             "toolingSuffix": "net9-isolated",
@@ -36820,7 +36820,7 @@
             "capabilities": "isolated,net6,netfxisolated",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "1.16.2"
+              "version": "1.18.1"
             },
             "default": false,
             "toolingSuffix": "netfx-isolated",
