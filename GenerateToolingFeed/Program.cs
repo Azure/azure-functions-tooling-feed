@@ -77,8 +77,10 @@ namespace GenerateToolingFeed
                 }
                 return result;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error while updating feed: {ex.Message}");
+                Console.WriteLine(ex.StackTrace);
                 return false;
             }
         }
