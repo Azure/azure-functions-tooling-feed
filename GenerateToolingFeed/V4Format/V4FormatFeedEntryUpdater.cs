@@ -12,8 +12,8 @@ namespace GenerateToolingFeed.V4Format
     {
         private readonly string _tag;
 
-        private const string _itemTemplatesKey = "itemTemplates";
-        private const string _projectTemplatesKey = "projectTemplates";
+        private const string ItemTemplatesKey = "itemTemplates";
+        private const string ProjectTemplatesKey = "projectTemplates";
 
         private static readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
@@ -51,8 +51,8 @@ namespace GenerateToolingFeed.V4Format
         {
             return templateType switch
             {
-                _itemTemplatesKey => _dotnetToItemTemplates,
-                _projectTemplatesKey => _dotnetToProjectTemplates,
+                ItemTemplatesKey => _dotnetToItemTemplates,
+                ProjectTemplatesKey => _dotnetToProjectTemplates,
                 _ => throw new ArgumentException($"Unknown template type: {templateType}", nameof(templateType))
             };
         }
@@ -155,20 +155,20 @@ namespace GenerateToolingFeed.V4Format
 
                 V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
-                string currentItemTemplatesPackage = dotnetEntryToken[_itemTemplatesKey]?.ToString() ?? "<none>";
-                string currentProjectTemplatesPackage = dotnetEntryToken[_projectTemplatesKey]?.ToString() ?? "<none>";
+                string currentItemTemplatesPackage = dotnetEntryToken[ItemTemplatesKey]?.ToString() ?? "<none>";
+                string currentProjectTemplatesPackage = dotnetEntryToken[ProjectTemplatesKey]?.ToString() ?? "<none>";
 
                 // If the entry has reached the end of life date, do not advance templates.
                 if (isEntryEol(dotnetEntryToken))
                 {
-                    Console.WriteLine($"WARNING: Skipping template update for '{dotnetEntryLabel}' (EOL). Retaining {_itemTemplatesKey}='{currentItemTemplatesPackage}', {_projectTemplatesKey}='{currentProjectTemplatesPackage}'.");
+                    Console.WriteLine($"WARNING: Skipping template update for '{dotnetEntryLabel}' (EOL). Retaining {ItemTemplatesKey}='{currentItemTemplatesPackage}', {ProjectTemplatesKey}='{currentProjectTemplatesPackage}'.");
                     dotnetEntry.itemTemplates = currentItemTemplatesPackage;
                     dotnetEntry.projectTemplates = currentProjectTemplatesPackage;
                 }
                 else // If the entry is still supported, update the templates.
                 {
-                    dotnetEntry.itemTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, _itemTemplatesKey, currentItemTemplatesPackage, coreToolsMajor);
-                    dotnetEntry.projectTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, _projectTemplatesKey, currentProjectTemplatesPackage, coreToolsMajor);
+                    dotnetEntry.itemTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, ItemTemplatesKey, currentItemTemplatesPackage, coreToolsMajor);
+                    dotnetEntry.projectTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, ProjectTemplatesKey, currentProjectTemplatesPackage, coreToolsMajor);
                 }
 
                 Helper.MergeObjectToJToken(dotnetEntryToken, dotnetEntry);
