@@ -42352,13 +42352,13 @@
               "hidden": false,
               "displayVersion": "v4",
               "targetFramework": ".NET 10",
-              "description": "Isolated",
+              "description": "Isolated LTS",
               "endOfLifeDate": "2028-11-10T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9,net10",
             "sdk": {
               "name": "Microsoft.Azure.Functions.Worker.Sdk",
-              "version": "2.0.5"
+              "version": "2.0.6"
             },
             "default": false,
             "toolingSuffix": "net10-isolated",
