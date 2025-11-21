@@ -42831,6 +42831,42 @@
               "linuxFxVersion": "DOTNET-ISOLATED|10.0"
             }
           },
+          "net11-isolated": {
+            "displayInfo": {
+              "displayName": ".NET 11.0",
+              "hidden": false,
+              "displayVersion": "v4",
+              "targetFramework": ".NET 11",
+              "description": "Isolated",
+              "endOfLifeDate": "2029-11-10T00:00:00Z"
+            },
+            "capabilities": "isolated,net6,net7,net8,net9,net10,net11",
+            "sdk": {
+              "name": "Microsoft.Azure.Functions.Worker.Sdk",
+              "version": "4.0.9"
+            },
+            "default": false,
+            "toolingSuffix": "net11-isolated",
+            "localEntryPoint": "dotnet.exe",
+            "targetFramework": "net11.0",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore/4.0.9999",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.9999",
+            "projectTemplateId": {
+              "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x"
+            },
+            "localContainerBaseImage": "DOCKER|mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated11.0-appservice",
+            "serviceAppSettings": {
+              "FUNCTIONS_EXTENSION_VERSION": "~4",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+              "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+            },
+            "windowsSiteConfig": {
+              "netFrameworkVersion": "v11.0"
+            },
+            "linuxSiteConfig": {
+              "linuxFxVersion": "DOTNET-ISOLATED|11.0"
+            }
+          },
           "netfx-isolated": {
             "displayInfo": {
               "displayName": ".NET Framework",
@@ -42929,8 +42965,8 @@
             "toolingSuffix": "net6-in-process",
             "localEntryPoint": "func.exe",
             "targetFramework": "net6.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.5331",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.5331",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.9999",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.9999",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
             },
@@ -42964,8 +43000,8 @@
             "toolingSuffix": "net8-in-process",
             "localEntryPoint": "func.exe",
             "targetFramework": "net8.0",
-            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.5331",
-            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.5331",
+            "itemTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.9999",
+            "projectTemplates": "https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.9999",
             "projectTemplateId": {
               "csharp": "Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x"
             },
