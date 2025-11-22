@@ -1,196 +1,230 @@
 # Update Feed for .NET Version
 
-This guide explains how to update the `cli-feed-v4.json` file to upgrade a .NET version by copying the current release block and applying version updates.
+This guide explains how to update the `cli-feed-v4.json` file. There are **two distinct scenarios** for updating the feed.
 
 ---
 
-## 📥 Required User Input
+## 🔀 Choose Your Scenario
 
-Before starting, gather the following information:
+### **Scenario 1: Add a New .NET Version** 
+Adding a completely new .NET version to the feed (e.g., adding .NET 11 for the first time).
 
-1. **Target .NET Version** (e.g., `9`, `10`, `11`)
-   - The .NET version number you want to upgrade to
+**Example**: [See this gist](https://gist.github.com/kshyju/7a230fa42e4bad1f2b587711d0138271/revisions#diff-9a27a8941d5a3e9c63838706f8607bd4d763297ceaeb0aa1df418daccb80bdb8)
 
-2. **Item/Project Templates Version** (e.g., `4.0.5331`)
-   - The version to use for both:
-     - `Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore`
-     - `Microsoft.Azure.Functions.Worker.ProjectTemplates`
-
-3. **SDK Version** (e.g., `2.0.5`)
-   - The latest version of `Microsoft.Azure.Functions.Worker.Sdk` compatible with the target .NET version
-
-4. **Description Type**
-   - Choose one:
-     - `Isolated` - for Standard Term Support (STS) versions
-     - `Isolated LTS` - for Long Term Support (LTS) versions
+### **Scenario 2: Bump Template Versions**
+Updating item/project template versions for existing .NET versions. May also include:
+- Upgrading a preview version to GA (update description)
+- Updating the Worker SDK to the latest version
 
 ---
 
-## ✅ Steps Overview
+## 📥 Scenario 1: Add a New .NET Version
 
-### Step 1: Copy Current Release Block
-- Duplicate the **latest release block** (e.g., `4.118.0` and `4.118.0-inprocess`).
-- Place the copy **right below the latest release**.
-- **Commit this change as Commit 1**.
+### Required User Input
 
-### Step 2: Increment Version Numbers
-Update the version numbers in both release blocks:
-- Change `4.118.0` → `4.119.0`
-- Change `4.118.0-inprocess` → `4.119.0-inprocess`
+Gather the following information before starting:
 
-### Step 3: Update or Add .NET Runtime Configuration
+1. **displayName** (e.g., `.NET 11.0`)
+2. **targetFramework** (e.g., `.NET 11`)
+3. **description** (e.g., `Isolated`, `Isolated LTS`, or `Isolated Preview`)
+4. **endOfLifeDate** (e.g., `2029-11-10T00:00:00Z`)
+5. **Item/Project Templates Version** (e.g., `4.0.5400`)
+6. **SDK Version** (e.g., `2.1.0`)
 
-**Check if the target .NET version already exists** in the copied `4.119.0` block:
+### Steps Overview
 
-#### **Case A: Preview Block Already Exists** (e.g., `net10-isolated` with `Isolated Preview`)
-If the .NET version already exists as a preview:
+#### **Commit 1: Copy Current Release Block**
+1. Locate the **latest release block** in `cli-feed-v4.json` (e.g., `4.118.0`)
+2. **Copy only the main block** (NOT the `-inprocess` variant, as we don't support new in-process versions)
+3. Paste the copied block **directly below** the original
+4. **Do not modify anything** - just duplicate it
+5. **Commit this change as Commit 1**
 
-1. **Locate the existing runtime block** (e.g., `net10-isolated`)
-2. **Update description only**:
-   - Change from `Isolated Preview` to:
-     - `Isolated` (for STS)
-     - `Isolated LTS` (for LTS)
-3. **Update itemTemplates version**: Replace with the version **provided by the user**
-   - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore/4.0.XXXX`
-4. **Update projectTemplates version**: Replace with the version **provided by the user**
-   - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.XXXX`
-5. **Update SDK version**: Use the version **provided by the user**
-   - Example: `"version": "2.0.5"`
-7. **Skip creating a new block** - the runtime configuration already exists
+#### **Commit 2: Update the Copied Block**
 
-#### **Case B: Runtime Block Does NOT Exist** (New .NET version)
-If this is a completely new .NET version not yet in the feed:
+1. **Increment the version number**:
+   - Change `4.118.0` → `4.119.0`
 
-1. **Copy the previous .NET isolated block** (e.g., copy `net9-isolated` to create `net10-isolated`)
-2. **Update the key name**: `net9-isolated` → `net10-isolated`
-3. **Update displayInfo**:
-   - `displayName`: `.NET 9.0` → `.NET 10.0`
-   - `targetFramework`: `.NET 9` → `.NET 10`
-   - `description`: Set based on user input:
-     - `Isolated` (for STS)
-     - `Isolated LTS` (for LTS)
-   - `endOfLifeDate`: Update to the new version's EOL date
-4. **Update capabilities**: Add the new version to the capabilities list
-   - Example: `isolated,net6,net7,net8,net9` → `isolated,net6,net7,net8,net9,net10`
-5. **Update sdk version**: Use the version **provided by the user**
-6. **Update toolingSuffix**: `net9-isolated` → `net10-isolated`
-7. **Update targetFramework**: `net9.0` → `net10.0`
-8. **Update itemTemplates version**: Replace with the version **provided by the user**
-9. **Update projectTemplates version**: Replace with the version **provided by the user**
-10. **Update localContainerBaseImage**: Update the .NET version in the image path
-    - Example: `dotnet-isolated9.0-appservice` → `dotnet-isolated10.0-appservice`
-11. **Update windowsSiteConfig**:
-    - `netFrameworkVersion`: `v9.0` → `v10.0`
-12. **Update linuxSiteConfig**:
-    - `linuxFxVersion`: `DOTNET-ISOLATED|9.0` → `DOTNET-ISOLATED|10.0`
+2. **Add the new .NET runtime configuration**:
+   - Copy the most recent .NET isolated block (e.g., `net10-isolated`)
+   - Rename it to match the new version (e.g., `net11-isolated`)
 
-### Step 4: Update In-Process Runtime Templates (4.119.0-inprocess block)
+3. **Update all fields in the new runtime block**:
+   - **displayInfo**:
+     - `displayName`: Use provided value (e.g., `.NET 11.0`)
+     - `targetFramework`: Use provided value (e.g., `.NET 11`)
+     - `description`: Use provided value (e.g., `Isolated`, `Isolated LTS`, or `Isolated Preview`)
+     - `endOfLifeDate`: Use provided value
+     - `hidden`: Set to `false`
+   
+   - **capabilities**: Add the new version to the list
+     - Example: `isolated,net6,net7,net8,net9,net10` → `isolated,net6,net7,net8,net9,net10,net11`
+   
+   - **sdk**:
+     - `version`: Use provided SDK version if provided in input
+   
+   - **toolingSuffix**: Update to match new version (e.g., `net11-isolated`)
+   
+   - **targetFramework**: Update to match new version (e.g., `net11.0`)
+   
+   - **itemTemplates**: Update version in URL if provided in input
+     - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore/4.0.XXXX`
+   
+   - **projectTemplates**: Update version in URL
+     - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.XXXX`
+   
+   - **localContainerBaseImage**: Update .NET version
+     - Example: `dotnet-isolated10.0-appservice` → `dotnet-isolated11.0-appservice`
+   
+   - **windowsSiteConfig**:
+     - `netFrameworkVersion`: Update (e.g., `v10.0` → `v11.0`)
+   
+   - **linuxSiteConfig**:
+     - `linuxFxVersion`: Update (e.g., `DOTNET-ISOLATED|10.0` → `DOTNET-ISOLATED|11.0`)
 
-**Note**: In-process runtimes are no longer actively supported for new .NET versions. Only update template versions for existing in-process runtimes.
-
-In the `4.119.0-inprocess` block:
-
-1. **Update itemTemplates version** for all in-process runtimes (e.g., `net6`, `net8`):
-   - Replace with the version **provided by the user**
-   - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ItemTemplates/4.0.XXXX`
-
-2. **Update projectTemplates version** for all in-process runtimes:
-   - Replace with the version **provided by the user**
-   - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.WebJobs.ProjectTemplates/4.0.XXXX`
-
-**Do NOT add new in-process runtime blocks** - we only maintain existing ones.
----
-
-## 🔄 Commit Structure
-
-### **Commit 1: Copy Current Release Block**
-- Duplicate `4.118.0` and `4.118.0-inprocess` blocks
-- No modifications, just duplication
-- Place immediately below the original blocks
-
-### **Commit 2: Apply All Updates**
-- Increment version numbers (`4.118.0` → `4.119.0`)
-- **If preview exists**: Update description from `Isolated Preview` to `Isolated` or `Isolated LTS`
-- **If new version**: Add new .NET runtime configuration (e.g., `net10-isolated`)
-- Update item/project template versions (both isolated and in-process runtimes)
-- Update SDK versions for isolated runtimes
-- Update EOL dates (if adding new version)
-- Update capabilities lists (if adding new version)
-- Update container image references (if adding new version)
-- Update framework version configs (if adding new version)
+4. **Commit all changes as Commit 2**
 
 ---
 
-## 📋 Detailed Breakdown: Two Scenarios
+## 📥 Scenario 2: Bump Template Versions
 
-### **Scenario 1: Upgrading Preview to GA** (Preview block already exists)
+### Required User Input
 
-**Example**: Upgrading `.NET 10.0` from `Isolated Preview` to `Isolated LTS`
+Gather the following information before starting:
+
+1. **Item/Project Templates Version** (e.g., `4.0.5331`)
+   - The new version for:
+     - `Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore` (isolated)
+     - `Microsoft.Azure.Functions.Worker.ProjectTemplates` (isolated)
+     - `Microsoft.Azure.WebJobs.ItemTemplates` (in-process)
+     - `Microsoft.Azure.WebJobs.ProjectTemplates` (in-process)
+
+2. **SDK Version** (optional - if updating)
+   - Latest version of `Microsoft.Azure.Functions.Worker.Sdk`
+
+3. **Description Update and .NET version** (optional - if upgrading preview to GA for specific .NET version)
+   - New description: `Isolated` or `Isolated LTS`
+
+### Steps Overview
+
+#### **Commit 1: Copy Current Release Block**
+1. Locate the **latest release block** in `cli-feed-v4.json` (e.g., `4.118.0` and `4.118.0-inprocess`)
+2. **Copy both blocks** (main and `-inprocess`)
+3. Paste both copied blocks **directly below** the originals
+4. **Do not modify anything** - just duplicate them
+5. **Commit this change as Commit 1**
+
+#### **Commit 2: Update Template Versions**
+
+1. **Increment version numbers**:
+   - Change `4.118.0` → `4.119.0`
+   - Change `4.118.0-inprocess` → `4.119.0-inprocess`
+
+2. **In both the NEW `4.119.0` and `4.119.0-inprocess` block (isolated runtimes)**:
+   - Update `itemTemplates` version for all isolated runtime blocks (e.g., `net8-isolated`, `net9-isolated`, `net10-isolated`)
+     - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore/4.0.XXXX`
+   - Update `projectTemplates` version for all isolated runtime blocks
+     - Format: `https://www.nuget.org/api/v2/package/Microsoft.Azure.Functions.Worker.ProjectTemplates/4.0.XXXX`
+
+4. **If upgrading preview to GA** (e.g., changing `.NET 10.0` from preview to LTS) (optional):
+   - Locate the preview runtime block (e.g., `net10-isolated`)
+   - Update `description`: Change from `Isolated Preview` to `Isolated` or `Isolated LTS`
+   - Update `endOfLifeDate` if necessary
+
+5. **If updating Worker SDK** (optional):
+   - Update `sdk.version` for the relevant isolated runtime blocks
+
+6. **Commit all changes as Commit 2**
+
+---
+
+## 📋 Example Workflows
+
+### Example 1: Adding .NET 11.0 (Scenario 1)
 
 **User provides:**
-- .NET version: `10`
-- Item/Project templates version: `4.0.5331`
-- SDK version: `2.0.5`
-- Description: `Isolated LTS`
-
-**Changes made:**
-1. Copy `4.118.0` blocks → Commit 1
-2. Bump to `4.119.0`
-3. Locate existing `net10-isolated` block
-4. Update description: `Isolated Preview` → `Isolated LTS`
-5. Update item templates version: `4.0.5267` → `4.0.5331`
-6. Update project templates version: `4.0.5267` → `4.0.5331`
-7. Update SDK version to `2.0.5` (if changed)
-8. Update EOL date to GA date
-9. Update in-process template versions in `4.119.0-inprocess` block → Commit 2
-
-### **Scenario 2: Adding New .NET Version** (No existing block)
-
-**Example**: Adding `.NET 11.0` for the first time
-
-**User provides:**
-- .NET version: `11`
+- displayName: `.NET 11.0`
+- targetFramework: `.NET 11`
+- description: `Isolated Preview`
+- endOfLifeDate: `2029-11-10T00:00:00Z`
 - Item/Project templates version: `4.0.5400`
 - SDK version: `2.1.0`
-- Description: `Isolated`
 
-**Changes made:**
-1. Copy `4.118.0` blocks → Commit 1
-2. Bump to `4.119.0`
-3. Copy `net10-isolated` block and rename to `net11-isolated`
-4. Update all version references: `10` → `11`, `v10.0` → `v11.0`
-5. Set description to `Isolated`
-6. Update item/project templates to `4.0.5400`
-7. Update SDK version to `2.1.0`
-8. Add `net11` to capabilities across relevant runtimes
-9. Update container images: `dotnet-isolated10.0-appservice` → `dotnet-isolated11.0-appservice`
-10. Set appropriate EOL date
-11. Update in-process template versions in `4.119.0-inprocess` block → Commit 2
+**Commit 1:**
+- Copy `4.118.0` block only (not `-inprocess`)
+
+**Commit 2:**
+- Bump version to `4.119.0`
+- Add `net11-isolated` block with all the provided information
+- Update all version-specific fields as described above
+
+---
+
+### Example 2: Bumping Template Versions + Upgrading .NET 10 to LTS (Scenario 2)
+
+**User provides:**
+- Item/Project templates version: `4.0.5331`
+- SDK version: `2.0.6`
+- Description for .NET 10: `Isolated LTS`
+
+**Commit 1:**
+- Copy both `4.118.0` and `4.118.0-inprocess` blocks
+
+**Commit 2:**
+- Bump versions to `4.119.0` and `4.119.0-inprocess`
+- Update all `itemTemplates` and `projectTemplates` URLs to version `4.0.5331`
+- Update `net10-isolated` description from `Isolated Preview` → `Isolated LTS`
+- Update `net10-isolated` SDK version to `2.0.6`
+- Update `net10-isolated` endOfLifeDate if needed
 
 ---
 
 ## ⚠️ Important Notes
 
-- **Check if preview exists first**: If the .NET version already exists as a preview, you only need to update the description and template versions - don't create a new block
-- Always gather **all required user inputs** before starting the update process
-- Verify the **EOL (End of Life) date** for the new or upgraded .NET version
-- Confirm whether the version is **LTS** or **STS** (we don't add Preview anymore - only upgrade from Preview to GA)
-- Ensure **template versions** match the user-provided versions for both isolated and in-process runtimes
-- Test that **SDK versions** are compatible with the target .NET version
-- For new versions: Update **capabilities** in all relevant runtime blocks to include the new version
-- For new versions: Verify **container image tags** exist before updating
-- **In-process runtimes**: Only update template versions - do not add new in-process runtime blocks
+### For Scenario 1 (Adding New .NET Version):
+- **Only copy the main block** in Commit 1 - do NOT copy the `-inprocess` variant
+- New .NET versions are isolated-only; in-process is not supported for new versions
+- Verify container image tags exist before adding the new version
+- Add the new version to the `capabilities` list of all relevant runtime blocks
+- Use the exact values provided for displayName, targetFramework, description, and endOfLifeDate
+
+### For Scenario 2 (Bumping Templates):
+- **Copy both main and `-inprocess` blocks** in Commit 1
+- Update template versions for ALL runtime blocks (both isolated and in-process)
+- When upgrading preview to GA, update the description and EOL date
+- SDK version updates are optional but recommended for the latest .NET versions
+
+### General:
+- Always use the two-commit workflow: Commit 1 (copy) + Commit 2 (modify)
+- Test that SDK versions are compatible with their respective .NET versions
+- Verify all URL changes point to valid NuGet packages
+- Double-check version number increments are consistent
 
 ---
 
-## 🚀 Quick Reference
+## 🚀 Quick Reference Checklist
 
-**Before you start, have ready:**
-- [ ] Target .NET version number
+### Scenario 1: Adding New .NET Version
+**Before you start:**
+- [ ] displayName (e.g., `.NET 11.0`)
+- [ ] targetFramework (e.g., `.NET 11`)
+- [ ] description (Isolated/Isolated LTS/Isolated Preview)
+- [ ] endOfLifeDate
 - [ ] Item/Project templates version
-- [ ] SDK version  
-- [ ] Description type (Isolated or Isolated LTS)
+- [ ] SDK version
 
-**Two-commit workflow:**
-1. **Commit 1**: Duplicate latest release blocks (no modifications)
-2. **Commit 2**: Apply all updates (version bumps, templates, SDK, description)
+**Workflow:**
+1. **Commit 1**: Copy main block only (NOT `-inprocess`)
+2. **Commit 2**: Bump version + add new runtime configuration
+
+---
+
+### Scenario 2: Bumping Template Versions
+**Before you start:**
+- [ ] Item/Project templates version
+- [ ] SDK version (if updating)
+- [ ] Description update (if upgrading preview)
+
+**Workflow:**
+1. **Commit 1**: Copy both main and `-inprocess` blocks
+2. **Commit 2**: Bump versions + update all template URLs (+ optional preview→GA upgrade)
