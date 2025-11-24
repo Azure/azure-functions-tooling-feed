@@ -35,7 +35,7 @@ applyTo: "cli-feed-v4.json"
 - PR states "security fix", "critical correction", or "hash correction" with clear justification
 - Changes limited to: URLs, hashes, or security fields only
 - No changes to: version numbers, platform identifiers, or structure
-- When applies, note that all criteria were verified
+- When applicable, note that all criteria were verified
 
 ## Review Checklists
 
