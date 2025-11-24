@@ -75,7 +75,7 @@ applyTo: "cli-feed-v4.json"
 ### Template Updates
 
 **When:** PR updates `itemTemplates` or `projectTemplates` URLs across any number of .NET versions
-- All currently supported .NET versions updated together (unless noted)
+- All currently supported .NET versions updated together (unless noted in the PR description)
 - EOL versions unchanged
 - Isolated entries use `Microsoft.AzureFunctions.ProjectTemplate.CSharp.Isolated.3.x`
 - In-process entries use `Microsoft.AzureFunctions.ProjectTemplate.CSharp.3.x`
