@@ -2,6 +2,8 @@ name: Auto-approve release PRs by azure-functions-release
 on:
   pull_request:
     types: [opened, reopened, synchronize]
+permissions:
+  pull-requests: write
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
