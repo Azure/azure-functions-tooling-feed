@@ -1,0 +1,25 @@
+name: Auto-approve release PRs by azure-functions-release
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR author and auto-approve
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prAuthor = github.context.payload.pull_request.user.login;
+            const approvedUser = "azure-functions-release";
+            if (prAuthor === approvedUser) {
+              await github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                event: "APPROVE"
+              });
+              console.log(`PR by ${approvedUser} auto-approved.`);
+            } else {
+              console.log(`PR author (${prAuthor}) is not ${approvedUser}, skipping auto-approve.`);
+            }
