@@ -12,6 +12,17 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            // More secure approach: Check user ID instead of username
+            // User IDs are immutable, while usernames can be changed
+            // Example: If azure-functions-release has user ID 12345678, use:
+            //   const approvedUserId = 12345678;
+            //   const prAuthorId = github.context.payload.pull_request.user.id;
+            //   if (prAuthorId === approvedUserId) { ... }
+            // 
+            // To find a user's ID, you can:
+            // 1. Use GitHub API: https://api.github.com/users/azure-functions-release
+            // 2. Or use: gh api /users/azure-functions-release --jq .id
+            
             const prAuthor = github.context.payload.pull_request.user.login;
             const approvedUser = "azure-functions-release";
             if (prAuthor === approvedUser) {
