@@ -12,8 +12,12 @@ namespace GenerateToolingFeed.V4Format
     {
         private readonly string _tag;
 
-        private readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
+        private const string ItemTemplatesKey = "itemTemplates";
+        private const string ProjectTemplatesKey = "projectTemplates";
+
+        private static readonly IDictionary<string, string> _dotnetToItemTemplates = new Dictionary<string, string>()
         {
+            { "net10-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
             { "net9-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
             { "net8", "Microsoft.Azure.WebJobs.ItemTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetCore" },
@@ -27,8 +31,9 @@ namespace GenerateToolingFeed.V4Format
             { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ItemTemplates.NetFx" }
         };
 
-        private readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
+        private static readonly IDictionary<string, string> _dotnetToProjectTemplates = new Dictionary<string, string>()
         {
+            { "net10-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net9-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
             { "net8", "Microsoft.Azure.WebJobs.ProjectTemplates" },
             { "net8-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" },
@@ -41,6 +46,16 @@ namespace GenerateToolingFeed.V4Format
             { "netframework", "Microsoft.Azure.WebJobs.ProjectTemplates" },
             { "netfx-isolated", "Microsoft.Azure.Functions.Worker.ProjectTemplates" }
         };
+
+        private static IDictionary<string, string> GetEntryToPackageIdMap(string templateType)
+        {
+            return templateType switch
+            {
+                ItemTemplatesKey => _dotnetToItemTemplates,
+                ProjectTemplatesKey => _dotnetToProjectTemplates,
+                _ => throw new ArgumentException($"Unknown template type: {templateType}", nameof(templateType))
+            };
+        }
 
         private static readonly IDictionary<string, string> _linkSuffix = new Dictionary<string, string>()
         {
@@ -140,21 +155,63 @@ namespace GenerateToolingFeed.V4Format
 
                 V4FormatDotnetEntry dotnetEntry = dotnetEntryToken?.ToObject<V4FormatDotnetEntry>() ?? throw new Exception($"Cannot parse 'dotnet' object in the feed with label '{dotnetEntryLabel}'");
 
-                if (!_dotnetToItemTemplates.TryGetValue(dotnetEntryLabel, out string itemTemplates))
-                {
-                    throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
-                }
+                string currentItemTemplatesPackage = dotnetEntryToken[ItemTemplatesKey]?.ToString() ?? "<none>";
+                string currentProjectTemplatesPackage = dotnetEntryToken[ProjectTemplatesKey]?.ToString() ?? "<none>";
 
-                dotnetEntry.itemTemplates = Helper.GetTemplateUrl($"{itemTemplates}", coreToolsMajor);
-
-                if (!_dotnetToProjectTemplates.TryGetValue(dotnetEntryLabel, out string projecTemplate))
+                // If the entry has reached the end of life date, do not advance templates.
+                if (isEntryEol(dotnetEntryToken))
                 {
-                    throw new Exception($"Cannot find the template package: Unidentified dotnet label '{dotnetEntryLabel}'.");
+                    Console.WriteLine($"WARNING: Skipping template update for '{dotnetEntryLabel}' (EOL). Retaining {ItemTemplatesKey}='{currentItemTemplatesPackage}', {ProjectTemplatesKey}='{currentProjectTemplatesPackage}'.");
+                    dotnetEntry.itemTemplates = currentItemTemplatesPackage;
+                    dotnetEntry.projectTemplates = currentProjectTemplatesPackage;
                 }
-                dotnetEntry.projectTemplates = Helper.GetTemplateUrl($"{projecTemplate}", coreToolsMajor);
+                else // If the entry is still supported, update the templates.
+                {
+                    dotnetEntry.itemTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, ItemTemplatesKey, currentItemTemplatesPackage, coreToolsMajor);
+                    dotnetEntry.projectTemplates = GetUpdatedTemplatePackage(dotnetEntryLabel, ProjectTemplatesKey, currentProjectTemplatesPackage, coreToolsMajor);
+                }
 
                 Helper.MergeObjectToJToken(dotnetEntryToken, dotnetEntry);
             }
         }
+
+        private static bool isEntryEol(JObject dotnetEntryToken)
+        {
+            var displayInfo = dotnetEntryToken["displayInfo"] as JObject;
+            if (displayInfo == null) return false; // No displayInfo -> treat as active
+
+            string eolDateStr = displayInfo["endOfLifeDate"]?.ToString();
+            if (string.IsNullOrWhiteSpace(eolDateStr)) return false; // Not marked for EOL
+
+            if (DateTime.TryParse(eolDateStr, out DateTime eolDateUtc))
+            {
+                if (DateTime.UtcNow.Date >= eolDateUtc.Date)
+                {
+                    return true; // Past or at EOL date
+                }
+            }
+            return false;
+        }
+
+        private string GetUpdatedTemplatePackage(string dotnetEntryLabel, string templateType, string currentValue, int coreToolsMajor)
+        {
+            var packageIdMap = GetEntryToPackageIdMap(templateType);
+            if (!packageIdMap.TryGetValue(dotnetEntryLabel, out string packageId))
+            {
+                throw new KeyNotFoundException($"Cannot find the {templateType} package ID in map. Unidentified dotnet label '{dotnetEntryLabel}'.");
+            }
+
+            string newValue = Helper.GetTemplateUrl(packageId, coreToolsMajor);
+            bool changed = !string.Equals(currentValue, newValue, StringComparison.OrdinalIgnoreCase);
+            if (changed)
+            {
+                Console.WriteLine($"'{dotnetEntryLabel}' {templateType} update: {currentValue} => {newValue}.");
+            }
+            else
+            {
+                Console.WriteLine($"'{dotnetEntryLabel}' {templateType} already up-to-date.");
+            }
+            return newValue;
+        }
     }
-}
+}
