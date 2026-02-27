@@ -53,7 +53,7 @@ namespace GenerateToolingFeed
             }
             else
             {
-                Console.WriteLine($"WARNING: Feed update failed for version {coreToolsInfo.MajorVersion} in {feedName}. Check the error messages above. You may have to manually add a version before this tool will work. Skipping this feed.");
+                Console.WriteLine($"WARNING: Feed update failed for version {coreToolsInfo.MajorVersion} in {feedName}. No matching versions were found or an error occurred. You may have to manually add a version before this tool will work. Skipping this feed.");
             }
         }
 
