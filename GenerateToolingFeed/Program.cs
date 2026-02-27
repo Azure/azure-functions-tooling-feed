@@ -73,14 +73,15 @@ namespace GenerateToolingFeed
                         return false;
                     }
 
-                    if (feed["releases"][releaseVersion] == null)
+                    JObject releases = feed["releases"] as JObject;
+                    if (releases == null || releases[releaseVersion] == null)
                     {
                         Console.WriteLine($"ERROR: Release version '{releaseVersion}' (from tag '{tag}') not found in releases section.");
                         return false;
                     }
 
                     // Get a cloned object to not modify the exisiting release
-                    JObject currentReleaseEntryJson = feed["releases"][releaseVersion].DeepClone() as JObject;
+                    JObject currentReleaseEntryJson = releases[releaseVersion].DeepClone() as JObject;
 
                     JObject newReleaseEntryJson = GetNewReleaseEntryJson(currentReleaseEntryJson, format, coreToolsInfo, tag);
 
