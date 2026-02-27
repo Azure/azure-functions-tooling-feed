@@ -53,7 +53,7 @@ namespace GenerateToolingFeed
             }
             else
             {
-                Console.WriteLine($"WARNING: No existing entries found for version {coreToolsInfo.MajorVersion} in {feedName}. You may have to manually add a version before this tool will work. Skipping this feed.");
+                Console.WriteLine($"WARNING: Feed update failed for version {coreToolsInfo.MajorVersion} in {feedName}. Check the error messages above. You may have to manually add a version before this tool will work. Skipping this feed.");
             }
         }
 
@@ -67,6 +67,17 @@ namespace GenerateToolingFeed
                 foreach (string tag in tags)
                 {
                     string releaseVersion = Helper.GetReleaseVersionFromTag(feed, tag);
+                    if (string.IsNullOrEmpty(releaseVersion))
+                    {
+                        Console.WriteLine($"ERROR: Could not find release version for tag '{tag}' in the feed.");
+                        return false;
+                    }
+
+                    if (feed["releases"][releaseVersion] == null)
+                    {
+                        Console.WriteLine($"ERROR: Release version '{releaseVersion}' (from tag '{tag}') not found in releases section.");
+                        return false;
+                    }
 
                     // Get a cloned object to not modify the exisiting release
                     JObject currentReleaseEntryJson = feed["releases"][releaseVersion].DeepClone() as JObject;
@@ -77,8 +88,10 @@ namespace GenerateToolingFeed
                 }
                 return result;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"ERROR: Exception during feed update: {ex.GetType().Name}: {ex.Message}");
+                Console.WriteLine(ex.StackTrace);
                 return false;
             }
         }
@@ -119,6 +132,7 @@ namespace GenerateToolingFeed
         private static JObject GetFeedJSON(string feedName)
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "..", feedName);
+            Console.WriteLine($"Reading feed from: {Path.GetFullPath(path)}");
             string feedContent = File.ReadAllText(path);
             return JObject.Parse(feedContent);
         }
