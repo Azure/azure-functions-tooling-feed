@@ -132,7 +132,6 @@ namespace GenerateToolingFeed
         private static JObject GetFeedJSON(string feedName)
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "..", feedName);
-            Console.WriteLine($"Reading feed from: {Path.GetFullPath(path)}");
             string feedContent = File.ReadAllText(path);
             return JObject.Parse(feedContent);
         }
