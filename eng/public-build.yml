@@ -8,6 +8,15 @@ pr:
     include:
     - release/main
 
+schedules:
+# Ensure we build nightly to catch any new CVEs and report SDL often.
+- cron: "0 3 * * *"
+  displayName: Nightly Build
+  branches:
+    include:
+    - release/main
+  always: true
+
 resources:
   repositories:
   - repository: 1es
@@ -22,6 +31,19 @@ extends:
       name: 1es-pool-azfunc-public
       image: 1es-windows-2022
       os: windows
+      ${{ if eq( variables['Build.Reason'], 'Schedule' ) }}:
+        demands:
+        - Priority -equals Low
+
+    sdl:
+      codeql:
+        compiled:
+          enabled: true
+        runSourceLanguagesInSourceAnalysis: true
+
+    settings:
+      # PR's from forks do not have sufficient permissions to set tags.
+      skipBuildTagsForGitHubPullRequests: ${{ variables['System.PullRequest.IsFork'] }}
 
     stages:
     - stage: RunUnitTests
