@@ -68,8 +68,17 @@ namespace GenerateToolingFeed
 
         public static string GetLatestPackageVersion(string packageId, int cliMajor)
         {
-            string url = $"https://api.nuget.org/v3-flatcontainer/{packageId.ToLower()}/index.json";
-            var response = HttpClient.GetStringAsync(url).Result;
+            string nugetFlatcontainerBaseUrl = Environment.GetEnvironmentVariable("NUGET_FLATCONTAINER_URL")
+                ?? "https://api.nuget.org/v3-flatcontainer";
+            string url = $"{nugetFlatcontainerBaseUrl}/{packageId.ToLower()}/index.json";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            string accessToken = Environment.GetEnvironmentVariable("SYSTEM_ACCESSTOKEN");
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            var response = HttpClient.SendAsync(request).Result.Content.ReadAsStringAsync().Result;
             var versionsObject = JObject.Parse(response);
 
             var versions = JsonConvert.DeserializeObject<IEnumerable<string>>(versionsObject["versions"].ToString());

@@ -17,10 +17,18 @@ jobs:
       packageType: sdk
       useGlobalJson: true
   - task: DotNetCoreCLI@2
+    displayName: 'Restore packages'
+    inputs:
+      command: restore
+      projects: '$(Build.Repository.LocalPath)/GenerateToolingFeed/*.csproj'
+      feedsToUse: select
+      vstsFeed: $(AzureFunctionsStagingFeed)
+      includeNuGetOrg: false
+  - task: DotNetCoreCLI@2
     displayName: Build feed generator tool
     inputs:
       command: 'publish'
       publishWebProjects: false
       projects: '$(Build.Repository.LocalPath)/GenerateToolingFeed/*.csproj'
-      arguments: '-o $(Build.ArtifactStagingDirectory)'
+      arguments: '--no-restore -o $(Build.ArtifactStagingDirectory)'
       zipAfterPublish: false
