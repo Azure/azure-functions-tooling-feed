@@ -71,6 +71,7 @@ namespace GenerateToolingFeed
             string nugetFlatcontainerBaseUrl = Environment.GetEnvironmentVariable("NUGET_FLATCONTAINER_URL")
                 ?? "https://api.nuget.org/v3-flatcontainer";
             string url = $"{nugetFlatcontainerBaseUrl}/{packageId.ToLower()}/index.json";
+            Console.WriteLine($"[GetLatestPackageVersion] Fetching NuGet versions from: {url}");
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             string accessToken = Environment.GetEnvironmentVariable("SYSTEM_ACCESSTOKEN");
