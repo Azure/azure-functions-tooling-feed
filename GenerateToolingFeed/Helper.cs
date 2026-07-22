@@ -73,13 +73,16 @@ namespace GenerateToolingFeed
             string url = $"{nugetFlatcontainerBaseUrl}/{packageId.ToLower()}/index.json";
             Console.WriteLine($"[GetLatestPackageVersion] Fetching NuGet versions from: {url}");
 
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            using var request = new HttpRequestMessage(HttpMethod.Get, url);
             string accessToken = Environment.GetEnvironmentVariable("SYSTEM_ACCESSTOKEN");
             if (!string.IsNullOrEmpty(accessToken))
             {
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
             }
-            var response = HttpClient.SendAsync(request).Result.Content.ReadAsStringAsync().Result;
+
+            using var responseMessage = HttpClient.SendAsync(request).GetAwaiter().GetResult();
+            responseMessage.EnsureSuccessStatusCode();
+            var response = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             var versionsObject = JObject.Parse(response);
 
             var versions = JsonConvert.DeserializeObject<IEnumerable<string>>(versionsObject["versions"].ToString());
