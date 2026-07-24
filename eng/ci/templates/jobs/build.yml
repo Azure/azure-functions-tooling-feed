@@ -22,7 +22,7 @@ jobs:
       command: restore
       projects: '$(Build.Repository.LocalPath)/GenerateToolingFeed/*.csproj'
       feedsToUse: select
-      vstsFeed: $(AzureFunctionsStagingFeed)
+      vstsFeed: $(AzureFunctionsArtifactsFeed)
       includeNuGetOrg: false
   - task: DotNetCoreCLI@2
     displayName: Build feed generator tool
