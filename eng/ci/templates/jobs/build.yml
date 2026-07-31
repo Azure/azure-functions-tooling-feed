@@ -16,14 +16,15 @@ jobs:
     inputs:
       packageType: sdk
       useGlobalJson: true
+  - task: NuGetAuthenticate@1
+    displayName: Authenticate NuGet feeds
   - task: DotNetCoreCLI@2
     displayName: 'Restore packages'
     inputs:
       command: restore
       projects: '$(Build.Repository.LocalPath)/GenerateToolingFeed/*.csproj'
-      feedsToUse: select
-      vstsFeed: $(AzureFunctionsArtifactsFeed)
-      includeNuGetOrg: false
+      feedsToUse: config
+      nugetConfigPath: '$(Build.Repository.LocalPath)/NuGet.config'
   - task: DotNetCoreCLI@2
     displayName: Build feed generator tool
     inputs:
