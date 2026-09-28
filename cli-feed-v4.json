@@ -49573,7 +49573,7 @@
               "displayVersion": "v4",
               "targetFramework": ".NET 11",
               "description": "Isolated Preview",
-              "endOfLifeDate": "2028-11-10T00:00:00Z"
+              "endOfLifeDate": "2028-11-09T00:00:00Z"
             },
             "capabilities": "isolated,net6,net7,net8,net9,net10,net11",
             "sdk": {
